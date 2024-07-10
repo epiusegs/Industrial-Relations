@@ -1,0 +1,182 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "DISC-.######",
+ "creation": "2024-07-10 09:13:15.699232",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_mqkd",
+  "amended_from",
+  "details_of_accused_employee_section",
+  "accused",
+  "branch",
+  "details_of_complainant_section",
+  "complainant",
+  "request_date",
+  "details_of_offence",
+  "offences"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_mqkd",
+   "fieldtype": "Section Break",
+   "label": "Administrative"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Disciplinary Action",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "details_of_accused_employee_section",
+   "fieldtype": "Section Break",
+   "label": "Details of Accused Employee"
+  },
+  {
+   "fieldname": "accused",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee:",
+   "options": "Employee",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Site for Hearing:",
+   "options": "Branch",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "details_of_complainant_section",
+   "fieldtype": "Section Break",
+   "label": "Details of Complainant"
+  },
+  {
+   "fieldname": "complainant",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Person Initiating Disciplinary Action:",
+   "options": "Employee",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "request_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Date and Time of Request:",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "details_of_offence",
+   "fieldtype": "Section Break",
+   "label": "Details of Offence(s)"
+  },
+  {
+   "fieldname": "offences",
+   "fieldtype": "Table",
+   "label": "Offences:",
+   "options": "List of Offences",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Employee",
+   "link_fieldname": "employee"
+  },
+  {
+   "link_doctype": "Branch",
+   "link_fieldname": "branch"
+  },
+  {
+   "link_doctype": "Disciplinary Offence",
+   "link_fieldname": "offence_description"
+  }
+ ],
+ "modified": "2024-07-10 09:44:35.807143",
+ "modified_by": "Administrator",
+ "module": "Industrial Relations",
+ "name": "Disciplinary Action",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "IR Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "IR User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "Blue",
+   "title": "Requested"
+  },
+  {
+   "color": "Yellow",
+   "title": "Awaiting Information"
+  },
+  {
+   "color": "Yellow",
+   "title": "Awaiting Service of Documents"
+  },
+  {
+   "color": "Red",
+   "title": "Awaiting Outcome"
+  },
+  {
+   "color": "Green",
+   "title": "Outcome Rendered"
+  }
+ ],
+ "track_changes": 1
+}

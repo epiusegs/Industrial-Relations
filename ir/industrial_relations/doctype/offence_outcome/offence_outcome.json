@@ -1,0 +1,94 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "prompt",
+ "creation": "2024-07-09 10:27:03.067034",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "disc_offence_outcome_sec",
+  "disc_offence_out"
+ ],
+ "fields": [
+  {
+   "fieldname": "disc_offence_outcome_sec",
+   "fieldtype": "Section Break",
+   "label": "Discipilnary Offence Outcome"
+  },
+  {
+   "fieldname": "disc_offence_out",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Outcome:",
+   "reqd": 1,
+   "unique": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "Disciplinary Offence",
+   "link_fieldname": "sanction_on_first_offence"
+  },
+  {
+   "link_doctype": "Disciplinary Offence",
+   "link_fieldname": "sanction_on_second_offence"
+  },
+  {
+   "link_doctype": "Disciplinary Offence",
+   "link_fieldname": "sanction_on_third_offence"
+  },
+  {
+   "link_doctype": "Disciplinary Offence",
+   "link_fieldname": "sanction_on_fourth_offence"
+  }
+ ],
+ "modified": "2024-07-10 08:26:33.555004",
+ "modified_by": "Administrator",
+ "module": "Industrial Relations",
+ "name": "Offence Outcome",
+ "naming_rule": "Set by user",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "IR Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "IR User",
+   "share": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "disc_offence_out",
+ "track_changes": 1
+}
