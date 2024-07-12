@@ -1,0 +1,44 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-07-12 19:41:25.903049",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "disciplinary_charges_section",
+  "code_item",
+  "charge"
+ ],
+ "fields": [
+  {
+   "fieldname": "disciplinary_charges_section",
+   "fieldtype": "Section Break",
+   "label": "Disciplinary Charges"
+  },
+  {
+   "fieldname": "code_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Code Item",
+   "options": "Disciplinary Offence",
+   "reqd": 1
+  },
+  {
+   "fieldname": "charge",
+   "fieldtype": "Small Text",
+   "label": "Charge"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-07-12 19:45:51.802646",
+ "modified_by": "Administrator",
+ "module": "Industrial Relations",
+ "name": "Disciplinary Charges",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

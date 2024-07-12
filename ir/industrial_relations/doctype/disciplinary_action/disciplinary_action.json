@@ -7,16 +7,35 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "request_tab",
   "section_break_mqkd",
   "amended_from",
   "details_of_accused_employee_section",
   "accused",
   "branch",
+  "column_break_ugya",
+  "accused_name",
+  "accused_coy",
+  "accused_pos",
   "details_of_complainant_section",
   "complainant",
   "request_date",
+  "column_break_wckm",
+  "compl_name",
+  "compl_pos",
   "details_of_offence",
-  "offences"
+  "offences",
+  "attach",
+  "disciplinary_history_section",
+  "previous_disciplinary_outcomes",
+  "outcome_tab",
+  "action_taken_section",
+  "outcome",
+  "outcome_date",
+  "charges",
+  "disciplinary_record",
+  "disciplinary_outcome",
+  "disciplinary_sanction"
  ],
  "fields": [
   {
@@ -90,6 +109,102 @@
    "label": "Offences:",
    "options": "List of Offences",
    "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ugya",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "accused_name",
+   "fieldtype": "Read Only",
+   "label": "Employee Name:"
+  },
+  {
+   "fieldname": "accused_coy",
+   "fieldtype": "Read Only",
+   "label": "Accused Coy No.:"
+  },
+  {
+   "fieldname": "accused_pos",
+   "fieldtype": "Read Only",
+   "label": "Accused Position:"
+  },
+  {
+   "fieldname": "column_break_wckm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "compl_name",
+   "fieldtype": "Read Only",
+   "label": "Complainant Name:"
+  },
+  {
+   "fieldname": "compl_pos",
+   "fieldtype": "Read Only",
+   "label": "Complainant Position:"
+  },
+  {
+   "fieldname": "attach",
+   "fieldtype": "Attach",
+   "label": "Attach Photos and/or Documents:"
+  },
+  {
+   "fieldname": "disciplinary_history_section",
+   "fieldtype": "Section Break",
+   "label": "Disciplinary History"
+  },
+  {
+   "fieldname": "previous_disciplinary_outcomes",
+   "fieldtype": "Table",
+   "label": "Previous Disciplinary Outcomes",
+   "options": "Disciplinary History"
+  },
+  {
+   "fieldname": "action_taken_section",
+   "fieldtype": "Section Break",
+   "label": "Action Taken"
+  },
+  {
+   "fieldname": "outcome",
+   "fieldtype": "Link",
+   "label": "Outcome",
+   "options": "Offence Outcome"
+  },
+  {
+   "fieldname": "outcome_date",
+   "fieldtype": "Date",
+   "label": "Outcome Date"
+  },
+  {
+   "fieldname": "charges",
+   "fieldtype": "Table",
+   "label": "Charges",
+   "options": "Disciplinary Charges"
+  },
+  {
+   "fieldname": "request_tab",
+   "fieldtype": "Tab Break",
+   "label": "Request"
+  },
+  {
+   "fieldname": "outcome_tab",
+   "fieldtype": "Tab Break",
+   "label": "Outcome"
+  },
+  {
+   "fieldname": "disciplinary_record",
+   "fieldtype": "Attach",
+   "label": "Disciplinary Record"
+  },
+  {
+   "fieldname": "disciplinary_outcome",
+   "fieldtype": "Attach",
+   "label": "Disciplinary Outcome"
+  },
+  {
+   "fieldname": "disciplinary_sanction",
+   "fieldtype": "Attach",
+   "label": "Disciplinary Sanction"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -106,9 +221,17 @@
   {
    "link_doctype": "Disciplinary Offence",
    "link_fieldname": "offence_description"
+  },
+  {
+   "link_doctype": "Employee",
+   "link_fieldname": "employee_name"
+  },
+  {
+   "link_doctype": "Employee",
+   "link_fieldname": "designation"
   }
  ],
- "modified": "2024-07-10 09:44:35.807143",
+ "modified": "2024-07-12 19:51:52.750389",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",
@@ -171,7 +294,7 @@
   },
   {
    "color": "Red",
-   "title": "Awaiting Outcome"
+   "title": "Outcome Pending"
   },
   {
    "color": "Green",

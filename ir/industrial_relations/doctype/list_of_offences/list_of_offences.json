@@ -9,8 +9,7 @@
   "disciplinary_incident_section",
   "code_item",
   "offence_datetime",
-  "incident_details",
-  "supporting_docs"
+  "incident_details"
  ],
  "fields": [
   {
@@ -41,11 +40,6 @@
    "in_list_view": 1,
    "label": "Details of Incident:",
    "reqd": 1
-  },
-  {
-   "fieldname": "supporting_docs",
-   "fieldtype": "Attach",
-   "label": "Supporting Documents:"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -56,7 +50,7 @@
    "link_fieldname": "offence_description"
   }
  ],
- "modified": "2024-07-10 09:43:12.048319",
+ "modified": "2024-07-12 11:07:28.046243",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "List of Offences",
