@@ -1,7 +1,8 @@
 // Copyright (c) 2024, BuFf0k and contributors
 // For license information, please see license.txt
 frappe.ui.form.on('Disciplinary Action', {
-    accused: function(frm) {
+    complete: function(frm) {
+        //Fetch employee_name field from Employee document and enter into accused_name field
         if (frm.doc.accused) {
             frappe.db.get_value('Employee', frm.doc.accused, 'employee_name', (a) => {
                 if (a && a.employee_name) {
@@ -13,6 +14,7 @@ frappe.ui.form.on('Disciplinary Action', {
         } else {
             frm.set_value('accused_name', '');
         }
+        //Fetch employee fild from Employee document and enter into accused_coy field
         if (frm.doc.accused) {
             frappe.db.get_value('Employee', frm.doc.accused, 'employee', (b) => {
                 if (b && b.employee) {
@@ -24,6 +26,7 @@ frappe.ui.form.on('Disciplinary Action', {
         } else {
             frm.set_value('accused_coy', '');
         }
+        //Fetch designation field from Employee document and enter into accused_pos field 
         if (frm.doc.accused) {
             frappe.db.get_value('Employee', frm.doc.accused, 'designation', (c) => {
                 if (c && c.designation) {
@@ -35,11 +38,9 @@ frappe.ui.form.on('Disciplinary Action', {
         } else {
             frm.set_value('accused_pos', '');
         }
-    }
-});
-
-frappe.ui.form.on('Disciplinary Action', {
-    complainant: function(frm) {
+        // Clear the Disciplinary History table first
+        frm.clear_table('previous_disciplinary_outcomes');
+        //Fetch employee_name field from Employee document and enter into compl_name field
         if (frm.doc.complainant) {
             frappe.db.get_value('Employee', frm.doc.complainant, 'employee_name', (d) => {
                 if (d && d.employee_name) {
@@ -51,6 +52,7 @@ frappe.ui.form.on('Disciplinary Action', {
         } else {
             frm.set_value('compl_name', '');
         }
+        //Fetch designation field from Employee document and enter into compl_pos field
         if (frm.doc.complainant) {
             frappe.db.get_value('Employee', frm.doc.complainant, 'designation', (e) => {
                 if (e && e.designation) {

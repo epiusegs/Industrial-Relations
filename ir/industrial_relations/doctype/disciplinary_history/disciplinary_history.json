@@ -6,7 +6,7 @@
  "engine": "InnoDB",
  "field_order": [
   "disciplinary_history_section",
-  "accused",
+  "disc_action",
   "date",
   "charges",
   "sanction"
@@ -16,11 +16,6 @@
    "fieldname": "disciplinary_history_section",
    "fieldtype": "Section Break",
    "label": "Disciplinary History"
-  },
-  {
-   "fieldname": "accused",
-   "fieldtype": "Data",
-   "label": "Accused"
   },
   {
    "fieldname": "date",
@@ -36,12 +31,18 @@
    "fieldname": "sanction",
    "fieldtype": "Data",
    "label": "Sanction"
+  },
+  {
+   "fieldname": "disc_action",
+   "fieldtype": "Link",
+   "label": "Disciplinary Action:",
+   "options": "Disciplinary Action"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-12 19:39:13.077321",
+ "modified": "2024-07-13 16:52:43.652595",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary History",
