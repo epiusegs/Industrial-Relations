@@ -25,7 +25,7 @@
   },
   {
    "fieldname": "charges",
-   "fieldtype": "Data",
+   "fieldtype": "Small Text",
    "in_list_view": 1,
    "label": "Charges"
   },
@@ -47,7 +47,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-14 18:08:38.900328",
+ "modified": "2024-07-15 10:03:35.214209",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary History",

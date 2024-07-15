@@ -1,5 +1,7 @@
 // Copyright (c) 2024, BuFf0k and contributors
 // For license information, please see license.txt
+// Copyright (c) 2024, BuFf0k and contributors
+// For license information, please see license.txt
 frappe.ui.form.on('Disciplinary Action', {
     accused: function(frm) {
         //Fetch employee_name field from Employee document and enter into accused_name field
@@ -42,7 +44,7 @@ frappe.ui.form.on('Disciplinary Action', {
                 }
             });
         }
-        //Fetch disciplinary actions with the same accused
+    	//Fetch date and completes the disciplinary_history child table based on accused previous disciplinary actions
         if (frm.doc.accused) {
             frappe.call({
                 method: 'frappe.client.get_list',
@@ -54,19 +56,32 @@ frappe.ui.form.on('Disciplinary Action', {
                     },
                     fields: ['name', 'outcome_date', 'outcome']
                 },
-                callback: function(r) {
-                    if (r.message) {
+                callback: function(e) {
+                    if (e.message) {
                         // Clear existing child table entries
                         frm.clear_table('previous_disciplinary_outcomes');
-                        // Populate the child table with fetched data
-                        r.message.forEach(function(row) {
-                            let child = frm.add_child('previous_disciplinary_outcomes');
-                            child.disc_action = row.name;
-                            child.date = row.outcome_date;
-                            child.sanction = row.outcome;
+                        let action_count = e.message.length;
+                        let completed_actions = 0;
+                        e.message.forEach(function(row) {
+                            frappe.model.with_doc('Disciplinary Action', row.name, function() {
+                                let action_doc = frappe.get_doc('Disciplinary Action', row.name);
+                                let charges = [];
+                                action_doc.final_charges.forEach(function(charge_row) {
+                                    charges.push(`(${charge_row.code_item}) ${charge_row.charge}`);
+                                });
+                                // Add the row to previous_disciplinary_outcomes
+                                let child = frm.add_child('previous_disciplinary_outcomes');
+                                child.disc_action = action_doc.name;
+                                child.date = action_doc.outcome_date;
+                                child.sanction = action_doc.outcome;
+                                child.charges = charges.join('\n');  // Each charge on a new line
+                                completed_actions++;
+                                // Refresh the form to show the updated child table when all calls are completed
+                                if (completed_actions === action_count) {
+                                    frm.refresh_field('previous_disciplinary_outcomes');
+                                }
+                            });
                         });
-                        // Refresh the form to show the updated child table
-                        frm.refresh_field('previous_disciplinary_outcomes');
                     }
                 }
             });
@@ -77,9 +92,9 @@ frappe.ui.form.on('Disciplinary Action', {
     complainant: function(frm) {
         //Fetch employee_name field from Employee document and enter into compl_name field
         if (frm.doc.complainant) {
-            frappe.db.get_value('Employee', frm.doc.complainant, 'employee_name', (e) => {
-                if (e && e.employee_name) {
-                    frm.set_value('compl_name', e.employee_name);
+            frappe.db.get_value('Employee', frm.doc.complainant, 'employee_name', (f) => {
+                if (f && f.employee_name) {
+                    frm.set_value('compl_name', f.employee_name);
                 } else {
                     frm.set_value('compl_name', '');
                 }
@@ -87,9 +102,9 @@ frappe.ui.form.on('Disciplinary Action', {
         }
         //Fetch designation field from Employee document and enter into compl_pos field
         if (frm.doc.complainant) {
-            frappe.db.get_value('Employee', frm.doc.complainant, 'designation', (f) => {
-                if (f && f.designation) {
-                    frm.set_value('compl_pos', f.designation);
+            frappe.db.get_value('Employee', frm.doc.complainant, 'designation', (g) => {
+                if (g && g.designation) {
+                    frm.set_value('compl_pos', g.designation);
                 } else {
                     frm.set_value('compl_pos', '');
                 }
@@ -100,9 +115,9 @@ frappe.ui.form.on('Disciplinary Action', {
     company: function(frm) {
         //Fetch default_letter_head field from the Company document and enter into the letter_head field
         if (frm.doc.company) {
-            frappe.db.get_value('Company', frm.doc.company, 'default_letter_head', (g) => {
-               if (g && g.default_letter_head) {
-                    frm.set_value('letter_head', g.default_letter_head);
+            frappe.db.get_value('Company', frm.doc.company, 'default_letter_head', (h) => {
+               if (h && h.default_letter_head) {
+                    frm.set_value('letter_head', h.default_letter_head);
                 } else {
                     frm.set_value('letter_head', '');
                 }
