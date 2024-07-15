@@ -26,6 +26,7 @@
   {
    "fieldname": "charge",
    "fieldtype": "Small Text",
+   "in_list_view": 1,
    "label": "Charge",
    "reqd": 1
   }
@@ -33,7 +34,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-13 18:17:17.781765",
+ "modified": "2024-07-14 18:06:20.842106",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Charges",

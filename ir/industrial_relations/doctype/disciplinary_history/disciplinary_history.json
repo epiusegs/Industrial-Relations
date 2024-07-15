@@ -20,21 +20,26 @@
   {
    "fieldname": "date",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Date"
   },
   {
    "fieldname": "charges",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Charges"
   },
   {
    "fieldname": "sanction",
-   "fieldtype": "Data",
-   "label": "Sanction"
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sanction",
+   "options": "Offence Outcome"
   },
   {
    "fieldname": "disc_action",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Disciplinary Action:",
    "options": "Disciplinary Action"
   }
@@ -42,7 +47,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-13 16:52:43.652595",
+ "modified": "2024-07-14 18:08:38.900328",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary History",

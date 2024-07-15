@@ -8,7 +8,8 @@
  "engine": "InnoDB",
  "field_order": [
   "disc_offence_outcome_sec",
-  "disc_offence_out"
+  "disc_offence_out",
+  "iswarning"
  ],
  "fields": [
   {
@@ -23,6 +24,12 @@
    "label": "Outcome:",
    "reqd": 1,
    "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "iswarning",
+   "fieldtype": "Check",
+   "label": "Is a warning"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -44,7 +51,7 @@
    "link_fieldname": "sanction_on_fourth_offence"
   }
  ],
- "modified": "2024-07-10 08:26:33.555004",
+ "modified": "2024-07-13 21:48:53.022644",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Offence Outcome",
