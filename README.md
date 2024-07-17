@@ -4,9 +4,9 @@ An Industrial Relations Management App built on the Frappe Framework.
 
 ### Requirements:
 
-1. Frappe Framework Installed and Running a Bench serving a site;
-2. ERPNext Installed on your Bench Instance; and
-3. HRMS Installed on your Bench Instance.
+1. [Frappe Framework](https://github.com/frappe/frappe) Installed and Running a Bench serving a site;
+2. [ERPNext](https://github.com/frappe/erpnext) Installed on your Bench Instance; and
+3. [HRMS](https://github.com/frappe/hrms) Installed on your Bench Instance.
 
 ### How to Install
 
