@@ -13,7 +13,7 @@
  "documentation_url": "https://github.com/buff0k/ir",
  "idx": 0,
  "is_complete": 0,
- "modified": "2024-07-17 16:01:57.790015",
+ "modified": "2024-07-17 17:45:02.440018",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Industrial Relations",
@@ -35,7 +35,7 @@
    "step": "Create Specific Desciplinary Offence"
   }
  ],
- "subtitle": "Getting you started",
- "success_message": "Congratulations, you are now ready to go.",
- "title": "Setting Up the Industrial Relations Module"
+ "subtitle": "Disciplinary Actions, HR Interventions and more.",
+ "success_message": "The Industrial Relations Module is all set up!",
+ "title": "Let's Set Up the Industrial Relations Module. "
 }
