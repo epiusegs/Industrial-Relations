@@ -1,0 +1,41 @@
+{
+ "allow_roles": [
+  {
+   "role": "IR Manager"
+  },
+  {
+   "role": "HR Manager"
+  }
+ ],
+ "creation": "2024-07-17 15:51:08.557144",
+ "docstatus": 0,
+ "doctype": "Module Onboarding",
+ "documentation_url": "https://github.com/buff0k/ir",
+ "idx": 0,
+ "is_complete": 0,
+ "modified": "2024-07-17 16:01:57.790015",
+ "modified_by": "Administrator",
+ "module": "Industrial Relations",
+ "name": "Industrial Relations",
+ "owner": "Administrator",
+ "steps": [
+  {
+   "step": "Company Set Up"
+  },
+  {
+   "step": "Create Employee"
+  },
+  {
+   "step": "Create Outcome"
+  },
+  {
+   "step": "Create Disciplinary Offence Category"
+  },
+  {
+   "step": "Create Specific Desciplinary Offence"
+  }
+ ],
+ "subtitle": "Getting you started",
+ "success_message": "Congratulations, you are now ready to go.",
+ "title": "Setting Up the Industrial Relations Module"
+}

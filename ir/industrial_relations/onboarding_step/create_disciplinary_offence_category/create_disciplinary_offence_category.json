@@ -1,0 +1,19 @@
+{
+ "action": "Create Entry",
+ "creation": "2024-07-17 16:01:15.024088",
+ "docstatus": 0,
+ "doctype": "Onboarding Step",
+ "idx": 0,
+ "is_complete": 0,
+ "is_single": 0,
+ "is_skipped": 0,
+ "modified": "2024-07-17 16:01:15.024088",
+ "modified_by": "Administrator",
+ "name": "Create Disciplinary Offence Category",
+ "owner": "Administrator",
+ "reference_document": "Offence Category",
+ "show_form_tour": 0,
+ "show_full_form": 0,
+ "title": "Create a catogory of Disciplinary Offences",
+ "validate_action": 1
+}
