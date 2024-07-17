@@ -1,0 +1,223 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-07-13 21:38:05.593454",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_q63y",
+  "amended_from",
+  "employee",
+  "letter_head",
+  "employee_details_section",
+  "linked_disciplinary_action",
+  "company",
+  "warning_type",
+  "column_break_yiyb",
+  "names",
+  "coy",
+  "position",
+  "details_of_offence_section",
+  "warning_charges",
+  "previous_disciplinary_offences_section",
+  "disciplinary_history"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_q63y",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Warning Form",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "employee_details_section",
+   "fieldtype": "Section Break",
+   "label": "Employee Details"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Read Only",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "names",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "label": "Names",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "coy",
+   "fieldtype": "Read Only",
+   "label": "Coy",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "warning_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Warning Type",
+   "link_filters": "[[\"Offence Outcome\",\"iswarning\",\"=\",1]]",
+   "options": "Offence Outcome",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "label": "Company"
+  },
+  {
+   "fieldname": "letter_head",
+   "fieldtype": "Read Only",
+   "hidden": 1,
+   "label": "Letterhead"
+  },
+  {
+   "fieldname": "column_break_yiyb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Read Only",
+   "label": "Position",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "details_of_offence_section",
+   "fieldtype": "Section Break",
+   "label": "Details of Offence"
+  },
+  {
+   "fieldname": "previous_disciplinary_offences_section",
+   "fieldtype": "Section Break",
+   "label": "Previous Disciplinary Offences"
+  },
+  {
+   "columns": 1,
+   "fieldname": "warning_charges",
+   "fieldtype": "Table",
+   "label": "Charges",
+   "options": "Warning Charges",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "linked_disciplinary_action",
+   "fieldtype": "Link",
+   "label": "Linked Disciplinary Action",
+   "options": "Disciplinary Action",
+   "reqd": 1
+  },
+  {
+   "columns": 3,
+   "fieldname": "disciplinary_history",
+   "fieldtype": "Table",
+   "options": "Disciplinary History",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Offence Outcome",
+   "link_fieldname": "disc_offence_out"
+  },
+  {
+   "link_doctype": "Offence Outcome",
+   "link_fieldname": "iswarning"
+  },
+  {
+   "link_doctype": "Employee",
+   "link_fieldname": "employee"
+  },
+  {
+   "link_doctype": "Employee",
+   "link_fieldname": "employee_name"
+  },
+  {
+   "link_doctype": "Employee",
+   "link_fieldname": "company"
+  },
+  {
+   "link_doctype": "Company",
+   "link_fieldname": "default_letter_head"
+  },
+  {
+   "link_doctype": "Company",
+   "link_fieldname": "company_name"
+  },
+  {
+   "link_doctype": "Disciplinary Offence",
+   "link_fieldname": "offence_description"
+  },
+  {
+   "link_doctype": "Disciplinary Offence",
+   "link_fieldname": "name"
+  },
+  {
+   "link_doctype": "Disciplinary Action",
+   "link_fieldname": "outcome"
+  },
+  {
+   "link_doctype": "Disciplinary Action",
+   "link_fieldname": "outcome_date"
+  },
+  {
+   "link_doctype": "Disciplinary Action",
+   "link_fieldname": "accused"
+  }
+ ],
+ "modified": "2024-07-17 11:31:59.893635",
+ "modified_by": "Administrator",
+ "module": "Industrial Relations",
+ "name": "Warning Form",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "IR Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

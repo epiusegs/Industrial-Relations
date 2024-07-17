@@ -1,11 +1,6 @@
 {
- "charts": [
-  {
-   "chart_name": "Disciplinary Outcomes",
-   "label": "Disciplinary Outcomes"
-  }
- ],
- "content": "[{\"id\":\"n27sy9IsQt\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Industrial Relations</span>\",\"col\":12}},{\"id\":\"ThTZd6Jcu7\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Disciplinary Outcomes\",\"col\":12}},{\"id\":\"SsJD6OK3sv\",\"type\":\"card\",\"data\":{\"card_name\":\"Disciplinary Code\",\"col\":4}},{\"id\":\"H7u66sZD9u\",\"type\":\"card\",\"data\":{\"card_name\":\"IR Interventions\",\"col\":4}},{\"id\":\"aq57NCLoZ3\",\"type\":\"card\",\"data\":{\"card_name\":\"Disciplinary Documents\",\"col\":4}}]",
+ "charts": [],
+ "content": "[{\"id\":\"n27sy9IsQt\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Industrial Relations</span>\",\"col\":12}},{\"id\":\"SsJD6OK3sv\",\"type\":\"card\",\"data\":{\"card_name\":\"Disciplinary Code\",\"col\":4}},{\"id\":\"H7u66sZD9u\",\"type\":\"card\",\"data\":{\"card_name\":\"IR Interventions\",\"col\":4}}]",
  "creation": "2024-07-10 08:50:21.843775",
  "custom_blocks": [],
  "docstatus": 0,
@@ -33,25 +28,6 @@
    "label": "Disciplinary Action",
    "link_count": 0,
    "link_to": "Disciplinary Action",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Disciplinary Documents",
-   "link_count": 1,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Written Warning",
-   "link_count": 0,
-   "link_to": "Written Warning",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -96,7 +72,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-07-14 19:47:45.025252",
+ "modified": "2024-07-17 08:04:15.268192",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Industrial Relations",

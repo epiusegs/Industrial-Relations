@@ -1,7 +1,5 @@
 // Copyright (c) 2024, BuFf0k and contributors
 // For license information, please see license.txt
-// Copyright (c) 2024, BuFf0k and contributors
-// For license information, please see license.txt
 frappe.ui.form.on('Disciplinary Action', {
     accused: function(frm) {
         //Fetch employee_name field from Employee document and enter into accused_name field
@@ -44,7 +42,7 @@ frappe.ui.form.on('Disciplinary Action', {
                 }
             });
         }
-    	//Fetch date and completes the disciplinary_history child table based on accused previous disciplinary actions
+        //Fetch data and completes the disciplinary_history child table based on accused previous disciplinary actions
         if (frm.doc.accused) {
             frappe.call({
                 method: 'frappe.client.get_list',
@@ -52,6 +50,7 @@ frappe.ui.form.on('Disciplinary Action', {
                     doctype: 'Disciplinary Action',
                     filters: {
                         accused: frm.doc.accused,
+                        outcome: ['!=',''], //Exclude documents without outcomes
                         name: ['!=', frm.doc.name]  // Exclude the current document
                     },
                     fields: ['name', 'outcome_date', 'outcome']
@@ -86,6 +85,12 @@ frappe.ui.form.on('Disciplinary Action', {
                 }
             });
         }
+        //frm.add_custom_button(__('Create Warning Form'), function() {
+            // Create a new Written Warning document
+        //    frappe.new_doc('Warning Form', {
+        //        linked_disciplinary_action: frm.doc.name  // Automatically link to the Disciplinary Action document
+        //    });
+        //});
     }
 });
 frappe.ui.form.on('Disciplinary Action', {

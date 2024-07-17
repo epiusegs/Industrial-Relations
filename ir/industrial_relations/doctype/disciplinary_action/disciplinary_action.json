@@ -249,7 +249,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-07-14 18:34:04.077584",
+ "modified": "2024-07-15 12:36:27.330261",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",
@@ -278,6 +278,7 @@
    "read": 1,
    "report": 1,
    "role": "IR Manager",
+   "select": 1,
    "share": 1,
    "submit": 1,
    "write": 1
@@ -290,6 +291,7 @@
    "read": 1,
    "report": 1,
    "role": "IR User",
+   "select": 1,
    "share": 1,
    "submit": 1,
    "write": 1

@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class WrittenWarning(Document):
+class WarningForm(Document):
 	pass

@@ -39,7 +39,6 @@
   {
    "fieldname": "disc_action",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Disciplinary Action:",
    "options": "Disciplinary Action"
   }
@@ -47,7 +46,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-15 10:03:35.214209",
+ "modified": "2024-07-17 07:47:19.390763",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary History",

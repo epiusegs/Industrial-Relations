@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestWrittenWarning(FrappeTestCase):
+class TestWarningForm(FrappeTestCase):
 	pass

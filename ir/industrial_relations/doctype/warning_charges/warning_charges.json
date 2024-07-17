@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-07-17 11:29:02.300152",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "warning_charge"
+ ],
+ "fields": [
+  {
+   "fieldname": "warning_charge",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Charges"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-07-17 11:53:34.706125",
+ "modified_by": "Administrator",
+ "module": "Industrial Relations",
+ "name": "Warning Charges",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
