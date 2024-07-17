@@ -1,31 +1,30 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{linked_disciplinary_action}-WAR-{######}",
- "creation": "2024-07-13 21:38:05.593454",
+ "autoname": "format:{linked_disciplinary_action}-NTA-{######}",
+ "creation": "2024-07-17 18:44:33.121479",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_q63y",
+  "section_break_oxg9",
   "amended_from",
   "employee",
   "letter_head",
   "employee_details_section",
   "linked_disciplinary_action",
   "company",
-  "warning_type",
-  "column_break_yiyb",
+  "column_break_uttr",
   "names",
   "coy",
   "position",
   "details_of_offence_section",
-  "warning_charges",
+  "nta_charges",
   "previous_disciplinary_offences_section",
   "disciplinary_history"
  ],
  "fields": [
   {
-   "fieldname": "section_break_q63y",
+   "fieldname": "section_break_oxg9",
    "fieldtype": "Section Break"
   },
   {
@@ -33,53 +32,17 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Warning Form",
+   "options": "NTA Hearing",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
-  },
-  {
-   "fieldname": "employee_details_section",
-   "fieldtype": "Section Break",
-   "label": "Employee Details"
   },
   {
    "fieldname": "employee",
    "fieldtype": "Read Only",
    "hidden": 1,
    "in_list_view": 1,
-   "label": "Employee",
-   "options": "Employee"
-  },
-  {
-   "fieldname": "names",
-   "fieldtype": "Read Only",
-   "in_list_view": 1,
-   "label": "Employee Name",
-   "options": "Employee",
-   "reqd": 1
-  },
-  {
-   "fieldname": "coy",
-   "fieldtype": "Read Only",
-   "label": "Coy. No.",
-   "options": "Employee",
-   "reqd": 1
-  },
-  {
-   "fieldname": "warning_type",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Warning Type",
-   "link_filters": "[[\"Offence Outcome\",\"iswarning\",\"=\",1]]",
-   "options": "Offence Outcome",
-   "reqd": 1
-  },
-  {
-   "fieldname": "company",
-   "fieldtype": "Read Only",
-   "in_list_view": 1,
-   "label": "Company"
+   "label": "Employee"
   },
   {
    "fieldname": "letter_head",
@@ -88,14 +51,42 @@
    "label": "Letterhead"
   },
   {
-   "fieldname": "column_break_yiyb",
+   "fieldname": "employee_details_section",
+   "fieldtype": "Section Break",
+   "label": "Employee Details"
+  },
+  {
+   "fieldname": "linked_disciplinary_action",
+   "fieldtype": "Link",
+   "label": "Linked Disciplinary Action",
+   "options": "Disciplinary Action",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Read Only",
+   "label": "Company"
+  },
+  {
+   "fieldname": "column_break_uttr",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "names",
+   "fieldtype": "Read Only",
+   "label": "Employee Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "coy",
+   "fieldtype": "Read Only",
+   "label": "Coy. No.",
+   "reqd": 1
   },
   {
    "fieldname": "position",
    "fieldtype": "Read Only",
    "label": "Position",
-   "options": "Employee",
    "reqd": 1
   },
   {
@@ -104,25 +95,17 @@
    "label": "Details of Offence"
   },
   {
+   "columns": 1,
+   "fieldname": "nta_charges",
+   "fieldtype": "Table",
+   "label": "Charges",
+   "options": "NTA Charges",
+   "reqd": 1
+  },
+  {
    "fieldname": "previous_disciplinary_offences_section",
    "fieldtype": "Section Break",
    "label": "Previous Disciplinary Offences"
-  },
-  {
-   "columns": 1,
-   "fieldname": "warning_charges",
-   "fieldtype": "Table",
-   "label": "Charges",
-   "options": "Warning Charges",
-   "read_only": 1,
-   "reqd": 1
-  },
-  {
-   "fieldname": "linked_disciplinary_action",
-   "fieldtype": "Link",
-   "label": "Linked Disciplinary Action",
-   "options": "Disciplinary Action",
-   "reqd": 1
   },
   {
    "columns": 3,
@@ -135,14 +118,6 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [
-  {
-   "link_doctype": "Offence Outcome",
-   "link_fieldname": "disc_offence_out"
-  },
-  {
-   "link_doctype": "Offence Outcome",
-   "link_fieldname": "iswarning"
-  },
   {
    "link_doctype": "Employee",
    "link_fieldname": "employee"
@@ -184,11 +159,11 @@
    "link_fieldname": "accused"
   }
  ],
- "modified": "2024-07-17 19:29:41.830499",
+ "modified": "2024-07-17 19:29:12.559043",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
- "name": "Warning Form",
- "naming_rule": "By fieldname",
+ "name": "NTA Hearing",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
@@ -203,24 +178,9 @@
    "share": 1,
    "submit": 1,
    "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "IR Manager",
-   "select": 1,
-   "share": 1,
-   "submit": 1,
-   "write": 1
   }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
- "track_changes": 1
+ "states": []
 }

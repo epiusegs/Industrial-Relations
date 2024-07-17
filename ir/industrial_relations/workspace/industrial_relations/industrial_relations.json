@@ -75,7 +75,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Disciplinary Documents",
-   "link_count": 1,
+   "link_count": 2,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -89,9 +89,19 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "NTA Hearing",
+   "link_count": 0,
+   "link_to": "NTA Hearing",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-07-17 15:59:53.107268",
+ "modified": "2024-07-17 19:03:23.392464",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Industrial Relations",
