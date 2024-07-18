@@ -14,7 +14,7 @@ frappe.ui.form.on('Disciplinary Action', {
     },
 
     refresh: function(frm) {
-        frm.toggle_display(['make_warning_form', 'make_nta_hearing'], frm.doc.docstatus === 0 && !frm.doc.__islocal);
+        frm.toggle_display(['make_warning_form', 'make_nta_hearing'], frm.doc.docstatus === 0 && !frm.doc.__islocal && frm.doc.workflow_state !== 'Submitted');
 
         if (frappe.user.has_role("IR Manager")) {
             frm.add_custom_button(__('Issue Warning'), function() {
