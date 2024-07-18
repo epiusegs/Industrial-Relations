@@ -2,8 +2,8 @@
 # For license information, please see license.txt
 
 import frappe
-	from frappe.model.mapper import get_mapped_doc
-	from frappe.model.document import Document
+from frappe.model.mapper import get_mapped_doc
+from frappe.model.document import Document
 
 
 class NTAHearing(Document):
