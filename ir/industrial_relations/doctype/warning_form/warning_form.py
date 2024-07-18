@@ -7,3 +7,21 @@ from frappe.model.document import Document
 
 class WarningForm(Document):
 	pass
+
+@frappe.whitelist()
+def make_warning_form(source_name, target_doc=None):
+    from frappe.model.mapper import get_mapped_doc
+
+    def set_missing_values(source, target):
+        target.linked_disciplinary_action = source_name
+
+    doclist = get_mapped_doc("Disciplinary Action", source_name, {
+        "Disciplinary Action": {
+            "doctype": "Warning Form",
+            "field_map": {
+                "name": "linked_disciplinary_action"
+            }
+        }
+    }, target_doc, set_missing_values)
+
+    return doclist

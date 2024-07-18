@@ -129,3 +129,41 @@ frappe.ui.form.on('Disciplinary Action', {
             });
         }
 }});
+//Make Buttons to Generate Warning or NTA Forms from Disciplinary Action - Testing
+frappe.ui.form.on('Disciplinary Action', {
+    refresh: function(frm) {
+        // Check if the user has the role "IR Manager"
+        if (frappe.user.has_role("IR Manager")) {
+            // Add custom buttons for IR Manager
+            frm.add_custom_button(__('Issue Warning'), function() {
+                make_warning_form(frm);
+            });
+
+            frm.add_custom_button(__('Issue NTA'), function() {
+                make_nta_hearing(frm);
+            });
+        }
+    }
+});
+
+function make_warning_form(frm) {
+    frappe.model.open_mapped_doc({
+        method: "ir.industrial_relations.doctype.warning_form.warning_form.make_warning_form",
+        frm: frm,
+        args: {
+            linked_disciplinary_action: frm.doc.name
+        },
+        freeze_message: __("Creating Warning Form ...")
+    });
+}
+
+function make_nta_hearing(frm) {
+    frappe.model.open_mapped_doc({
+        method: "ir.industrial_relations.doctype.nta_hearing.nta_hearing.make_nta_hearing",
+        frm: frm,
+        args: {
+            linked_disciplinary_action: frm.doc.name
+        },
+        freeze_message: __("Creating NTA Hearing ...")
+    });
+}
