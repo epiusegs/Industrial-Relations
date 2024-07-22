@@ -35,7 +35,10 @@
   "final_charges",
   "disciplinary_record",
   "disciplinary_outcome",
-  "disciplinary_sanction"
+  "disciplinary_sanction",
+  "linked_nta",
+  "linked_outcome",
+  "linked_sanction"
  ],
  "fields": [
   {
@@ -211,6 +214,21 @@
    "fieldtype": "Read Only",
    "hidden": 1,
    "label": "Letterhead"
+  },
+  {
+   "fieldname": "linked_nta",
+   "fieldtype": "Read Only",
+   "label": "Linked NTA"
+  },
+  {
+   "fieldname": "linked_outcome",
+   "fieldtype": "Read Only",
+   "label": "Linked Outcome Report"
+  },
+  {
+   "fieldname": "linked_sanction",
+   "fieldtype": "Read Only",
+   "label": "Linked Sanction"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -249,7 +267,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-07-15 12:36:27.330261",
+ "modified": "2024-07-18 15:56:19.731319",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",

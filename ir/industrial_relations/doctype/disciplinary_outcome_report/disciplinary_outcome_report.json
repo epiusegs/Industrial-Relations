@@ -1,0 +1,195 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-07-22 12:59:58.712057",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_lzdi",
+  "amended_from",
+  "company",
+  "employee",
+  "letterhead",
+  "details_section",
+  "linked_disciplinary_action",
+  "linked_nta",
+  "column_break_sios",
+  "employee_name",
+  "coy_no",
+  "position",
+  "background_section",
+  "date_of_enquiry",
+  "charges_as_per_nta",
+  "linked_rulings",
+  "chairperson_summary_section",
+  "introduction",
+  "complainant_case",
+  "accused_case",
+  "analysis_of_evidence",
+  "finding",
+  "outcome",
+  "linked_sanction",
+  "evidence"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_lzdi",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Disciplinary Outcome Report",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "linked_disciplinary_action",
+   "fieldtype": "Link",
+   "label": "Linked Disciplinary Action",
+   "options": "Disciplinary Action",
+   "reqd": 1
+  },
+  {
+   "fieldname": "linked_nta",
+   "fieldtype": "Read Only",
+   "label": "Linked NTA"
+  },
+  {
+   "fieldname": "linked_sanction",
+   "fieldtype": "Read Only",
+   "label": "Linked Sanction"
+  },
+  {
+   "fieldname": "column_break_sios",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Read Only",
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "coy_no",
+   "fieldtype": "Read Only",
+   "label": "Coy No"
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Read Only",
+   "label": "Position"
+  },
+  {
+   "fieldname": "background_section",
+   "fieldtype": "Section Break",
+   "label": "Background"
+  },
+  {
+   "fieldname": "date_of_enquiry",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Enquiry",
+   "reqd": 1
+  },
+  {
+   "fieldname": "charges_as_per_nta",
+   "fieldtype": "Table",
+   "label": "Charges as per NTA",
+   "options": "NTA Charges"
+  },
+  {
+   "fieldname": "linked_rulings",
+   "fieldtype": "Read Only",
+   "label": "Linked Rulings"
+  },
+  {
+   "fieldname": "chairperson_summary_section",
+   "fieldtype": "Section Break",
+   "label": "Chairperson Summary"
+  },
+  {
+   "fieldname": "introduction",
+   "fieldtype": "Long Text",
+   "label": "Introduction"
+  },
+  {
+   "fieldname": "complainant_case",
+   "fieldtype": "Long Text",
+   "label": "Complainant Case"
+  },
+  {
+   "fieldname": "accused_case",
+   "fieldtype": "Long Text",
+   "label": "Accused Case"
+  },
+  {
+   "fieldname": "analysis_of_evidence",
+   "fieldtype": "Long Text",
+   "label": "Analysis of Evidence"
+  },
+  {
+   "fieldname": "finding",
+   "fieldtype": "Long Text",
+   "label": "Finding"
+  },
+  {
+   "fieldname": "outcome",
+   "fieldtype": "Long Text",
+   "label": "Outcome"
+  },
+  {
+   "fieldname": "evidence",
+   "fieldtype": "Attach",
+   "label": "Evidence"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Read Only",
+   "label": "Company"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Read Only",
+   "label": "Employee"
+  },
+  {
+   "fieldname": "letterhead",
+   "fieldtype": "Read Only",
+   "label": "Letterhead"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-07-22 13:14:40.365422",
+ "modified_by": "Administrator",
+ "module": "Industrial Relations",
+ "name": "Disciplinary Outcome Report",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

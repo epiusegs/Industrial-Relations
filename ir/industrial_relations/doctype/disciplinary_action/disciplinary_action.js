@@ -14,7 +14,7 @@ frappe.ui.form.on('Disciplinary Action', {
     },
 
     refresh: function(frm) {
-        frm.toggle_display(['make_warning_form', 'make_nta_hearing'], frm.doc.docstatus === 0 && !frm.doc.__islocal && frm.doc.workflow_state !== 'Submitted');
+        frm.toggle_display(['make_warning_form', 'make_nta_hearing', 'write_disciplinary_outcome_report'], frm.doc.docstatus === 0 && !frm.doc.__islocal && frm.doc.workflow_state !== 'Submitted');
 
         if (frappe.user.has_role("IR Manager")) {
             frm.add_custom_button(__('Issue Warning'), function() {
@@ -24,6 +24,10 @@ frappe.ui.form.on('Disciplinary Action', {
             frm.add_custom_button(__('Issue NTA'), function() {
                 make_nta_hearing(frm);
             }).addClass('btn-primary').attr('id', 'make_nta_hearing');
+        
+        	frm.add_custom_button(__('Write Outcome Report'), function() {
+                make_nta_hearing(frm);
+            }).addClass('btn-primary').attr('id', 'write_disciplinary_outcome_report');
         }
     }
 });
@@ -91,5 +95,16 @@ function make_nta_hearing(frm) {
             linked_disciplinary_action: frm.doc.name
         },
         freeze_message: __("Creating NTA Hearing ...")
+    });
+}
+
+function write_disciplinary_outcome_report(frm) {
+    frappe.model.open_mapped_doc({
+        method: "ir.industrial_relations.doctype.disciplinary_outcome_report.disciplinary_outcome_report.write_disciplinary_outcome_report",
+        frm: frm,
+        args: {
+            linked_disciplinary_action: frm.doc.name
+        },
+        freeze_message: __("Creating Disciplinary Outcome Report ...")
     });
 }

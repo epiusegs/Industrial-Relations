@@ -9,7 +9,10 @@
  "field_order": [
   "disc_offence_outcome_sec",
   "disc_offence_out",
-  "iswarning"
+  "iswarning",
+  "issuspension",
+  "isdemotion",
+  "istermination"
  ],
  "fields": [
   {
@@ -27,9 +30,31 @@
   },
   {
    "default": "0",
+   "description": "Is the outcome of the type warning, such as a written or verbal warning?",
    "fieldname": "iswarning",
    "fieldtype": "Check",
    "label": "Is a warning"
+  },
+  {
+   "default": "0",
+   "description": "Is the outcome of such a nature that it results in the temporary suspension of employment?",
+   "fieldname": "issuspension",
+   "fieldtype": "Check",
+   "label": "Is a suspension"
+  },
+  {
+   "default": "0",
+   "description": "Is the outcome a demotion to a lesser or alternative position?",
+   "fieldname": "isdemotion",
+   "fieldtype": "Check",
+   "label": "Is a demotion"
+  },
+  {
+   "default": "0",
+   "description": "Does the outcome result in the termination of employment?",
+   "fieldname": "istermination",
+   "fieldtype": "Check",
+   "label": "Is a termination"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -51,7 +76,7 @@
    "link_fieldname": "sanction_on_fourth_offence"
   }
  ],
- "modified": "2024-07-13 21:48:53.022644",
+ "modified": "2024-07-18 15:53:34.094142",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Offence Outcome",
