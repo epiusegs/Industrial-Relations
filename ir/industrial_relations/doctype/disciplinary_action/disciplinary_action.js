@@ -1,5 +1,6 @@
-// Copyright (c) 2024, BuFf0k and contributors
-// For license information, please see license.txt
+# Copyright (c) 2024, BuFf0k and contributors
+# For license information, please see license.txt
+
 frappe.ui.form.on('Disciplinary Action', {
     accused: function(frm) {
         if (frm.doc.accused) {
@@ -17,17 +18,41 @@ frappe.ui.form.on('Disciplinary Action', {
         frm.toggle_display(['make_warning_form', 'make_nta_hearing', 'write_disciplinary_outcome_report'], frm.doc.docstatus === 0 && !frm.doc.__islocal && frm.doc.workflow_state !== 'Submitted');
 
         if (frappe.user.has_role("IR Manager")) {
-            frm.add_custom_button(__('Issue Warning'), function() {
-                make_warning_form(frm);
-            }).addClass('btn-primary').attr('id', 'make_warning_form');
+            frm.add_custom_button(__('Actions'), function() {}, 'Actions')
+                .addClass('btn-primary')
+                .attr('id', 'actions_dropdown');
 
-            frm.add_custom_button(__('Issue NTA'), function() {
+            frm.page.add_inner_button(__('Issue NTA'), function() {
                 make_nta_hearing(frm);
-            }).addClass('btn-primary').attr('id', 'make_nta_hearing');
-        
-        	frm.add_custom_button(__('Write Outcome Report'), function() {
+            }, 'Actions');
+        	
+        	frm.page.add_inner_button(__('Write Outcome Report'), function() {
                 write_disciplinary_outcome_report(frm);
-            }).addClass('btn-primary').attr('id', 'write_disciplinary_outcome_report');
+            }, 'Actions');
+        
+        	frm.page.add_inner_button(__('Issue Not Guilty'), function() {
+                issue_not_guilty_form(frm);
+            }, 'Actions');
+        
+        	frm.page.add_inner_button(__('Issue Warning'), function() {
+                make_warning_form(frm);
+            }, 'Actions');
+            
+        	frm.page.add_inner_button(__('Issue Suspension'), function() {
+                issue_suspension_form(frm);
+            }, 'Actions');
+        
+        	frm.page.add_inner_button(__('Issue Demotion'), function() {
+                issue_demotion_form(frm);
+            }, 'Actions');
+        
+        	frm.page.add_inner_button(__('Issue Pay Deduction'), function() {
+                issue_pay_deduction_form(frm);
+            }, 'Actions');
+        
+        	frm.page.add_inner_button(__('Issue Dismissal'), function() {
+                issue_dismissal_form(frm);
+            }, 'Actions');
         }
 
         // Fetch linked documents on refresh
@@ -79,17 +104,6 @@ function fetch_disciplinary_history(frm, accused) {
     });
 }
 
-function make_warning_form(frm) {
-    frappe.model.open_mapped_doc({
-        method: "ir.industrial_relations.doctype.warning_form.warning_form.make_warning_form",
-        frm: frm,
-        args: {
-            linked_disciplinary_action: frm.doc.name
-        },
-        freeze_message: __("Creating Warning Form ...")
-    });
-}
-
 function make_nta_hearing(frm) {
     frappe.model.open_mapped_doc({
         method: "ir.industrial_relations.doctype.nta_hearing.nta_hearing.make_nta_hearing",
@@ -109,6 +123,72 @@ function write_disciplinary_outcome_report(frm) {
             linked_disciplinary_action: frm.doc.name
         },
         freeze_message: __("Creating Disciplinary Outcome Report ...")
+    });
+}
+
+function issue_not_guilty_form(frm) {
+    frappe.model.open_mapped_doc({
+        method: "ir.industrial_relations.doctype.not_guilty_form.not_guilty_form.make_not_guilty_form",
+        frm: frm,
+        args: {
+            linked_disciplinary_action: frm.doc.name
+        },
+        freeze_message: __("Creating Not Guilty Form ...")
+    });
+}
+
+function make_warning_form(frm) {
+    frappe.model.open_mapped_doc({
+        method: "ir.industrial_relations.doctype.warning_form.warning_form.make_warning_form",
+        frm: frm,
+        args: {
+            linked_disciplinary_action: frm.doc.name
+        },
+        freeze_message: __("Creating Warning Form ...")
+    });
+}
+
+function issue_suspension_form(frm) {
+    frappe.model.open_mapped_doc({
+        method: "ir.industrial_relations.doctype.suspension_form.suspension_form.make_suspension_form",
+        frm: frm,
+        args: {
+            linked_disciplinary_action: frm.doc.name
+        },
+        freeze_message: __("Creating Suspension Form ...")
+    });
+}
+
+function issue_demotion_form(frm) {
+    frappe.model.open_mapped_doc({
+        method: "ir.industrial_relations.doctype.demotion_form.demotion_form.make_demotion_form",
+        frm: frm,
+        args: {
+            linked_disciplinary_action: frm.doc.name
+        },
+        freeze_message: __("Creating Demotion Form ...")
+    });
+}
+
+function issue_pay_deduction_form(frm) {
+    frappe.model.open_mapped_doc({
+        method: "ir.industrial_relations.doctype.pay_deduction_form.pay_deduction_form.make_pay_deduction_form",
+        frm: frm,
+        args: {
+            linked_disciplinary_action: frm.doc.name
+        },
+        freeze_message: __("Creating Pay Deduction Form ...")
+    });
+}
+
+function issue_dismissal_form(frm) {
+    frappe.model.open_mapped_doc({
+        method: "ir.industrial_relations.doctype.dismissal_form.dismissal_form.make_dismissal_form",
+        frm: frm,
+        args: {
+            linked_disciplinary_action: frm.doc.name
+        },
+        freeze_message: __("Creating Dismissal Form ...")
     });
 }
 
