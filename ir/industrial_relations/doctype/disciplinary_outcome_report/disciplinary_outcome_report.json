@@ -9,13 +9,13 @@
   "amended_from",
   "company",
   "employee",
-  "letterhead",
+  "letter_head",
   "details_section",
   "linked_disciplinary_action",
   "linked_nta",
   "column_break_sios",
-  "employee_name",
-  "coy_no",
+  "names",
+  "coy",
   "position",
   "background_section",
   "date_of_enquiry",
@@ -27,6 +27,9 @@
   "accused_case",
   "analysis_of_evidence",
   "finding",
+  "disciplinary_history",
+  "mitigating_considerations",
+  "aggravating_conisderations",
   "outcome",
   "linked_sanction",
   "evidence"
@@ -56,7 +59,8 @@
    "fieldtype": "Link",
    "label": "Linked Disciplinary Action",
    "options": "Disciplinary Action",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "linked_nta",
@@ -71,16 +75,6 @@
   {
    "fieldname": "column_break_sios",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "employee_name",
-   "fieldtype": "Read Only",
-   "label": "Employee Name"
-  },
-  {
-   "fieldname": "coy_no",
-   "fieldtype": "Read Only",
-   "label": "Coy No"
   },
   {
    "fieldname": "position",
@@ -161,15 +155,42 @@
    "label": "Employee"
   },
   {
-   "fieldname": "letterhead",
+   "columns": 3,
+   "fieldname": "disciplinary_history",
+   "fieldtype": "Table",
+   "label": "Previous Disciplinary History",
+   "options": "Disciplinary History"
+  },
+  {
+   "fieldname": "mitigating_considerations",
+   "fieldtype": "Text Editor",
+   "label": "Mitigating Considerations"
+  },
+  {
+   "fieldname": "aggravating_conisderations",
+   "fieldtype": "Text Editor",
+   "label": "Aggravating Conisderations"
+  },
+  {
+   "fieldname": "coy",
+   "fieldtype": "Read Only",
+   "label": "Coy No"
+  },
+  {
+   "fieldname": "letter_head",
    "fieldtype": "Read Only",
    "label": "Letterhead"
+  },
+  {
+   "fieldname": "names",
+   "fieldtype": "Read Only",
+   "label": "Employee Name"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-23 07:29:44.211768",
+ "modified": "2024-07-23 09:34:25.306887",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Outcome Report",

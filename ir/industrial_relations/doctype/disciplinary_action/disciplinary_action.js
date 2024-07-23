@@ -29,6 +29,9 @@ frappe.ui.form.on('Disciplinary Action', {
                 write_disciplinary_outcome_report(frm);
             }).addClass('btn-primary').attr('id', 'write_disciplinary_outcome_report');
         }
+
+        // Fetch linked documents on refresh
+        fetch_linked_documents(frm);
     }
 });
 
@@ -106,5 +109,36 @@ function write_disciplinary_outcome_report(frm) {
             linked_disciplinary_action: frm.doc.name
         },
         freeze_message: __("Creating Disciplinary Outcome Report ...")
+    });
+}
+
+function fetch_linked_documents(frm) {
+    const linked_docs = {
+        "NTA Hearing": "linked_nta",
+        "Disciplinary Outcome Report": "linked_outcome",
+        "Warning Form": "linked_sanction",
+        "Dismissal Form": "linked_sanction",
+        "Demotion Form": "linked_sanction",
+        "Pay Deduction Form": "linked_sanction",
+        "Not Guilty Form": "linked_sanction",
+        "Suspension Form": "linked_sanction"
+    };
+
+    Object.keys(linked_docs).forEach(doctype => {
+        frappe.call({
+            method: 'frappe.client.get_list',
+            args: {
+                doctype: doctype,
+                filters: {
+                    linked_disciplinary_action: frm.doc.name
+                },
+                fields: ['name']
+            },
+            callback: function(res) {
+                if (res.message && res.message.length > 0) {
+                    frm.set_value(linked_docs[doctype], res.message.map(doc => doc.name).join(', '));
+                }
+            }
+        });
     });
 }

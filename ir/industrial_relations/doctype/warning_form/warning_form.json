@@ -122,7 +122,8 @@
    "fieldtype": "Link",
    "label": "Linked Disciplinary Action",
    "options": "Disciplinary Action",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "columns": 3,
@@ -184,7 +185,7 @@
    "link_fieldname": "accused"
   }
  ],
- "modified": "2024-07-17 19:29:41.830499",
+ "modified": "2024-07-23 09:34:09.911764",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Warning Form",
