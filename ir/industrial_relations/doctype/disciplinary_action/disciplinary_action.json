@@ -38,7 +38,12 @@
   "disciplinary_sanction",
   "linked_nta",
   "linked_outcome",
-  "linked_sanction"
+  "linked_warning",
+  "linked_dismissal",
+  "linked_demotion",
+  "linked_pay_deduction",
+  "linked_not_guilty",
+  "linked_suspension"
  ],
  "fields": [
   {
@@ -217,18 +222,59 @@
   },
   {
    "fieldname": "linked_nta",
-   "fieldtype": "Read Only",
-   "label": "Linked NTA"
+   "fieldtype": "Link",
+   "label": "Linked NTA",
+   "options": "NTA Hearing",
+   "read_only": 1
   },
   {
    "fieldname": "linked_outcome",
-   "fieldtype": "Read Only",
-   "label": "Linked Outcome Report"
+   "fieldtype": "Link",
+   "label": "Linked Outcome Report",
+   "options": "Disciplinary Outcome Report",
+   "read_only": 1
   },
   {
-   "fieldname": "linked_sanction",
-   "fieldtype": "Read Only",
-   "label": "Linked Sanction"
+   "fieldname": "linked_warning",
+   "fieldtype": "Link",
+   "label": "Linked Warning",
+   "options": "Warning Form",
+   "read_only": 1
+  },
+  {
+   "fieldname": "linked_dismissal",
+   "fieldtype": "Link",
+   "label": "Linked Dismissal",
+   "options": "Dismissal Form",
+   "read_only": 1
+  },
+  {
+   "fieldname": "linked_demotion",
+   "fieldtype": "Link",
+   "label": "Linked Demotion",
+   "options": "Demotion Form",
+   "read_only": 1
+  },
+  {
+   "fieldname": "linked_pay_deduction",
+   "fieldtype": "Link",
+   "label": "Linked Pay Deduction",
+   "options": "Pay Deduction Form",
+   "read_only": 1
+  },
+  {
+   "fieldname": "linked_not_guilty",
+   "fieldtype": "Link",
+   "label": "Linked Not Guilty",
+   "options": "Not Guilty Form",
+   "read_only": 1
+  },
+  {
+   "fieldname": "linked_suspension",
+   "fieldtype": "Link",
+   "label": "Linked Suspension",
+   "options": "Suspension Form",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -267,7 +313,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-07-18 15:56:19.731319",
+ "modified": "2024-07-23 11:15:00.299496",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",

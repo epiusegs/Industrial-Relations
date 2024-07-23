@@ -10,7 +10,7 @@ class NotGuiltyForm(Document):
 	pass
 
 @frappe.whitelist()
-def issue_not_guilty_form(source_name, target_doc=None):
+def make_not_guilty_form(source_name, target_doc=None):
     from frappe.model.mapper import get_mapped_doc
 
     def set_missing_values(source, target):
