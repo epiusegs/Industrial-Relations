@@ -9,7 +9,8 @@
   "amended_from",
   "section_break_qeko",
   "employee_details_column",
-  "linked_disciplinary_action"
+  "linked_disciplinary_action",
+  "dismissal_type"
  ],
  "fields": [
   {
@@ -42,12 +43,20 @@
    "label": "Linked Disciplinary Action",
    "options": "Disciplinary Action",
    "reqd": 1
+  },
+  {
+   "fieldname": "dismissal_type",
+   "fieldtype": "Link",
+   "label": "Dismissal Type",
+   "link_filters": "[[\"Offence Outcome\",\"istermination\",\"=\",1]]",
+   "options": "Offence Outcome",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-23 09:56:33.638121",
+ "modified": "2024-07-23 13:08:17.017516",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Dismissal Form",

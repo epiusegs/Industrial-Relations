@@ -8,7 +8,8 @@
   "section_break_f1wz",
   "amended_from",
   "employee_section",
-  "linked_disciplinary_action"
+  "linked_disciplinary_action",
+  "demotion_type"
  ],
  "fields": [
   {
@@ -37,12 +38,20 @@
    "label": "Linked Disciplinary Action",
    "options": "Disciplinary Action",
    "reqd": 1
+  },
+  {
+   "fieldname": "demotion_type",
+   "fieldtype": "Link",
+   "label": "Demotion Type",
+   "link_filters": "[[\"Offence Outcome\",\"isdemotion\",\"=\",1]]",
+   "options": "Offence Outcome",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-23 09:58:10.930014",
+ "modified": "2024-07-23 13:09:57.502045",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Demotion Form",

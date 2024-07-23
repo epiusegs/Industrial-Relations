@@ -8,7 +8,11 @@
   "section_break_tw9m",
   "amended_from",
   "employee_section",
-  "linked_disciplinary_action"
+  "linked_disciplinary_action",
+  "company",
+  "suspension_type",
+  "column_break_lgzj",
+  "employee_name"
  ],
  "fields": [
   {
@@ -28,7 +32,7 @@
   {
    "fieldname": "employee_section",
    "fieldtype": "Section Break",
-   "label": "Employee"
+   "label": "Employee Details"
   },
   {
    "fieldname": "linked_disciplinary_action",
@@ -37,12 +41,39 @@
    "label": "Linked Disciplinary Action",
    "options": "Disciplinary Action",
    "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "suspension_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Suspension Type",
+   "link_filters": "[[\"Offence Outcome\",\"issuspension\",\"=\",1]]",
+   "options": "Offence Outcome",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_lgzj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "label": "Employee Name"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-23 10:01:02.637296",
+ "modified": "2024-07-23 14:13:28.794806",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Suspension Form",

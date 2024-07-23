@@ -180,7 +180,8 @@
    "fieldname": "outcome",
    "fieldtype": "Link",
    "label": "Outcome",
-   "options": "Offence Outcome"
+   "options": "Offence Outcome",
+   "read_only": 1
   },
   {
    "fieldname": "outcome_date",
@@ -313,7 +314,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-07-23 11:15:00.299496",
+ "modified": "2024-07-23 12:54:37.200784",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",

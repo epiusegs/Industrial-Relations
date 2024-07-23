@@ -85,20 +85,10 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Disciplinary Documents",
-   "link_count": 3,
+   "link_count": 8,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Warning Form",
-   "link_count": 0,
-   "link_to": "Warning Form",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
   },
   {
    "hidden": 0,
@@ -119,9 +109,69 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Not Guilty Form",
+   "link_count": 0,
+   "link_to": "Not Guilty Form",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Warning Form",
+   "link_count": 0,
+   "link_to": "Warning Form",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Suspension Form",
+   "link_count": 0,
+   "link_to": "Suspension Form",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Demotion Form",
+   "link_count": 0,
+   "link_to": "Demotion Form",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Pay Deduction Form",
+   "link_count": 0,
+   "link_to": "Pay Deduction Form",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Dismissal Form",
+   "link_count": 0,
+   "link_to": "Dismissal Form",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-07-22 14:38:16.228449",
+ "modified": "2024-07-23 14:15:27.367941",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Industrial Relations",

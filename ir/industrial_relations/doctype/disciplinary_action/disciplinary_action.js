@@ -10,7 +10,7 @@ frappe.ui.form.on('Disciplinary Action', {
                 'designation': 'accused_pos',
                 'company': 'company'
             });
-            //fetch_disciplinary_history(frm, frm.doc.accused);
+            fetch_disciplinary_history(frm, frm.doc.accused);
         }
     },
 
@@ -194,8 +194,6 @@ function make_dismissal_form(frm) {
 
 function fetch_linked_documents(frm) {
     const linked_docs = {
-        "NTA Hearing": "linked_nta",
-        "Disciplinary Outcome Report": "linked_outcome",
         "Warning Form": "linked_warning",
         "Dismissal Form": "linked_dismissal",
         "Demotion Form": "linked_demotion",
@@ -204,21 +202,43 @@ function fetch_linked_documents(frm) {
         "Suspension Form": "linked_suspension"
     };
 
+    const relevant_fields = {
+        "linked_warning": "warning_type",
+        "linked_dismissal": "dismissal_type",
+        "linked_demotion": "demotion_type",
+        "linked_pay_deduction": "pay_deduction_type",
+        "linked_not_guilty": "type_of_not_guilty",
+        "linked_suspension": "suspension_type"
+    };
+
+    let foundOutcome = false;
+
     Object.keys(linked_docs).forEach(doctype => {
         frappe.call({
             method: 'frappe.client.get_list',
             args: {
-               doctype: doctype,
+                doctype: doctype,
                 filters: {
                     linked_disciplinary_action: frm.doc.name
                 },
                 fields: ['name']
             },
-           callback: function(res) {
-                if (res.message && res.message.length > 0) {
+            callback: function(res) {
+                if (res.message && res.message.length > 0 && !foundOutcome) {
                     frm.set_value(linked_docs[doctype], res.message.map(doc => doc.name).join(', '));
+
+                    res.message.forEach(doc => {
+                        if (!foundOutcome) {
+                            frappe.db.get_value(doctype, doc.name, relevant_fields[linked_docs[doctype]], (result) => {
+                                if (result && result[relevant_fields[linked_docs[doctype]]]) {
+                                    frm.set_value('outcome', result[relevant_fields[linked_docs[doctype]]]);
+                                    foundOutcome = true;
+                                }
+                            });
+                        }
+                    });
                 }
             }
-       });
+        });
     });
 }

@@ -8,7 +8,8 @@
   "section_break_fjil",
   "amended_from",
   "employee_section",
-  "linked_disciplinary_action"
+  "linked_disciplinary_action",
+  "type_of_not_guilty"
  ],
  "fields": [
   {
@@ -37,12 +38,20 @@
    "label": "Linked Disciplinary Action",
    "options": "Disciplinary Action",
    "reqd": 1
+  },
+  {
+   "fieldname": "type_of_not_guilty",
+   "fieldtype": "Link",
+   "label": "Type of Not Guilty",
+   "link_filters": "[[\"Offence Outcome\",\"isnotguilty\",\"=\",1]]",
+   "options": "Offence Outcome",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-23 10:01:39.851816",
+ "modified": "2024-07-23 13:15:34.919343",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Not Guilty Form",

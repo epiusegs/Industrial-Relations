@@ -12,7 +12,9 @@
   "iswarning",
   "issuspension",
   "isdemotion",
-  "istermination"
+  "istermination",
+  "ispaydeduction",
+  "isnotguilty"
  ],
  "fields": [
   {
@@ -55,6 +57,20 @@
    "fieldname": "istermination",
    "fieldtype": "Check",
    "label": "Is a termination"
+  },
+  {
+   "default": "0",
+   "description": "Does the outcome result in any deduction from- or witholding of- payment?",
+   "fieldname": "ispaydeduction",
+   "fieldtype": "Check",
+   "label": "Is a pay deduction"
+  },
+  {
+   "default": "0",
+   "description": "Does the outcome mean that the person is not guilty of an offence?",
+   "fieldname": "isnotguilty",
+   "fieldtype": "Check",
+   "label": "Is a finding of not guilty"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -76,7 +92,7 @@
    "link_fieldname": "sanction_on_fourth_offence"
   }
  ],
- "modified": "2024-07-18 15:53:34.094142",
+ "modified": "2024-07-23 13:14:46.469287",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Offence Outcome",
