@@ -26,7 +26,7 @@ frappe.ui.form.on('Disciplinary Action', {
             }).addClass('btn-primary').attr('id', 'make_nta_hearing');
         
         	frm.add_custom_button(__('Write Outcome Report'), function() {
-                make_nta_hearing(frm);
+                write_disciplinary_outcome_report(frm);
             }).addClass('btn-primary').attr('id', 'write_disciplinary_outcome_report');
         }
     }
