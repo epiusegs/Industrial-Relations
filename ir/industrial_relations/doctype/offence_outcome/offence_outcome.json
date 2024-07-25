@@ -14,7 +14,9 @@
   "isdemotion",
   "istermination",
   "ispaydeduction",
-  "isnotguilty"
+  "isnotguilty",
+  "expires_or_lapses",
+  "expiry_days"
  ],
  "fields": [
   {
@@ -71,6 +73,18 @@
    "fieldname": "isnotguilty",
    "fieldtype": "Check",
    "label": "Is a finding of not guilty"
+  },
+  {
+   "default": "0",
+   "description": "Does the outcome expire or lapse after a period?",
+   "fieldname": "expires_or_lapses",
+   "fieldtype": "Check",
+   "label": "Expires or Lapses"
+  },
+  {
+   "fieldname": "expiry_days",
+   "fieldtype": "Data",
+   "label": "Expiry Period (In Days)"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -92,7 +106,7 @@
    "link_fieldname": "sanction_on_fourth_offence"
   }
  ],
- "modified": "2024-07-23 13:14:46.469287",
+ "modified": "2024-07-25 12:43:56.556522",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Offence Outcome",

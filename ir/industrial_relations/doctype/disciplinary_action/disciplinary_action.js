@@ -8,7 +8,12 @@ frappe.ui.form.on('Disciplinary Action', {
                 'employee_name': 'accused_name',
                 'employee': 'accused_coy',
                 'designation': 'accused_pos',
-                'company': 'company'
+                'company': 'company',
+            	'date_of_joining' : 'engagement_date',
+            	'branch' : 'branch'
+            }, function() {
+                // Call fetch_default_letter_head only after company field is populated
+                fetch_default_letter_head(frm, frm.doc.company);
             });
             fetch_disciplinary_history(frm, frm.doc.accused);
         }
@@ -18,39 +23,39 @@ frappe.ui.form.on('Disciplinary Action', {
         frm.toggle_display(['make_warning_form', 'make_nta_hearing', 'write_disciplinary_outcome_report'], frm.doc.docstatus === 0 && !frm.doc.__islocal && frm.doc.workflow_state !== 'Submitted');
 
         if (frappe.user.has_role("IR Manager")) {
-        	frm.add_custom_button(__('Actions'), function() {}, 'Actions')
+            frm.add_custom_button(__('Actions'), function() {}, 'Actions')
                 .addClass('btn-primary')
                 .attr('id', 'actions_dropdown');
-        
-        	frm.page.add_inner_button(__('Issue NTA'), function() {
+
+            frm.page.add_inner_button(__('Issue NTA'), function() {
                 make_nta_hearing(frm);
             }, 'Actions');
-        
-        	frm.page.add_inner_button(__('Write Outcome Report'), function() {
+
+            frm.page.add_inner_button(__('Write Outcome Report'), function() {
                 write_disciplinary_outcome_report(frm);
             }, 'Actions');
-        
-        	frm.page.add_inner_button(__('Issue Warning'), function() {
+
+            frm.page.add_inner_button(__('Issue Warning'), function() {
                 make_warning_form(frm);
             }, 'Actions');
-        
-        	frm.page.add_inner_button(__('Issue Not Guilty'), function() {
+
+            frm.page.add_inner_button(__('Issue Not Guilty'), function() {
                 make_not_guilty_form(frm);
             }, 'Actions');
-            
-        	frm.page.add_inner_button(__('Issue Suspension'), function() {
+                
+            frm.page.add_inner_button(__('Issue Suspension'), function() {
                 make_suspension_form(frm);
             }, 'Actions');
-        
-        	frm.page.add_inner_button(__('Issue Demotion'), function() {
+
+            frm.page.add_inner_button(__('Issue Demotion'), function() {
                 make_demotion_form(frm);
             }, 'Actions');
-        
-        	frm.page.add_inner_button(__('Issue Pay Deduction'), function() {
+
+            frm.page.add_inner_button(__('Issue Pay Deduction'), function() {
                 make_pay_deduction_form(frm);
             }, 'Actions');
-        
-        	frm.page.add_inner_button(__('Issue Dismissal'), function() {
+
+            frm.page.add_inner_button(__('Issue Dismissal'), function() {
                 make_dismissal_form(frm);
             }, 'Actions');
         }
@@ -60,16 +65,35 @@ frappe.ui.form.on('Disciplinary Action', {
     }
 });
 
-function fetch_employee_data(frm, employee, fields) {
-    Object.keys(fields).forEach(field => {
-        frappe.db.get_value('Employee', employee, field, (res) => {
-            if (res && res[field]) {
-                frm.set_value(fields[field], res[field]);
-            } else {
-                frm.set_value(fields[field], '');
-            }
+function fetch_employee_data(frm, employee, fields, callback) {
+    let promises = Object.keys(fields).map(field => {
+        return new Promise((resolve, reject) => {
+            frappe.db.get_value('Employee', employee, field, (res) => {
+                if (res && res[field]) {
+                    frm.set_value(fields[field], res[field]);
+                } else {
+                    frm.set_value(fields[field], '');
+                }
+                resolve();
+            });
         });
     });
+
+    Promise.all(promises).then(() => {
+        if (callback) callback();
+    });
+}
+
+function fetch_default_letter_head(frm, company) {
+    if (company) {
+        frappe.db.get_value('Company', company, 'default_letter_head', (res) => {
+            if (res && res.default_letter_head) {
+                frm.set_value('letter_head', res.default_letter_head);
+            } else {
+                frm.set_value('letter_head', '');
+            }
+        });
+    }
 }
 
 function fetch_disciplinary_history(frm, accused) {
@@ -211,7 +235,9 @@ function fetch_linked_documents(frm) {
         "linked_suspension": "suspension_type"
     };
 
-    let foundOutcome = false;
+    let latest_date = null;
+    let latest_outcome = null;
+    let latest_doc = null;
 
     Object.keys(linked_docs).forEach(doctype => {
         frappe.call({
@@ -221,24 +247,33 @@ function fetch_linked_documents(frm) {
                 filters: {
                     linked_disciplinary_action: frm.doc.name
                 },
-                fields: ['name']
+                fields: ['name', 'outcome_date']
             },
             callback: function(res) {
-                if (res.message && res.message.length > 0 && !foundOutcome) {
+                if (res.message && res.message.length > 0) {
                     frm.set_value(linked_docs[doctype], res.message.map(doc => doc.name).join(', '));
 
                     res.message.forEach(doc => {
-                        if (!foundOutcome) {
-                            frappe.db.get_value(doctype, doc.name, relevant_fields[linked_docs[doctype]], (result) => {
-                                if (result && result[relevant_fields[linked_docs[doctype]]]) {
-                                    frm.set_value('outcome', result[relevant_fields[linked_docs[doctype]]]);
-                                    foundOutcome = true;
+                        frappe.db.get_value(doctype, doc.name, relevant_fields[linked_docs[doctype]], (result) => {
+                            if (result && result[relevant_fields[linked_docs[doctype]]]) {
+                                let doc_outcome_date = new Date(doc.outcome_date);
+                                if (!latest_date || doc_outcome_date > latest_date) {
+                                    latest_date = doc_outcome_date;
+                                    latest_outcome = result[relevant_fields[linked_docs[doctype]]];
+                                    latest_doc = doc;
                                 }
-                            });
-                        }
+                            }
+                        });
                     });
                 }
             }
         });
     });
+
+    setTimeout(() => {
+        if (latest_outcome) {
+            frm.set_value('outcome', latest_outcome);
+            frm.set_value('outcome_date', latest_doc.outcome_date);
+        }
+    }, 2000); // Delay to allow all async calls to complete
 }

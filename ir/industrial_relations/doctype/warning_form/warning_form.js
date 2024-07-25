@@ -15,6 +15,26 @@ frappe.ui.form.on('Warning Form', {
             frappe.db.get_value('Disciplinary Action', frm.doc.linked_disciplinary_action, 'accused', (r) => {
                 frm.set_value('employee', r ? r.accused : '');
             });
+        
+        	// Fetch accused_name field from Disciplinary Action document and enter into names field
+            frappe.db.get_value('Disciplinary Action', frm.doc.linked_disciplinary_action, 'accused_name', (r) => {
+                frm.set_value('names', r ? r.accused_name : '');
+            });
+        
+            // Fetch accused_coy field from Disciplinary Action document and enter into coy field
+            frappe.db.get_value('Disciplinary Action', frm.doc.liniked_disciplinary_action, 'accused_coy', (r) => {
+                frm.set_value('coy', r ? r.accused_coy : '');
+            });
+        
+            // Fetch accused_pos field from Disciplinary Action document and enter into position field
+            frappe.db.get_value('Disciplinary Action', frm.doc.linked_disciplinary_action, 'accused_pos', (r) => {
+                frm.set_value('position', r ? r.accused_pos : '');
+            });
+
+            // Fetch company field from Disciplinary Action document and enter into company field
+            frappe.db.get_value('Disciplinary Action', frm.doc.linked_disciplinary_action, 'company', (r) => {
+                frm.set_value('company', r ? r.company : '');
+            });
 
             // Fetch data from previous_disciplinary_outcomes and enter into disciplinary_history field
             frappe.model.with_doc('Disciplinary Action', frm.doc.linked_disciplinary_action, function() {
@@ -36,30 +56,6 @@ frappe.ui.form.on('Warning Form', {
                     child.warning_charge = `(${row.code_item}) ${row.charge}`;
                 });
                 frm.refresh_field('warning_charges');
-            });
-        }
-    },
-
-    employee: function(frm) {
-        if (frm.doc.employee) {
-            // Fetch employee_name field from Employee document and enter into names field
-            frappe.db.get_value('Employee', frm.doc.employee, 'employee_name', (r) => {
-                frm.set_value('names', r ? r.employee_name : '');
-            });
-
-            // Fetch employee field from Employee document and enter into coy field
-            frappe.db.get_value('Employee', frm.doc.employee, 'employee', (r) => {
-                frm.set_value('coy', r ? r.employee : '');
-            });
-
-            // Fetch designation field from Employee document and enter into position field
-            frappe.db.get_value('Employee', frm.doc.employee, 'designation', (r) => {
-                frm.set_value('position', r ? r.designation : '');
-            });
-
-            // Fetch company field from Employee document and enter into company field
-            frappe.db.get_value('Employee', frm.doc.employee, 'company', (r) => {
-                frm.set_value('company', r ? r.company : '');
             });
         }
     },

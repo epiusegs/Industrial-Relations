@@ -11,6 +11,7 @@
   "linked_disciplinary_action",
   "company",
   "suspension_type",
+  "outcome_date",
   "column_break_lgzj",
   "employee_name"
  ],
@@ -39,8 +40,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Linked Disciplinary Action",
-   "options": "Disciplinary Action",
-   "reqd": 1
+   "options": "Disciplinary Action"
   },
   {
    "fieldname": "company",
@@ -68,12 +68,18 @@
    "fieldtype": "Read Only",
    "in_list_view": 1,
    "label": "Employee Name"
+  },
+  {
+   "fieldname": "outcome_date",
+   "fieldtype": "Date",
+   "label": "Outcome Date",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-23 14:13:28.794806",
+ "modified": "2024-07-25 10:47:12.367344",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Suspension Form",

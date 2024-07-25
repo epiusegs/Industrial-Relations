@@ -17,6 +17,10 @@
   "names",
   "coy",
   "position",
+  "hearing_details_section",
+  "date_and_time",
+  "column_break_epmh",
+  "venue",
   "details_of_offence_section",
   "nta_charges",
   "previous_disciplinary_offences_section",
@@ -60,7 +64,6 @@
    "fieldtype": "Link",
    "label": "Linked Disciplinary Action",
    "options": "Disciplinary Action",
-   "reqd": 1,
    "unique": 1
   },
   {
@@ -101,6 +104,7 @@
    "fieldtype": "Table",
    "label": "Charges",
    "options": "NTA Charges",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -112,8 +116,31 @@
    "columns": 3,
    "fieldname": "disciplinary_history",
    "fieldtype": "Table",
+   "label": "Disciplinary History:",
    "options": "Disciplinary History",
    "read_only": 1
+  },
+  {
+   "fieldname": "hearing_details_section",
+   "fieldtype": "Section Break",
+   "label": "Hearing Details"
+  },
+  {
+   "fieldname": "date_and_time",
+   "fieldtype": "Datetime",
+   "label": "Date and Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_epmh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "venue",
+   "fieldtype": "Link",
+   "label": "Venue",
+   "options": "Branch",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -160,7 +187,7 @@
    "link_fieldname": "accused"
   }
  ],
- "modified": "2024-07-23 09:32:58.121523",
+ "modified": "2024-07-25 10:46:17.606463",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "NTA Hearing",

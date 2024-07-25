@@ -7,17 +7,19 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "request_action_tab",
   "section_break_mqkd",
   "amended_from",
+  "company",
+  "letter_head",
   "details_of_accused_employee_section",
   "accused",
   "branch",
+  "engagement_date",
   "column_break_ugya",
   "accused_name",
   "accused_coy",
   "accused_pos",
-  "company",
-  "letter_head",
   "details_of_complainant_section",
   "complainant",
   "request_date",
@@ -29,13 +31,11 @@
   "attach",
   "disciplinary_history_section",
   "previous_disciplinary_outcomes",
+  "disciplinary_record",
   "action_taken_section",
   "outcome",
   "outcome_date",
   "final_charges",
-  "disciplinary_record",
-  "disciplinary_outcome",
-  "disciplinary_sanction",
   "linked_nta",
   "linked_outcome",
   "linked_warning",
@@ -153,6 +153,7 @@
    "label": "Complainant Position:"
   },
   {
+   "description": "Attach any supporting or corroborating documents, photographs, video and/or audio recordings.",
    "fieldname": "attach",
    "fieldtype": "Attach",
    "label": "Attach Photos and/or Documents:"
@@ -189,19 +190,10 @@
    "label": "Outcome Date"
   },
   {
+   "description": "Attach any warnings or counselling that do not appear in the Disciplinary History Tab",
    "fieldname": "disciplinary_record",
    "fieldtype": "Attach",
-   "label": "Disciplinary Record"
-  },
-  {
-   "fieldname": "disciplinary_outcome",
-   "fieldtype": "Attach",
-   "label": "Disciplinary Outcome"
-  },
-  {
-   "fieldname": "disciplinary_sanction",
-   "fieldtype": "Attach",
-   "label": "Disciplinary Sanction"
+   "label": "Further Disciplinary Record"
   },
   {
    "fieldname": "final_charges",
@@ -211,15 +203,18 @@
   },
   {
    "fieldname": "company",
-   "fieldtype": "Read Only",
+   "fieldtype": "Link",
    "hidden": 1,
-   "label": "Company"
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1
   },
   {
    "fieldname": "letter_head",
    "fieldtype": "Read Only",
    "hidden": 1,
-   "label": "Letterhead"
+   "label": "Letterhead",
+   "read_only": 1
   },
   {
    "fieldname": "linked_nta",
@@ -276,6 +271,17 @@
    "label": "Linked Suspension",
    "options": "Suspension Form",
    "read_only": 1
+  },
+  {
+   "fieldname": "engagement_date",
+   "fieldtype": "Data",
+   "label": "Date Engaged",
+   "read_only": 1
+  },
+  {
+   "fieldname": "request_action_tab",
+   "fieldtype": "Tab Break",
+   "label": "Request Action"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -314,7 +320,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-07-23 12:54:37.200784",
+ "modified": "2024-07-25 12:29:32.864013",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",
