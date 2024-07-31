@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:{linked_disciplinary_action}-NG{#}",
  "creation": "2024-07-23 09:59:48.155588",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -57,10 +58,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-25 10:47:05.781736",
+ "modified": "2024-07-31 09:10:54.226733",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Not Guilty Form",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {

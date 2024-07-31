@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:{linked_disciplinary_action}-DED{#}",
  "creation": "2024-07-23 09:58:38.872174",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -57,10 +58,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-25 10:46:56.954288",
+ "modified": "2024-07-31 09:08:41.913690",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Pay Deduction Form",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
