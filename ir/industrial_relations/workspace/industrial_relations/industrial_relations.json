@@ -74,16 +74,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Schedule of Offences",
-   "link_count": 0,
-   "link_to": "Schedule of Offences",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Disciplinary Documents",
    "link_count": 8,
    "link_type": "DocType",
