@@ -18,9 +18,12 @@
   "coy",
   "position",
   "hearing_details_section",
-  "date_and_time",
+  "hearing_date_time",
+  "applied_rights",
   "column_break_epmh",
   "venue",
+  "rights_section",
+  "employee_rights",
   "details_of_offence_section",
   "nta_charges",
   "previous_disciplinary_offences_section",
@@ -126,12 +129,6 @@
    "label": "Hearing Details"
   },
   {
-   "fieldname": "date_and_time",
-   "fieldtype": "Datetime",
-   "label": "Date and Time",
-   "reqd": 1
-  },
-  {
    "fieldname": "column_break_epmh",
    "fieldtype": "Column Break"
   },
@@ -140,6 +137,31 @@
    "fieldtype": "Link",
    "label": "Venue",
    "options": "Branch",
+   "reqd": 1
+  },
+  {
+   "fieldname": "applied_rights",
+   "fieldtype": "Link",
+   "label": "Applicable Rights",
+   "options": "Employee Rights",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rights_section",
+   "fieldtype": "Section Break",
+   "label": "Rights"
+  },
+  {
+   "fieldname": "employee_rights",
+   "fieldtype": "Table",
+   "label": "Employee Rights",
+   "options": "Individual Right",
+   "read_only": 1
+  },
+  {
+   "fieldname": "hearing_date_time",
+   "fieldtype": "Datetime",
+   "label": "Date and Time",
    "reqd": 1
   }
  ],
@@ -185,9 +207,13 @@
   {
    "link_doctype": "Disciplinary Action",
    "link_fieldname": "accused"
+  },
+  {
+   "link_doctype": "Employee Rights",
+   "link_fieldname": "individual_right"
   }
  ],
- "modified": "2024-07-31 09:09:17.365538",
+ "modified": "2024-08-01 11:09:54.186314",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "NTA Hearing",
