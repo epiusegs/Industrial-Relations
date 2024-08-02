@@ -1,0 +1,20 @@
+{
+ "action": "Create Entry",
+ "creation": "2024-08-02 07:48:00.116287",
+ "docstatus": 0,
+ "doctype": "Onboarding Step",
+ "form_tour": "Employee Rights",
+ "idx": 0,
+ "is_complete": 0,
+ "is_single": 0,
+ "is_skipped": 0,
+ "modified": "2024-08-02 07:48:00.116287",
+ "modified_by": "Administrator",
+ "name": "Configure Employee Rights",
+ "owner": "Administrator",
+ "reference_document": "Employee Rights",
+ "show_form_tour": 1,
+ "show_full_form": 1,
+ "title": "Configure Employee Rights",
+ "validate_action": 1
+}

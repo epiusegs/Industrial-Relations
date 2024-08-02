@@ -220,57 +220,49 @@
    "fieldname": "linked_nta",
    "fieldtype": "Link",
    "label": "Linked NTA",
-   "options": "NTA Hearing",
-   "read_only": 1
+   "options": "NTA Hearing"
   },
   {
    "fieldname": "linked_outcome",
    "fieldtype": "Link",
    "label": "Linked Outcome Report",
-   "options": "Disciplinary Outcome Report",
-   "read_only": 1
+   "options": "Disciplinary Outcome Report"
   },
   {
    "fieldname": "linked_warning",
    "fieldtype": "Link",
    "label": "Linked Warning",
-   "options": "Warning Form",
-   "read_only": 1
+   "options": "Warning Form"
   },
   {
    "fieldname": "linked_dismissal",
    "fieldtype": "Link",
    "label": "Linked Dismissal",
-   "options": "Dismissal Form",
-   "read_only": 1
+   "options": "Dismissal Form"
   },
   {
    "fieldname": "linked_demotion",
    "fieldtype": "Link",
    "label": "Linked Demotion",
-   "options": "Demotion Form",
-   "read_only": 1
+   "options": "Demotion Form"
   },
   {
    "fieldname": "linked_pay_deduction",
    "fieldtype": "Link",
    "label": "Linked Pay Deduction",
-   "options": "Pay Deduction Form",
-   "read_only": 1
+   "options": "Pay Deduction Form"
   },
   {
    "fieldname": "linked_not_guilty",
    "fieldtype": "Link",
    "label": "Linked Not Guilty",
-   "options": "Not Guilty Form",
-   "read_only": 1
+   "options": "Not Guilty Form"
   },
   {
    "fieldname": "linked_suspension",
    "fieldtype": "Link",
    "label": "Linked Suspension",
-   "options": "Suspension Form",
-   "read_only": 1
+   "options": "Suspension Form"
   },
   {
    "fieldname": "engagement_date",
@@ -320,7 +312,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-07-25 12:29:32.864013",
+ "modified": "2024-08-02 13:58:11.207896",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",

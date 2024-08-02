@@ -8,10 +8,25 @@
  "field_order": [
   "section_break_f1wz",
   "amended_from",
+  "employee",
+  "letter_head",
   "employee_section",
   "linked_disciplinary_action",
+  "company",
+  "column_break_hncp",
+  "names",
+  "coy",
+  "position",
+  "demotion_details_section",
   "demotion_type",
-  "outcome_date"
+  "outcome_date",
+  "applied_rights",
+  "rights_section",
+  "employee_rights",
+  "charges",
+  "dem_charges",
+  "previous_disciplinary_offences_section",
+  "disciplinary_history"
  ],
  "fields": [
   {
@@ -31,7 +46,7 @@
   {
    "fieldname": "employee_section",
    "fieldtype": "Section Break",
-   "label": "Employee"
+   "label": "Employee Details"
   },
   {
    "fieldname": "linked_disciplinary_action",
@@ -53,12 +68,98 @@
    "fieldtype": "Date",
    "label": "Outcome Date",
    "reqd": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Read Only",
+   "label": "Employee"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Read Only",
+   "label": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_hncp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "names",
+   "fieldtype": "Read Only",
+   "label": "Employee Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "coy",
+   "fieldtype": "Read Only",
+   "label": "Coy. No.",
+   "reqd": 1
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Read Only",
+   "label": "Position",
+   "reqd": 1
+  },
+  {
+   "fieldname": "demotion_details_section",
+   "fieldtype": "Section Break",
+   "label": "Demotion Details"
+  },
+  {
+   "fieldname": "applied_rights",
+   "fieldtype": "Link",
+   "label": "Applciable Rights",
+   "options": "Employee Rights",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rights_section",
+   "fieldtype": "Section Break",
+   "label": "Rights"
+  },
+  {
+   "fieldname": "employee_rights",
+   "fieldtype": "Table",
+   "label": "Employee Rights",
+   "options": "Individual Right",
+   "read_only": 1
+  },
+  {
+   "fieldname": "charges",
+   "fieldtype": "Section Break",
+   "label": "Details of Offence"
+  },
+  {
+   "fieldname": "dem_charges",
+   "fieldtype": "Table",
+   "label": "Charges",
+   "options": "Charges",
+   "read_only": 1
+  },
+  {
+   "fieldname": "previous_disciplinary_offences_section",
+   "fieldtype": "Section Break",
+   "label": "Previous Disciplinary Offences"
+  },
+  {
+   "fieldname": "disciplinary_history",
+   "fieldtype": "Table",
+   "label": "Disciplinary History",
+   "options": "Disciplinary History",
+   "read_only": 1
+  },
+  {
+   "fieldname": "letter_head",
+   "fieldtype": "Read Only",
+   "label": "Letterhead"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-31 09:10:10.864451",
+ "modified": "2024-08-02 08:24:57.146145",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Demotion Form",

@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "prompt",
  "creation": "2024-08-01 09:54:41.637758",
@@ -19,7 +20,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-01 10:02:12.940119",
+ "modified": "2024-08-02 22:23:34.599953",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Employee Rights",

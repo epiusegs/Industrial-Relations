@@ -38,7 +38,7 @@ frappe.ui.form.on('NTA Hearing', {
                 frm.clear_table('nta_charges');
                 $.each(doc.final_charges, function(_, row) {
                     let child = frm.add_child('nta_charges');
-                    child.nta_charge = `(${row.code_item}) ${row.charge}`;
+                    child.indiv_charge = `(${row.code_item}) ${row.charge}`;
                 });
                 frm.refresh_field('nta_charges');
             });

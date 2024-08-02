@@ -35,45 +35,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Disciplinary Code",
-   "link_count": 4,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Offence Category",
-   "link_count": 0,
-   "link_to": "Offence Category",
-   "link_type": "DocType",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Offence Outcome",
-   "link_count": 0,
-   "link_to": "Offence Outcome",
-   "link_type": "DocType",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Disciplinary Offence",
-   "link_count": 0,
-   "link_to": "Disciplinary Offence",
-   "link_type": "DocType",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Disciplinary Documents",
    "link_count": 8,
    "link_type": "DocType",
@@ -159,9 +120,58 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Disciplinary Code",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Offence Category",
+   "link_count": 0,
+   "link_to": "Offence Category",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Offence Outcome",
+   "link_count": 0,
+   "link_to": "Offence Outcome",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Disciplinary Offence",
+   "link_count": 0,
+   "link_to": "Disciplinary Offence",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employee Rights",
+   "link_count": 0,
+   "link_to": "Employee Rights",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-07-23 14:15:27.367941",
+ "modified": "2024-08-02 07:44:11.904822",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Industrial Relations",

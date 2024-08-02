@@ -19,10 +19,13 @@
   "names",
   "coy",
   "position",
+  "applied_rights",
   "details_of_offence_section",
   "warning_charges",
   "previous_disciplinary_offences_section",
-  "disciplinary_history"
+  "disciplinary_history",
+  "rights_section",
+  "employee_rights"
  ],
  "fields": [
   {
@@ -115,8 +118,7 @@
    "fieldtype": "Table",
    "label": "Charges",
    "options": "Charges",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "linked_disciplinary_action",
@@ -137,6 +139,25 @@
    "fieldtype": "Date",
    "label": "Outcome Date",
    "reqd": 1
+  },
+  {
+   "fieldname": "applied_rights",
+   "fieldtype": "Link",
+   "label": "Applicable Rights",
+   "options": "Employee Rights",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rights_section",
+   "fieldtype": "Section Break",
+   "label": "Rights"
+  },
+  {
+   "fieldname": "employee_rights",
+   "fieldtype": "Table",
+   "label": "Employee Rights",
+   "options": "Individual Right",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -191,7 +212,7 @@
    "link_fieldname": "accused"
   }
  ],
- "modified": "2024-07-31 09:07:30.794967",
+ "modified": "2024-08-02 14:05:05.539867",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Warning Form",

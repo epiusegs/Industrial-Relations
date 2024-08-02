@@ -7,6 +7,11 @@ frappe.ui.form.on('Warning Form', {
         if (frm.doc.linked_disciplinary_action) {
             frm.trigger('linked_disciplinary_action');
         }
+    
+    	// Manually trigger the applied_rights handler if the field is already set
+        if (frm.doc.applied_rights) {
+            frm.trigger('applied_rights');
+        }
     },
     
     linked_disciplinary_action: function(frm) {
@@ -53,7 +58,7 @@ frappe.ui.form.on('Warning Form', {
                 frm.clear_table('warning_charges');
                 $.each(doc.final_charges, function(_, row) {
                     let child = frm.add_child('warning_charges');
-                    child.warning_charge = `(${row.code_item}) ${row.charge}`;
+                    child.indiv_charge = `(${row.code_item}) ${row.charge}`;
                 });
                 frm.refresh_field('warning_charges');
             });
@@ -65,6 +70,21 @@ frappe.ui.form.on('Warning Form', {
             // Fetch default_letter_head field from Company document and enter into letter_head field
             frappe.db.get_value('Company', frm.doc.company, 'default_letter_head', (r) => {
                 frm.set_value('letter_head', r ? r.default_letter_head : '');
+            });
+        }
+    },
+
+	applied_rights: function(frm) {
+        if (frm.doc.applied_rights) {
+            // Fetch data from Employee Rights document and enter into employee_rights field
+            frappe.model.with_doc('Employee Rights', frm.doc.applied_rights, function() {
+                let doc = frappe.get_doc('Employee Rights', frm.doc.applied_rights);
+                frm.clear_table('employee_rights');
+                $.each(doc.applicable_rights, function(_, row) {
+                    let child = frm.add_child('employee_rights');
+                    child.individual_right = row.individual_right;
+                });
+                frm.refresh_field('employee_rights');
             });
         }
     }

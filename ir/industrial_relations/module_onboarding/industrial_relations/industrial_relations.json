@@ -13,7 +13,7 @@
  "documentation_url": "https://github.com/buff0k/ir",
  "idx": 0,
  "is_complete": 0,
- "modified": "2024-07-18 15:50:37.633610",
+ "modified": "2024-08-02 07:48:37.869944",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Industrial Relations",
@@ -33,6 +33,9 @@
   },
   {
    "step": "Create Specific Desciplinary Offence"
+  },
+  {
+   "step": "Configure Employee Rights"
   }
  ],
  "subtitle": "Disciplinary Actions, HR Interventions and more.",

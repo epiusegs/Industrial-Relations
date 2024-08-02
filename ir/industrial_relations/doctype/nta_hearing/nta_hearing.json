@@ -107,8 +107,7 @@
    "fieldtype": "Table",
    "label": "Charges",
    "options": "Charges",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "previous_disciplinary_offences_section",
@@ -213,7 +212,7 @@
    "link_fieldname": "individual_right"
   }
  ],
- "modified": "2024-08-01 11:09:54.186314",
+ "modified": "2024-08-02 14:05:13.946257",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "NTA Hearing",
