@@ -10,6 +10,7 @@
   "amended_from",
   "employee",
   "letter_head",
+  "linked_disciplinary_action_processed",
   "employee_details_section",
   "linked_disciplinary_action",
   "company",
@@ -158,6 +159,13 @@
    "label": "Employee Rights",
    "options": "Individual Right",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "linked_disciplinary_action_processed",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Linked Disciplinary Action Processd"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -212,7 +220,7 @@
    "link_fieldname": "accused"
   }
  ],
- "modified": "2024-08-02 14:05:05.539867",
+ "modified": "2024-08-05 17:35:51.371989",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Warning Form",
