@@ -164,8 +164,7 @@
    "default": "0",
    "fieldname": "linked_disciplinary_action_processed",
    "fieldtype": "Check",
-   "hidden": 1,
-   "label": "Linked Disciplinary Action Processd"
+   "label": "Linked Disciplinary Action Processed"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -220,7 +219,7 @@
    "link_fieldname": "accused"
   }
  ],
- "modified": "2024-08-05 17:35:51.371989",
+ "modified": "2024-08-05 20:27:32.240101",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Warning Form",

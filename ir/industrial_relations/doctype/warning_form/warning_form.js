@@ -5,14 +5,9 @@
 
 frappe.ui.form.on('Warning Form', {
     refresh: function(frm) {
-        // Manually trigger the linked_disciplinary_action handler if the field is already set
-        if (frm.doc.linked_disciplinary_action) {
+        // Check the flag before triggering the handler
+        if (frm.doc.linked_disciplinary_action && !frm.doc.linked_disciplinary_action_processed) {
             frm.trigger('linked_disciplinary_action');
-        }
-
-        // Manually trigger the applied_rights handler if the field is already set
-        if (frm.doc.applied_rights) {
-            frm.trigger('applied_rights');
         }
     },
 
@@ -57,6 +52,8 @@ frappe.ui.form.on('Warning Form', {
                             child.indiv_charge = row.indiv_charge;
                         });
                         frm.refresh_field('warning_charges');
+                        // Set the flag to prevent refresh loop
+                        frm.set_value('linked_disciplinary_action_processed', true);
                     }
                 }
             });
