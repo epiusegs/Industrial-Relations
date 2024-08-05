@@ -66,31 +66,36 @@ frappe.ui.form.on('Disciplinary Action', {
 });
 
 function fetch_employee_data(frm, employee, fields, callback) {
-    let promises = Object.keys(fields).map(field => {
-        return new Promise((resolve, reject) => {
-            frappe.db.get_value('Employee', employee, field, (res) => {
-                if (res && res[field]) {
-                    frm.set_value(fields[field], res[field]);
-                } else {
-                    frm.set_value(fields[field], '');
+    frappe.call({
+        method: 'ir.industrial_relations.doctype.disciplinary_action.disciplinary_action.fetch_employee_data',
+        args: {
+            employee: employee,
+            fields: JSON.stringify(fields)  // Convert the fields object to JSON string
+        },
+        callback: function(res) {
+            if (res.message) {
+                for (let field in res.message) {
+                    frm.set_value(field, res.message[field]);
                 }
-                resolve();
-            });
-        });
-    });
-
-    Promise.all(promises).then(() => {
-        if (callback) callback();
+                if (callback) callback();
+            }
+        }
     });
 }
 
 function fetch_default_letter_head(frm, company) {
     if (company) {
-        frappe.db.get_value('Company', company, 'default_letter_head', (res) => {
-            if (res && res.default_letter_head) {
-                frm.set_value('letter_head', res.default_letter_head);
-            } else {
-                frm.set_value('letter_head', '');
+        frappe.call({
+            method: 'ir.industrial_relations.doctype.disciplinary_action.disciplinary_action.fetch_default_letter_head',
+            args: {
+                company: company
+            },
+            callback: function(res) {
+                if (res.message) {
+                    frm.set_value('letter_head', res.message);
+                } else {
+                    frm.set_value('letter_head', '');
+                }
             }
         });
     }
@@ -98,31 +103,42 @@ function fetch_default_letter_head(frm, company) {
 
 function fetch_disciplinary_history(frm, accused) {
     frappe.call({
-        method: 'frappe.client.get_list',
+        method: 'ir.industrial_relations.doctype.disciplinary_action.disciplinary_action.fetch_disciplinary_history',
         args: {
-            doctype: 'Disciplinary Action',
-            filters: {
-                accused: accused,
-                outcome: ['!=', ''], // Exclude documents without outcomes
-                name: ['!=', frm.doc.name] // Exclude the current document
-            },
-            fields: ['name', 'outcome_date', 'outcome']
+            accused: accused,
+            current_doc_name: frm.doc.name
         },
         callback: function(res) {
             if (res.message) {
                 frm.clear_table('previous_disciplinary_outcomes');
                 res.message.forEach(function(row) {
-                    frappe.model.with_doc('Disciplinary Action', row.name, function() {
-                        let action_doc = frappe.get_doc('Disciplinary Action', row.name);
-                        let charges = action_doc.final_charges.map(charge_row => `(${charge_row.code_item}) ${charge_row.charge}`).join('\n');
-                        let child = frm.add_child('previous_disciplinary_outcomes');
-                        child.disc_action = action_doc.name;
-                        child.date = action_doc.outcome_date;
-                        child.sanction = action_doc.outcome;
-                        child.charges = charges;
-                    });
+                    let child = frm.add_child('previous_disciplinary_outcomes');
+                    child.disc_action = row.disc_action;
+                    child.date = row.date;
+                    child.sanction = row.sanction;
+                    child.charges = row.charges;
                 });
                 frm.refresh_field('previous_disciplinary_outcomes');
+            }
+        }
+    });
+}
+
+function fetch_linked_documents(frm) {
+    frappe.call({
+        method: 'ir.industrial_relations.doctype.disciplinary_action.disciplinary_action.fetch_linked_documents',
+        args: {
+            doc_name: frm.doc.name
+        },
+        callback: function(res) {
+            if (res.message) {
+                for (let field in res.message.linked_documents) {
+                    frm.set_value(field, res.message.linked_documents[field].join(', '));
+                }
+                if (res.message.latest_outcome) {
+                    frm.set_value('outcome', res.message.latest_outcome);
+                    frm.set_value('outcome_date', res.message.latest_outcome_date);
+                }
             }
         }
     });
@@ -214,66 +230,4 @@ function make_dismissal_form(frm) {
         },
         freeze_message: __("Creating Dismissal Form ...")
     });
-}
-
-function fetch_linked_documents(frm) {
-    const linked_docs = {
-        "Warning Form": "linked_warning",
-        "Dismissal Form": "linked_dismissal",
-        "Demotion Form": "linked_demotion",
-        "Pay Deduction Form": "linked_pay_deduction",
-        "Not Guilty Form": "linked_not_guilty",
-        "Suspension Form": "linked_suspension"
-    };
-
-    const relevant_fields = {
-        "linked_warning": "warning_type",
-        "linked_dismissal": "dismissal_type",
-        "linked_demotion": "demotion_type",
-        "linked_pay_deduction": "pay_deduction_type",
-        "linked_not_guilty": "type_of_not_guilty",
-        "linked_suspension": "suspension_type"
-    };
-
-    let latest_date = null;
-    let latest_outcome = null;
-    let latest_doc = null;
-
-    Object.keys(linked_docs).forEach(doctype => {
-        frappe.call({
-            method: 'frappe.client.get_list',
-            args: {
-                doctype: doctype,
-                filters: {
-                    linked_disciplinary_action: frm.doc.name
-                },
-                fields: ['name', 'outcome_date']
-            },
-            callback: function(res) {
-                if (res.message && res.message.length > 0) {
-                    frm.set_value(linked_docs[doctype], res.message.map(doc => doc.name).join(', '));
-
-                    res.message.forEach(doc => {
-                        frappe.db.get_value(doctype, doc.name, relevant_fields[linked_docs[doctype]], (result) => {
-                            if (result && result[relevant_fields[linked_docs[doctype]]]) {
-                                let doc_outcome_date = new Date(doc.outcome_date);
-                                if (!latest_date || doc_outcome_date > latest_date) {
-                                    latest_date = doc_outcome_date;
-                                    latest_outcome = result[relevant_fields[linked_docs[doctype]]];
-                                    latest_doc = doc;
-                                }
-                            }
-                        });
-                    });
-                }
-            }
-        });
-    });
-
-    setTimeout(() => {
-        if (latest_outcome) {
-            frm.set_value('outcome', latest_outcome);
-            frm.set_value('outcome_date', latest_doc.outcome_date);
-        }
-    }, 2000); // Delay to allow all async calls to complete
 }
