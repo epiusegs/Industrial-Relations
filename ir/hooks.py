@@ -5,7 +5,24 @@ app_description = "Industrial Relations management Application for ERPNext and w
 app_email = "buff0k@buff0k.co.za"
 app_license = "mit"
 required_apps = ["frappe/erpnext", "frappe/hrms"]
-
+fixtures = [
+        {"dt": "Role", "filters": [
+            [
+            "name", "in", [
+                    "IR Manager",
+                    "IR User"
+    		       ]
+                ]
+            ]}, 
+        {"dt": "Custom DocPerm", "filters": [
+            [
+            "role", "in", [
+                    "IR Manager",
+                    "IR User"
+    		       ]
+                ]
+            ]},
+        ]
 # Includes in <head>
 # ------------------
 
