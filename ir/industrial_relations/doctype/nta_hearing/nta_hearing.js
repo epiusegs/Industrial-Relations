@@ -87,5 +87,12 @@ frappe.ui.form.on('NTA Hearing', {
                 frm.refresh_field('employee_rights');
             });
         }
+    },
+
+    before_submit: function(frm) {
+        if (!frm.doc.signed_nta) {
+            frappe.msgprint(__('You cannot submit this document untill you have attached a signed copy of the NTA'));
+            frappe.validated = false;
+        }
     }
 });

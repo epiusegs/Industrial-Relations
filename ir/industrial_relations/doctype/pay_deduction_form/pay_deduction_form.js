@@ -87,5 +87,12 @@ frappe.ui.form.on('Pay Deduction Form', {
                 frm.refresh_field('employee_rights');
             });
         }
+    },
+
+    before_submit: function(frm) {
+        if (!frm.doc.signed_deduction) {
+            frappe.msgprint(__('You cannot submit this document until you have attached a signed copy of the Pay Deduction'));
+            frappe.validated = false;
+        }
     }
 });

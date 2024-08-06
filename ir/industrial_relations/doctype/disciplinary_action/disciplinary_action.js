@@ -1,6 +1,4 @@
-// Copyright (c) 2024, BuFf0k and contributors
-// For license information, please see license.txt
-
+// Existing client script
 frappe.ui.form.on('Disciplinary Action', {
     accused: function(frm) {
         if (frm.doc.accused) {
@@ -9,10 +7,9 @@ frappe.ui.form.on('Disciplinary Action', {
                 'employee': 'accused_coy',
                 'designation': 'accused_pos',
                 'company': 'company',
-            	'date_of_joining' : 'engagement_date',
-            	'branch' : 'branch'
+                'date_of_joining': 'engagement_date',
+                'branch': 'branch'
             }, function() {
-                // Call fetch_default_letter_head only after company field is populated
                 fetch_default_letter_head(frm, frm.doc.company);
             });
             fetch_disciplinary_history(frm, frm.doc.accused);
@@ -60,8 +57,24 @@ frappe.ui.form.on('Disciplinary Action', {
             }, 'Actions');
         }
 
-        // Fetch linked documents on refresh
         fetch_linked_documents(frm);
+    },
+
+    complainant: function(frm) {
+        if (frm.doc.complainant) {
+            frappe.call({
+                method: 'ir.industrial_relations.doctype.disciplinary_action.disciplinary_action.fetch_complainant_data',
+                args: {
+                    complainant: frm.doc.complainant
+                },
+                callback: function(r) {
+                    if (r.message) {
+                        frm.set_value('compl_name', r.message.compl_name);
+                        frm.set_value('compl_pos', r.message.compl_pos);
+                    }
+                }
+            });
+        }
     }
 });
 
@@ -70,7 +83,7 @@ function fetch_employee_data(frm, employee, fields, callback) {
         method: 'ir.industrial_relations.doctype.disciplinary_action.disciplinary_action.fetch_employee_data',
         args: {
             employee: employee,
-            fields: JSON.stringify(fields)  // Convert the fields object to JSON string
+            fields: JSON.stringify(fields)
         },
         callback: function(res) {
             if (res.message) {

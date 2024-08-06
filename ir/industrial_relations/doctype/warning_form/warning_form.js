@@ -89,5 +89,12 @@ frappe.ui.form.on('Warning Form', {
                 frm.refresh_field('employee_rights');
             });
         }
+    },
+
+    before_submit: function(frm) {
+        if (!frm.doc.signed_warning) {
+            frappe.msgprint(__('You cannot submit this document untill you have attached a signed copy of the Warning'));
+            frappe.validated = false;
+        }
     }
 });

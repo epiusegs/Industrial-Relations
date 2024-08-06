@@ -53,7 +53,8 @@
    "in_list_view": 1,
    "label": "Linked Disciplinary Action",
    "options": "Disciplinary Action",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "type_of_not_guilty",
@@ -153,7 +154,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-06 13:09:56.005246",
+ "modified": "2024-08-06 21:18:45.358800",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Not Guilty Form",
@@ -176,5 +177,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

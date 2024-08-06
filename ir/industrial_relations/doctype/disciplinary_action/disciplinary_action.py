@@ -96,3 +96,14 @@ def fetch_linked_documents(doc_name):
                         result['latest_outcome'] = doc_outcome
     
     return result
+
+@frappe.whitelist()
+def fetch_complainant_data(complainant):
+    frappe.flags.ignore_permissions = True
+
+    data = {
+        'compl_name': frappe.db.get_value('Employee', complainant, 'employee_name') or '',
+        'compl_pos': frappe.db.get_value('Employee', complainant, 'designation') or ''
+    }
+    
+    return data

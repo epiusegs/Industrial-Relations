@@ -17,6 +17,7 @@
   "linked_disciplinary_action",
   "linked_nta_hearing",
   "dismissal_type",
+  "signed_dismissal",
   "column_break_iuhw",
   "names",
   "coy",
@@ -62,7 +63,8 @@
    "in_list_view": 1,
    "label": "Linked Disciplinary Action",
    "options": "Disciplinary Action",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "dismissal_type",
@@ -181,12 +183,17 @@
    "label": "Employee Rights",
    "options": "Individual Right",
    "read_only": 1
+  },
+  {
+   "fieldname": "signed_dismissal",
+   "fieldtype": "Attach",
+   "label": "Attach Signed Dismissal"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-06 12:53:40.630249",
+ "modified": "2024-08-06 21:35:24.927803",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Dismissal Form",
@@ -209,5 +216,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

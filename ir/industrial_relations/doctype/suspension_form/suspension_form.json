@@ -15,6 +15,7 @@
   "employee_section",
   "linked_disciplinary_action",
   "outcome_date",
+  "signed_suspension",
   "column_break_lgzj",
   "names",
   "coy",
@@ -58,7 +59,8 @@
    "in_list_view": 1,
    "label": "Linked Disciplinary Action",
    "options": "Disciplinary Action",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "company",
@@ -184,12 +186,17 @@
    "fieldtype": "Table",
    "label": "Employee Rights",
    "options": "Individual Right"
+  },
+  {
+   "fieldname": "signed_suspension",
+   "fieldtype": "Attach",
+   "label": "Attach Signed Suspension"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-06 12:53:47.079371",
+ "modified": "2024-08-06 21:36:54.605430",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Suspension Form",
@@ -212,5 +219,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

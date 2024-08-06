@@ -87,5 +87,12 @@ frappe.ui.form.on('Demotion Form', {
                 frm.refresh_field('employee_rights');
             });
         }
+    },
+
+    before_submit: function(frm) {
+        if (!frm.doc.signed_demotion) {
+            frappe.msgprint(__('You cannot submit this document untill you have attached a signed copy of the Demotion'));
+            frappe.validated = false;
+        }
     }
 });

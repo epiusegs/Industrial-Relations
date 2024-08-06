@@ -21,6 +21,7 @@
   "pay_deduction_details_section",
   "outcome_date",
   "applied_rights",
+  "attached_signed_pay_deduction",
   "column_break_tdkv",
   "pay_deduction_type",
   "from_date",
@@ -58,7 +59,8 @@
    "in_list_view": 1,
    "label": "Linked Disciplinary Action",
    "options": "Disciplinary Action",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "pay_deduction_type",
@@ -184,12 +186,17 @@
    "label": "Employee Rights",
    "options": "Individual Right",
    "read_only": 1
+  },
+  {
+   "fieldname": "attached_signed_pay_deduction",
+   "fieldtype": "Attach",
+   "label": "Attached Signed Pay Deduction"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-06 12:59:07.404189",
+ "modified": "2024-08-06 21:38:25.786595",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Pay Deduction Form",
@@ -212,5 +219,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

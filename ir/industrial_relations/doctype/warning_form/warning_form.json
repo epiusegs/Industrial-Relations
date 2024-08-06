@@ -9,13 +9,14 @@
   "section_break_q63y",
   "amended_from",
   "employee",
+  "company",
   "letter_head",
   "linked_disciplinary_action_processed",
   "employee_details_section",
   "linked_disciplinary_action",
-  "company",
   "warning_type",
   "outcome_date",
+  "signed_warning",
   "column_break_yiyb",
   "names",
   "coy",
@@ -83,6 +84,7 @@
   {
    "fieldname": "company",
    "fieldtype": "Read Only",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Company"
   },
@@ -166,6 +168,11 @@
    "fieldname": "linked_disciplinary_action_processed",
    "fieldtype": "Check",
    "label": "Linked Disciplinary Action Processed"
+  },
+  {
+   "fieldname": "signed_warning",
+   "fieldtype": "Attach",
+   "label": "Upload Signed Warning"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -220,7 +227,7 @@
    "link_fieldname": "accused"
   }
  ],
- "modified": "2024-08-06 12:51:24.150645",
+ "modified": "2024-08-06 20:56:20.397358",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Warning Form",

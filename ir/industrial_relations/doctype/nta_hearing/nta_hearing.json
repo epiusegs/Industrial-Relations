@@ -317,7 +317,7 @@
    "link_fieldname": "individual_right"
   }
  ],
- "modified": "2024-08-06 13:46:59.056536",
+ "modified": "2024-08-06 21:17:55.619223",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "NTA Hearing",
@@ -340,5 +340,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

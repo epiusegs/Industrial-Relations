@@ -232,37 +232,43 @@
    "fieldname": "linked_warning",
    "fieldtype": "Link",
    "label": "Linked Warning",
-   "options": "Warning Form"
+   "options": "Warning Form",
+   "read_only": 1
   },
   {
    "fieldname": "linked_dismissal",
    "fieldtype": "Link",
    "label": "Linked Dismissal",
-   "options": "Dismissal Form"
+   "options": "Dismissal Form",
+   "read_only": 1
   },
   {
    "fieldname": "linked_demotion",
    "fieldtype": "Link",
    "label": "Linked Demotion",
-   "options": "Demotion Form"
+   "options": "Demotion Form",
+   "read_only": 1
   },
   {
    "fieldname": "linked_pay_deduction",
    "fieldtype": "Link",
    "label": "Linked Pay Deduction",
-   "options": "Pay Deduction Form"
+   "options": "Pay Deduction Form",
+   "read_only": 1
   },
   {
    "fieldname": "linked_not_guilty",
    "fieldtype": "Link",
    "label": "Linked Not Guilty",
-   "options": "Not Guilty Form"
+   "options": "Not Guilty Form",
+   "read_only": 1
   },
   {
    "fieldname": "linked_suspension",
    "fieldtype": "Link",
    "label": "Linked Suspension",
-   "options": "Suspension Form"
+   "options": "Suspension Form",
+   "read_only": 1
   },
   {
    "fieldname": "engagement_date",
@@ -312,7 +318,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-08-02 13:58:11.207896",
+ "modified": "2024-08-06 21:21:05.758788",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",

@@ -87,5 +87,12 @@ frappe.ui.form.on('Suspension Form', {
                 frm.refresh_field('employee_rights');
             });
         }
+    },
+
+    before_submit: function(frm) {
+        if (!frm.doc.signed_suspension) {
+            frappe.msgprint(__('You cannot submit this document untill you have attached a signed copy of the Suspension'));
+            frappe.validated = false;
+        }
     }
 });

@@ -21,6 +21,7 @@
   "demotion_details_section",
   "demotion_type",
   "outcome_date",
+  "signed_demotion",
   "column_break_mzjp",
   "applied_rights",
   "end_date",
@@ -57,7 +58,8 @@
    "in_list_view": 1,
    "label": "Linked Disciplinary Action",
    "options": "Disciplinary Action",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "demotion_type",
@@ -176,12 +178,17 @@
    "fieldname": "end_date",
    "fieldtype": "Date",
    "label": "End Date of Demotion (If Temporary)"
+  },
+  {
+   "fieldname": "signed_demotion",
+   "fieldtype": "Attach",
+   "label": "Attach Signed Demotion"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-06 12:51:32.523795",
+ "modified": "2024-08-06 21:34:03.914678",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Demotion Form",
@@ -204,5 +211,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }
