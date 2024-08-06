@@ -13,6 +13,19 @@ frappe.ui.form.on('Disciplinary Action', {
                 fetch_default_letter_head(frm, frm.doc.company);
             });
             fetch_disciplinary_history(frm, frm.doc.accused);
+
+            frappe.call({
+                method: 'ir.industrial_relations.doctype.disciplinary_action.disciplinary_action.check_if_ss',
+                args: {
+                    accused: frm.doc.accused
+                },
+                callback: function(r) {
+                    if (r.message) {
+                        frm.set_value('is_ss', r.message.is_ss);
+                        frm.set_value('ss_union', r.message.ss_union);
+                    }
+                }
+            });
         }
     },
 

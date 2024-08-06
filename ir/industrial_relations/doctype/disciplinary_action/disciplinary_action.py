@@ -107,3 +107,19 @@ def fetch_complainant_data(complainant):
     }
     
     return data
+
+@frappe.whitelist()
+def check_if_ss(accused):
+    trade_unions = frappe.get_all('Trade Union', fields=['name'])
+
+    for tu in trade_unions:
+        ss_list = frappe.get_all('Union Shop Stewards', filters={'parent': tu.name, 'parentfield': 'ss_list', 'ss_id': accused}, fields=['ss_id'])
+        if ss_list:
+            return {
+                'is_ss': True,
+                'ss_union': tu.name
+            }
+    return {
+        'is_ss': False,
+        'ss_union': None
+    }
