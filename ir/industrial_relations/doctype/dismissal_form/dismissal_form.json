@@ -8,11 +8,29 @@
  "field_order": [
   "section_break_ut3o",
   "amended_from",
+  "employee",
+  "company",
+  "letter_head",
+  "linked_disciplinary_action_processed",
   "section_break_qeko",
   "employee_details_column",
   "linked_disciplinary_action",
+  "linked_nta_hearing",
   "dismissal_type",
-  "outcome_date"
+  "column_break_iuhw",
+  "names",
+  "coy",
+  "position",
+  "dismissal_details_section",
+  "outcome_date",
+  "column_break_tnog",
+  "applied_rights",
+  "details_of_offence_section",
+  "dismissal_charges",
+  "previous_disciplinary_offences_section",
+  "disciplinary_history",
+  "rights_section",
+  "employee_rights"
  ],
  "fields": [
   {
@@ -31,19 +49,20 @@
   },
   {
    "fieldname": "section_break_qeko",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Employee Details"
   },
   {
    "fieldname": "employee_details_column",
-   "fieldtype": "Column Break",
-   "label": "Employee Details"
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "linked_disciplinary_action",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Linked Disciplinary Action",
-   "options": "Disciplinary Action"
+   "options": "Disciplinary Action",
+   "reqd": 1
   },
   {
    "fieldname": "dismissal_type",
@@ -56,14 +75,118 @@
   {
    "fieldname": "outcome_date",
    "fieldtype": "Date",
-   "label": "Outcome Date",
+   "label": "Date of Dismissal",
    "reqd": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Read Only",
+   "hidden": 1,
+   "label": "Employee"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Read Only",
+   "hidden": 1,
+   "label": "Company"
+  },
+  {
+   "fieldname": "letter_head",
+   "fieldtype": "Read Only",
+   "hidden": 1,
+   "label": "Letterhead"
+  },
+  {
+   "default": "0",
+   "fieldname": "linked_disciplinary_action_processed",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Linked Discipliniary Action Processed"
+  },
+  {
+   "fieldname": "column_break_iuhw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "names",
+   "fieldtype": "Read Only",
+   "label": "Employee Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "coy",
+   "fieldtype": "Read Only",
+   "label": "Coy. No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Read Only",
+   "label": "Position",
+   "reqd": 1
+  },
+  {
+   "fieldname": "linked_nta_hearing",
+   "fieldtype": "Read Only",
+   "label": "Linked NTA"
+  },
+  {
+   "fieldname": "dismissal_details_section",
+   "fieldtype": "Section Break",
+   "label": "Dismissal Details"
+  },
+  {
+   "fieldname": "column_break_tnog",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "applied_rights",
+   "fieldtype": "Link",
+   "label": "Applicable Rights",
+   "options": "Employee Rights",
+   "reqd": 1
+  },
+  {
+   "fieldname": "details_of_offence_section",
+   "fieldtype": "Section Break",
+   "label": "Details of Offence"
+  },
+  {
+   "fieldname": "dismissal_charges",
+   "fieldtype": "Table",
+   "label": "Charges",
+   "options": "Charges",
+   "read_only": 1
+  },
+  {
+   "fieldname": "previous_disciplinary_offences_section",
+   "fieldtype": "Section Break",
+   "label": "Previous Disciplinary Offences"
+  },
+  {
+   "fieldname": "disciplinary_history",
+   "fieldtype": "Table",
+   "label": "Disciplinary History:",
+   "options": "Disciplinary History",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rights_section",
+   "fieldtype": "Section Break",
+   "label": "Rights"
+  },
+  {
+   "fieldname": "employee_rights",
+   "fieldtype": "Table",
+   "label": "Employee Rights",
+   "options": "Individual Right",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-31 09:10:32.076317",
+ "modified": "2024-08-06 12:53:40.630249",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Dismissal Form",

@@ -8,13 +8,29 @@
  "field_order": [
   "section_break_tw9m",
   "amended_from",
+  "employee",
+  "company",
+  "letter_head",
+  "linked_disciplinary_action_processed",
   "employee_section",
   "linked_disciplinary_action",
-  "company",
-  "suspension_type",
   "outcome_date",
   "column_break_lgzj",
-  "employee_name"
+  "names",
+  "coy",
+  "position",
+  "suspension_details_section",
+  "suspension_type",
+  "applied_rights",
+  "column_break_ccxr",
+  "start_date",
+  "end_date",
+  "details_of_offence_section",
+  "susp_charges",
+  "previous_disciplinary_offences_section",
+  "disciplinary_history",
+  "rights_section",
+  "employee_rights"
  ],
  "fields": [
   {
@@ -41,14 +57,14 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Linked Disciplinary Action",
-   "options": "Disciplinary Action"
+   "options": "Disciplinary Action",
+   "reqd": 1
   },
   {
    "fieldname": "company",
-   "fieldtype": "Link",
+   "fieldtype": "Read Only",
    "hidden": 1,
    "label": "Company",
-   "options": "Company",
    "read_only": 1
   },
   {
@@ -65,22 +81,115 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "employee_name",
-   "fieldtype": "Read Only",
-   "in_list_view": 1,
-   "label": "Employee Name"
-  },
-  {
    "fieldname": "outcome_date",
    "fieldtype": "Date",
    "label": "Outcome Date",
    "reqd": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Read Only",
+   "hidden": 1,
+   "label": "Employee"
+  },
+  {
+   "fieldname": "letter_head",
+   "fieldtype": "Read Only",
+   "hidden": 1,
+   "label": "Letterhead"
+  },
+  {
+   "default": "0",
+   "fieldname": "linked_disciplinary_action_processed",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Linked Disciplinary Action Processed"
+  },
+  {
+   "fieldname": "names",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "label": "Employee Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "coy",
+   "fieldtype": "Read Only",
+   "label": "Coy. No.",
+   "reqd": 1
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Read Only",
+   "label": "Position",
+   "reqd": 1
+  },
+  {
+   "fieldname": "suspension_details_section",
+   "fieldtype": "Section Break",
+   "label": "Suspension Details"
+  },
+  {
+   "fieldname": "applied_rights",
+   "fieldtype": "Link",
+   "label": "Applicable Rights",
+   "options": "Employee Rights",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ccxr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "details_of_offence_section",
+   "fieldtype": "Section Break",
+   "label": "Details of Offence"
+  },
+  {
+   "fieldname": "susp_charges",
+   "fieldtype": "Table",
+   "label": "Charges",
+   "options": "Charges"
+  },
+  {
+   "fieldname": "previous_disciplinary_offences_section",
+   "fieldtype": "Section Break",
+   "label": "Previous Disciplinary Offences"
+  },
+  {
+   "fieldname": "disciplinary_history",
+   "fieldtype": "Table",
+   "label": "Disciplinary History:",
+   "options": "Disciplinary History"
+  },
+  {
+   "fieldname": "rights_section",
+   "fieldtype": "Section Break",
+   "label": "Rights"
+  },
+  {
+   "fieldname": "employee_rights",
+   "fieldtype": "Table",
+   "label": "Employee Rights",
+   "options": "Individual Right"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-31 09:11:11.111486",
+ "modified": "2024-08-06 12:53:47.079371",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Suspension Form",

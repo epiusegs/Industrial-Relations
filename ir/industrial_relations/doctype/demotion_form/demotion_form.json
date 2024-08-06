@@ -9,10 +9,11 @@
   "section_break_f1wz",
   "amended_from",
   "employee",
+  "company",
   "letter_head",
+  "linked_disciplinary_action_processed",
   "employee_section",
   "linked_disciplinary_action",
-  "company",
   "column_break_hncp",
   "names",
   "coy",
@@ -20,13 +21,15 @@
   "demotion_details_section",
   "demotion_type",
   "outcome_date",
+  "column_break_mzjp",
   "applied_rights",
-  "rights_section",
-  "employee_rights",
+  "end_date",
   "charges",
   "dem_charges",
   "previous_disciplinary_offences_section",
-  "disciplinary_history"
+  "disciplinary_history",
+  "rights_section",
+  "employee_rights"
  ],
  "fields": [
   {
@@ -53,7 +56,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Linked Disciplinary Action",
-   "options": "Disciplinary Action"
+   "options": "Disciplinary Action",
+   "reqd": 1
   },
   {
    "fieldname": "demotion_type",
@@ -72,13 +76,14 @@
   {
    "fieldname": "employee",
    "fieldtype": "Read Only",
+   "hidden": 1,
    "label": "Employee"
   },
   {
    "fieldname": "company",
    "fieldtype": "Read Only",
-   "label": "Company",
-   "reqd": 1
+   "hidden": 1,
+   "label": "Company"
   },
   {
    "fieldname": "column_break_hncp",
@@ -153,13 +158,30 @@
   {
    "fieldname": "letter_head",
    "fieldtype": "Read Only",
+   "hidden": 1,
    "label": "Letterhead"
+  },
+  {
+   "default": "0",
+   "fieldname": "linked_disciplinary_action_processed",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Linked Disciplinary Action Processed"
+  },
+  {
+   "fieldname": "column_break_mzjp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date of Demotion (If Temporary)"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-02 08:24:57.146145",
+ "modified": "2024-08-06 12:51:32.523795",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Demotion Form",
