@@ -1,0 +1,53 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-08-06 22:03:35.539947",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "of_name",
+  "of_pos",
+  "of_tel",
+  "of_mail"
+ ],
+ "fields": [
+  {
+   "fieldname": "of_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Official Name"
+  },
+  {
+   "fieldname": "of_pos",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Position"
+  },
+  {
+   "fieldname": "of_tel",
+   "fieldtype": "Phone",
+   "in_list_view": 1,
+   "label": "Phone Number"
+  },
+  {
+   "fieldname": "of_mail",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email",
+   "options": "Email"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-08-06 22:11:39.303030",
+ "modified_by": "Administrator",
+ "module": "Industrial Relations",
+ "name": "Union Official",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

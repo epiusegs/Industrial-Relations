@@ -16,10 +16,12 @@
   "accused",
   "branch",
   "engagement_date",
+  "is_ss",
   "column_break_ugya",
   "accused_name",
   "accused_coy",
   "accused_pos",
+  "ss_union",
   "details_of_complainant_section",
   "complainant",
   "request_date",
@@ -280,6 +282,18 @@
    "fieldname": "request_action_tab",
    "fieldtype": "Tab Break",
    "label": "Request Action"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_ss",
+   "fieldtype": "Check",
+   "label": "Is a Shop Steward",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ss_union",
+   "fieldtype": "Read Only",
+   "label": "Employee is a Shop Steward For"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -318,7 +332,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-08-06 21:21:05.758788",
+ "modified": "2024-08-06 22:36:17.520433",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",
