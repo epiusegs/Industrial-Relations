@@ -20,7 +20,7 @@
   "position",
   "background_section",
   "date_of_enquiry",
-  "charges_as_per_nta",
+  "outcome_charges",
   "linked_rulings",
   "chairperson_summary_section",
   "introduction",
@@ -28,9 +28,9 @@
   "accused_case",
   "analysis_of_evidence",
   "finding",
-  "disciplinary_history",
   "mitigating_considerations",
   "aggravating_conisderations",
+  "disciplinary_history",
   "outcome",
   "linked_sanction",
   "evidence"
@@ -60,6 +60,7 @@
    "fieldtype": "Link",
    "label": "Linked Disciplinary Action",
    "options": "Disciplinary Action",
+   "reqd": 1,
    "unique": 1
   },
   {
@@ -92,12 +93,6 @@
    "in_list_view": 1,
    "label": "Date of Enquiry",
    "reqd": 1
-  },
-  {
-   "fieldname": "charges_as_per_nta",
-   "fieldtype": "Table",
-   "label": "Charges as per NTA",
-   "options": "Charges"
   },
   {
    "fieldname": "linked_rulings",
@@ -185,12 +180,18 @@
    "fieldname": "names",
    "fieldtype": "Read Only",
    "label": "Employee Name"
+  },
+  {
+   "fieldname": "outcome_charges",
+   "fieldtype": "Table",
+   "label": "Charges as per NTA",
+   "options": "Charges"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-31 09:09:44.311240",
+ "modified": "2024-08-06 13:58:28.443731",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Outcome Report",
