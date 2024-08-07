@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{linked_disciplinary_action}-DED{#}",
+ "autoname": "format:{linked_disciplinary_action}-DED",
  "creation": "2024-07-23 09:58:38.872174",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -196,7 +196,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-06 21:38:25.786595",
+ "modified": "2024-08-07 14:31:55.250768",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Pay Deduction Form",
@@ -215,6 +215,30 @@
    "share": 1,
    "submit": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "IR Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "IR User",
+   "select": 1,
+   "share": 1
   }
  ],
  "sort_field": "modified",

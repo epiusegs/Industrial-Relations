@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{linked_disciplinary_action}-WARN{#}",
+ "autoname": "format:{linked_disciplinary_action}-WAR",
  "creation": "2024-07-13 21:38:05.593454",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -227,7 +227,7 @@
    "link_fieldname": "accused"
   }
  ],
- "modified": "2024-08-06 20:56:20.397358",
+ "modified": "2024-08-07 14:33:05.152875",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Warning Form",
@@ -260,6 +260,16 @@
    "share": 1,
    "submit": 1,
    "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "IR User",
+   "select": 1,
+   "share": 1
   }
  ],
  "sort_field": "modified",

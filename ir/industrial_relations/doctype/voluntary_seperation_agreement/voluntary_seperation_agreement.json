@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{linked_disciplinary_action}-VSP{#}",
+ "autoname": "format:{linked_disciplinary_action}-VSP",
  "creation": "2024-08-07 12:10:20.758536",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -191,7 +191,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-07 13:28:11.125195",
+ "modified": "2024-08-07 14:32:49.572223",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Voluntary Seperation Agreement",

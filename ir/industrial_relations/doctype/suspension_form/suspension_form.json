@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{linked_disciplinary_action}-SUS{#}",
+ "autoname": "format:{linked_disciplinary_action}-SUS",
  "creation": "2024-07-23 10:00:35.059672",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -196,7 +196,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-06 21:36:54.605430",
+ "modified": "2024-08-07 14:32:37.358322",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Suspension Form",
@@ -215,6 +215,30 @@
    "share": 1,
    "submit": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "IR Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "IR User",
+   "select": 1,
+   "share": 1
   }
  ],
  "sort_field": "modified",
