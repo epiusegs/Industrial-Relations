@@ -31,12 +31,16 @@ bench --site your.site install-app ir
 So far I haven't gotten to everything yet, but you can capture your discipllinary code schedule of offences, create a disciplinary action and a warning. There is still a lot to do and if you would like to get interrested, please contact me directly.
 
 Onboarding Walkthrough
+
+Disciplinary Action Workflow and DocTypes (Production Testing)
+
+Trade Union Members (Functionally Complete)
+
+Disciplinary Schedule of Offences (Functionally Complete)
    
-### Currently Workign On
+### Currently Working On
 
-Disciplinary Outcome - DocType to record the reasons for a finding in a disciplinary enquiry
-
-All Sanction Documents (Except Warning Form)
+Production Testing and Optimization of Disciplinary Action workflows
 
 Grievance Procedure
 
@@ -45,10 +49,6 @@ Appeals Procedure
 Desertion\Absconsion Procedure
 
 Dispute Forum (CCMA, Labour Court, etc.) Procedure
-
-Linking DocTypes to Generate related DocTypes as needed
-
-Finetuning Permissions (Still deciding whether or not to retain HRMS permissions or seperate IR permissions)
 
 Dashboard Chart (To display all disciplinary outcomes rendered in the last 3 month period by colour)
 
