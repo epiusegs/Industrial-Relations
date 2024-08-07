@@ -4,6 +4,7 @@
  "allow_rename": 1,
  "autoname": "DISC-.######",
  "creation": "2024-07-10 09:13:15.699232",
+ "default_view": "List",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
@@ -343,7 +344,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-08-07 14:20:21.809655",
+ "modified": "2024-08-07 14:47:37.202710",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",
@@ -390,7 +391,6 @@
    "write": 1
   }
  ],
- "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
  "track_changes": 1
