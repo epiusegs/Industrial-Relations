@@ -38,6 +38,10 @@ frappe.ui.form.on("Disciplinary Outcome Report", {
             frm.page.add_inner_button(__('Issue Dismissal'), function() {
                 make_dismissal_form(frm);
             }, 'Actions');
+        
+            frm.page.add_inner_button(__('Issue VSP'), function() {
+                make_vsp(frm);
+            }, 'Actions');
         }
 
         // Fetch linked fields on refresh if not a new document
@@ -186,5 +190,14 @@ function make_dismissal_form(frm) {
         frm: frm,
         source_name: frm.doc.linked_disciplinary_action,
         freeze_message: __("Creating Dismissal Form ...")
+    });
+}
+
+function make_vsp(frm) {
+    frappe.model.open_mapped_doc({
+        method: "ir.industrial_relations.doctype.voluntary_seperation_agreement.voluntary_seperation_agreement.make_vsp",
+        frm: frm,
+        source_name: frm.doc.linked_disciplinary_action,
+        freeze_message: __("Creating VSP ...")
     });
 }

@@ -64,7 +64,8 @@ def fetch_linked_documents(doc_name):
         "Demotion Form": "linked_demotion",
         "Pay Deduction Form": "linked_pay_deduction",
         "Not Guilty Form": "linked_not_guilty",
-        "Suspension Form": "linked_suspension"
+        "Suspension Form": "linked_suspension",
+        "Voluntary Seperation Agreement": "linked_vsp"
     }
 
     relevant_fields = {
@@ -73,7 +74,8 @@ def fetch_linked_documents(doc_name):
         "linked_demotion": "demotion_type",
         "linked_pay_deduction": "pay_deduction_type",
         "linked_not_guilty": "type_of_not_guilty",
-        "linked_suspension": "suspension_type"
+        "linked_suspension": "suspension_type",
+        "linked_vsp": "vsp_type"
     }
 
     result = {

@@ -1,0 +1,48 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-08-07 12:27:03.406010",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "component",
+  "calculation_of_component",
+  "value"
+ ],
+ "fields": [
+  {
+   "fieldname": "component",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Component",
+   "reqd": 1
+  },
+  {
+   "fieldname": "calculation_of_component",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Calculation of Component",
+   "reqd": 1
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Value",
+   "precision": "2",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-08-07 12:28:43.395205",
+ "modified_by": "Administrator",
+ "module": "Industrial Relations",
+ "name": "VSP Items",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

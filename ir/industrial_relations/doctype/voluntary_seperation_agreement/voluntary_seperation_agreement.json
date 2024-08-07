@@ -1,0 +1,218 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{linked_disciplinary_action}-VSP{#}",
+ "creation": "2024-08-07 12:10:20.758536",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_kxtp",
+  "amended_from",
+  "employee",
+  "company",
+  "letter_head",
+  "linked_disciplinary_action_processed",
+  "employee_details_section",
+  "linked_disciplinary_action",
+  "outcome_date",
+  "signed_vsp",
+  "column_break_jsbg",
+  "names",
+  "coy",
+  "position",
+  "section_break_pnik",
+  "reasons",
+  "section_break_gfpw",
+  "auth_manager",
+  "column_break_raid",
+  "auth_names",
+  "section_break_mqlq",
+  "payment_details",
+  "section_break_ctme",
+  "column_break_ftwn",
+  "vsp_type",
+  "column_break_cwee",
+  "total_gross"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_kxtp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Voluntary Seperation Agreement",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Read Only",
+   "hidden": 1,
+   "label": "Employee"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Read Only",
+   "hidden": 1,
+   "label": "Company"
+  },
+  {
+   "fieldname": "letter_head",
+   "fieldtype": "Read Only",
+   "hidden": 1,
+   "label": "Letterhead"
+  },
+  {
+   "default": "0",
+   "fieldname": "linked_disciplinary_action_processed",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Linked Disciplinary Action Processed"
+  },
+  {
+   "fieldname": "employee_details_section",
+   "fieldtype": "Section Break",
+   "label": "Employee Details"
+  },
+  {
+   "fieldname": "linked_disciplinary_action",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Linked Disciplinary Action",
+   "options": "Disciplinary Action",
+   "reqd": 1
+  },
+  {
+   "fieldname": "signed_vsp",
+   "fieldtype": "Attach",
+   "label": "Upload Signed VSP"
+  },
+  {
+   "fieldname": "column_break_jsbg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "names",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "label": "Employee Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "coy",
+   "fieldtype": "Read Only",
+   "label": "Coy. No.",
+   "reqd": 1
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Read Only",
+   "label": "Position",
+   "reqd": 1
+  },
+  {
+   "fieldname": "outcome_date",
+   "fieldtype": "Date",
+   "label": "Outcome Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_pnik",
+   "fieldtype": "Section Break",
+   "label": "Details of VSP"
+  },
+  {
+   "fieldname": "reasons",
+   "fieldtype": "Long Text",
+   "label": "Reason(s) for VSP Being Offered"
+  },
+  {
+   "fieldname": "section_break_gfpw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "auth_manager",
+   "fieldtype": "Link",
+   "label": "Authorized By",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_raid",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "auth_names",
+   "fieldtype": "Read Only",
+   "label": "Name of Authoirzing Manager"
+  },
+  {
+   "fieldname": "section_break_mqlq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "payment_details",
+   "fieldtype": "Table",
+   "label": "Payment Details",
+   "options": "VSP Items"
+  },
+  {
+   "fieldname": "section_break_ctme",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_ftwn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_cwee",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_gross",
+   "fieldtype": "Currency",
+   "label": "Total Gross",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vsp_type",
+   "fieldtype": "Link",
+   "label": "VSP Type",
+   "options": "Offence Outcome",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-08-07 13:25:32.950255",
+ "modified_by": "Administrator",
+ "module": "Industrial Relations",
+ "name": "Voluntary Seperation Agreement",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

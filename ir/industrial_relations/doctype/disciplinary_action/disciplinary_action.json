@@ -45,7 +45,8 @@
   "linked_demotion",
   "linked_pay_deduction",
   "linked_not_guilty",
-  "linked_suspension"
+  "linked_suspension",
+  "linked_vsp"
  ],
  "fields": [
   {
@@ -297,6 +298,13 @@
    "fieldname": "ss_union",
    "fieldtype": "Read Only",
    "label": "Employee is a Shop Steward For"
+  },
+  {
+   "fieldname": "linked_vsp",
+   "fieldtype": "Link",
+   "label": "Linked VSP",
+   "options": "Voluntary Seperation Agreement",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -335,7 +343,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-08-07 11:06:21.463026",
+ "modified": "2024-08-07 12:31:45.366218",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",
