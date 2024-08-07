@@ -157,8 +157,9 @@
   {
    "description": "Attach any supporting or corroborating documents, photographs, video and/or audio recordings.",
    "fieldname": "attach",
-   "fieldtype": "Attach",
-   "label": "Attach Photos and/or Documents:"
+   "fieldtype": "Table",
+   "label": "Attach Photos and/or Documents:",
+   "options": "Disciplinary Action Files"
   },
   {
    "fieldname": "disciplinary_history_section",
@@ -334,7 +335,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-08-07 08:59:57.264001",
+ "modified": "2024-08-07 11:06:21.463026",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",
