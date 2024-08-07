@@ -11,6 +11,7 @@
   "company",
   "employee",
   "letter_head",
+  "linked_disciplinary_action_processed",
   "details_section",
   "linked_disciplinary_action",
   "linked_nta",
@@ -192,12 +193,19 @@
    "fieldname": "date",
    "fieldtype": "Date",
    "label": "Outcome Date"
+  },
+  {
+   "default": "0",
+   "fieldname": "linked_disciplinary_action_processed",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Linked Disciplinary Action Processed"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-06 22:50:36.093215",
+ "modified": "2024-08-07 08:57:40.216797",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Outcome Report",

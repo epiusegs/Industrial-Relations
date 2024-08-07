@@ -71,6 +71,7 @@ frappe.ui.form.on('Disciplinary Action', {
         }
 
         fetch_linked_documents(frm);
+        fetch_additional_linked_documents(frm);
     },
 
     complainant: function(frm) {
@@ -164,6 +165,25 @@ function fetch_linked_documents(frm) {
                 if (res.message.latest_outcome) {
                     frm.set_value('outcome', res.message.latest_outcome);
                     frm.set_value('outcome_date', res.message.latest_outcome_date);
+                }
+            }
+        }
+    });
+}
+
+function fetch_additional_linked_documents(frm) {
+    frappe.call({
+        method: 'ir.industrial_relations.doctype.disciplinary_action.disciplinary_action.fetch_additional_linked_documents',
+        args: {
+            doc_name: frm.doc.name
+        },
+        callback: function(r) {
+            if (r.message) {
+                if (r.message.linked_nta && !frm.doc.linked_nta) {
+                    frm.set_value('linked_nta', r.message.linked_nta);
+                }
+                if (r.message.linked_outcome && !frm.doc.linked_outcome) {
+                    frm.set_value('linked_outcome', r.message.linked_outcome);
                 }
             }
         }

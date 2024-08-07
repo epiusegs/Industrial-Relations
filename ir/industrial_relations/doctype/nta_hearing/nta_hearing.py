@@ -64,3 +64,8 @@ def fetch_disciplinary_action_data(disciplinary_action):
 def fetch_company_letter_head(company):
     letter_head = frappe.db.get_value('Company', company, 'default_letter_head')
     return {'letter_head': letter_head} if letter_head else {}
+
+@frappe.whitelist()
+def fetch_chairperson_name(employee):
+    employee_name = frappe.db.get_value('Employee', employee, 'employee_name')
+    return {'employee_name': employee_name} if employee_name else {}

@@ -24,6 +24,10 @@
   "applied_rights",
   "column_break_epmh",
   "venue",
+  "chairperson_details_section",
+  "chairperson",
+  "column_break_hvys",
+  "chairperson_name",
   "details_of_offence_section",
   "nta_charges",
   "previous_disciplinary_offences_section",
@@ -267,6 +271,27 @@
    "fieldname": "served_date_and_time",
    "fieldtype": "Data",
    "label": "Date and Time of Service"
+  },
+  {
+   "fieldname": "chairperson_details_section",
+   "fieldtype": "Section Break",
+   "label": "Chairperson Details"
+  },
+  {
+   "fieldname": "chairperson",
+   "fieldtype": "Link",
+   "label": "Chairperson",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_hvys",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "chairperson_name",
+   "fieldtype": "Read Only",
+   "label": "Chairperson Name"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -317,7 +342,7 @@
    "link_fieldname": "individual_right"
   }
  ],
- "modified": "2024-08-06 21:17:55.619223",
+ "modified": "2024-08-07 08:10:18.245845",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "NTA Hearing",

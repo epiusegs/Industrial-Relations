@@ -222,13 +222,15 @@
    "fieldname": "linked_nta",
    "fieldtype": "Link",
    "label": "Linked NTA",
-   "options": "NTA Hearing"
+   "options": "NTA Hearing",
+   "read_only": 1
   },
   {
    "fieldname": "linked_outcome",
    "fieldtype": "Link",
    "label": "Linked Outcome Report",
-   "options": "Disciplinary Outcome Report"
+   "options": "Disciplinary Outcome Report",
+   "read_only": 1
   },
   {
    "fieldname": "linked_warning",
@@ -332,7 +334,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-08-06 22:36:17.520433",
+ "modified": "2024-08-07 08:59:57.264001",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",

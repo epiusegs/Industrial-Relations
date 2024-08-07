@@ -98,6 +98,25 @@ def fetch_linked_documents(doc_name):
     return result
 
 @frappe.whitelist()
+def fetch_additional_linked_documents(doc_name):
+    frappe.flags.ignore_permissions = True
+
+    result = {
+        'linked_nta': None,
+        'linked_outcome': None
+    }
+
+    nta_hearing = frappe.get_all('NTA Hearing', filters={'linked_disciplinary_action': doc_name}, fields=['name'])
+    disciplinary_outcome_report = frappe.get_all('Disciplinary Outcome Report', filters={'linked_disciplinary_action': doc_name}, fields=['name'])
+
+    if nta_hearing:
+        result['linked_nta'] = nta_hearing[0]['name']
+    if disciplinary_outcome_report:
+        result['linked_outcome'] = disciplinary_outcome_report[0]['name']
+    
+    return result
+
+@frappe.whitelist()
 def fetch_complainant_data(complainant):
     frappe.flags.ignore_permissions = True
 
