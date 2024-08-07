@@ -16,10 +16,16 @@
   "linked_disciplinary_action",
   "linked_nta",
   "date",
+  "chairperson",
+  "complainant",
+  "sanction_approver",
   "column_break_sios",
   "names",
   "coy",
   "position",
+  "chairperson_name",
+  "complainant_name",
+  "approver_name",
   "background_section",
   "date_of_enquiry",
   "outcome_charges",
@@ -144,11 +150,13 @@
   {
    "fieldname": "company",
    "fieldtype": "Read Only",
+   "hidden": 1,
    "label": "Company"
   },
   {
    "fieldname": "employee",
    "fieldtype": "Read Only",
+   "hidden": 1,
    "label": "Employee"
   },
   {
@@ -176,6 +184,7 @@
   {
    "fieldname": "letter_head",
    "fieldtype": "Read Only",
+   "hidden": 1,
    "label": "Letterhead"
   },
   {
@@ -200,12 +209,48 @@
    "fieldtype": "Check",
    "hidden": 1,
    "label": "Linked Disciplinary Action Processed"
+  },
+  {
+   "fieldname": "chairperson",
+   "fieldtype": "Link",
+   "label": "Chairperson",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "complainant",
+   "fieldtype": "Link",
+   "label": "Complainant",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "description": "Required if the sanction was not approved by the Chairperson.",
+   "fieldname": "sanction_approver",
+   "fieldtype": "Link",
+   "label": "Sanction Approved By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "chairperson_name",
+   "fieldtype": "Read Only",
+   "label": "Chairperson Name"
+  },
+  {
+   "fieldname": "complainant_name",
+   "fieldtype": "Read Only",
+   "label": "Complainant Name"
+  },
+  {
+   "fieldname": "approver_name",
+   "fieldtype": "Read Only",
+   "label": "Approver Name"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-07 08:57:40.216797",
+ "modified": "2024-08-07 10:06:37.407889",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Outcome Report",

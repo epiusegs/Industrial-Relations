@@ -7,6 +7,43 @@ frappe.ui.form.on("Disciplinary Outcome Report", {
         if (frm.doc.linked_disciplinary_action && !frm.doc.linked_disciplinary_action_processed) {
             frm.trigger('linked_disciplinary_action');
         }
+    
+        frm.toggle_display(['make_warning_form', 'make_not_guilty_form', 'make_suspension_form', 'make_demotion_form', 'make_pay_deduction_form', 'make_dismissal_form'], frm.doc.docstatus === 0 && !frm.doc.__islocal && frm.doc.workflow_state !== 'Submitted');
+
+        if (frappe.user.has_role("IR Manager")) {
+            frm.add_custom_button(__('Actions'), function() {}, 'Actions')
+                .addClass('btn-primary')
+                .attr('id', 'actions_dropdown');
+
+            frm.page.add_inner_button(__('Issue Warning'), function() {
+                make_warning_form(frm);
+            }, 'Actions');
+
+            frm.page.add_inner_button(__('Issue Not Guilty'), function() {
+                make_not_guilty_form(frm);
+            }, 'Actions');
+                
+            frm.page.add_inner_button(__('Issue Suspension'), function() {
+                make_suspension_form(frm);
+            }, 'Actions');
+
+            frm.page.add_inner_button(__('Issue Demotion'), function() {
+                make_demotion_form(frm);
+            }, 'Actions');
+
+            frm.page.add_inner_button(__('Issue Pay Deduction'), function() {
+                make_pay_deduction_form(frm);
+            }, 'Actions');
+
+            frm.page.add_inner_button(__('Issue Dismissal'), function() {
+                make_dismissal_form(frm);
+            }, 'Actions');
+        }
+
+        // Fetch linked fields on refresh if not a new document
+        if (!frm.doc.__islocal) {
+            frm.trigger('fetch_linked_fields');
+        }
     },
     
     linked_disciplinary_action: function(frm) {
@@ -52,8 +89,12 @@ frappe.ui.form.on("Disciplinary Outcome Report", {
                             child.indiv_charge = row.indiv_charge;
                         });
                         frm.refresh_field('outcome_charges');
+
                         // Set the flag to prevent refresh loop
                         frm.set_value('linked_disciplinary_action_processed', true);
+                        
+                        // Fetch linked fields after updating the linked disciplinary action
+                        frm.trigger('fetch_linked_fields');
                     }
                 }
             });
@@ -75,5 +116,75 @@ frappe.ui.form.on("Disciplinary Outcome Report", {
                 }
             });
         }
+    },
+
+    fetch_linked_fields: function(frm) {
+        frappe.call({
+            method: 'ir.industrial_relations.doctype.disciplinary_outcome_report.disciplinary_outcome_report.fetch_linked_fields',
+            args: {
+                linked_nta: frm.doc.linked_nta,
+                linked_disciplinary_action: frm.doc.linked_disciplinary_action
+            },
+            callback: function(r) {
+                if (r.message) {
+                    frm.set_value('chairperson', r.message.chairperson);
+                    frm.set_value('complainant', r.message.complainant);
+                }
+            }
+        });
     }
 });
+
+function make_warning_form(frm) {
+    frappe.model.open_mapped_doc({
+        method: "ir.industrial_relations.doctype.warning_form.warning_form.make_warning_form",
+        frm: frm,
+        source_name: frm.doc.linked_disciplinary_action,
+        freeze_message: __("Creating Warning Form ...")
+    });
+}
+
+function make_not_guilty_form(frm) {
+    frappe.model.open_mapped_doc({
+        method: "ir.industrial_relations.doctype.not_guilty_form.not_guilty_form.make_not_guilty_form",
+        frm: frm,
+        source_name: frm.doc.linked_disciplinary_action,
+        freeze_message: __("Creating Not Guilty Form ...")
+    });
+}
+
+function make_suspension_form(frm) {
+    frappe.model.open_mapped_doc({
+        method: "ir.industrial_relations.doctype.suspension_form.suspension_form.make_suspension_form",
+        frm: frm,
+        source_name: frm.doc.linked_disciplinary_action,
+        freeze_message: __("Creating Suspension Form ...")
+    });
+}
+
+function make_demotion_form(frm) {
+    frappe.model.open_mapped_doc({
+        method: "ir.industrial_relations.doctype.demotion_form.demotion_form.make_demotion_form",
+        frm: frm,
+        source_name: frm.doc.linked_disciplinary_action,
+        freeze_message: __("Creating Demotion Form ...")
+    });
+}
+
+function make_pay_deduction_form(frm) {
+    frappe.model.open_mapped_doc({
+        method: "ir.industrial_relations.doctype.pay_deduction_form.pay_deduction_form.make_pay_deduction_form",
+        frm: frm,
+        source_name: frm.doc.linked_disciplinary_action,
+        freeze_message: __("Creating Pay Deduction Form ...")
+    });
+}
+
+function make_dismissal_form(frm) {
+    frappe.model.open_mapped_doc({
+        method: "ir.industrial_relations.doctype.dismissal_form.dismissal_form.make_dismissal_form",
+        frm: frm,
+        source_name: frm.doc.linked_disciplinary_action,
+        freeze_message: __("Creating Dismissal Form ...")
+    });
+}

@@ -64,3 +64,19 @@ def fetch_disciplinary_action_data(disciplinary_action):
 def fetch_company_letter_head(company):
     letter_head = frappe.db.get_value('Company', company, 'default_letter_head')
     return {'letter_head': letter_head} if letter_head else {}
+
+@frappe.whitelist()
+def fetch_linked_fields(linked_nta, linked_disciplinary_action):
+    chairperson = None
+    complainant = None
+
+    if linked_nta:
+        chairperson = frappe.db.get_value('NTA Hearing', linked_nta, 'chairperson')
+
+    if linked_disciplinary_action:
+        complainant = frappe.db.get_value('Disciplinary Action', linked_disciplinary_action, 'complainant')
+
+    return {
+        'chairperson': chairperson,
+        'complainant': complainant,
+    }
