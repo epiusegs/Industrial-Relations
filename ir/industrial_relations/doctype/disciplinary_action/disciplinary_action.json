@@ -38,6 +38,10 @@
   "action_taken_section",
   "outcome",
   "outcome_date",
+  "column_break_mysc",
+  "outcome_start",
+  "outcome_end",
+  "section_break_xdgl",
   "final_charges",
   "linked_nta",
   "linked_outcome",
@@ -91,7 +95,7 @@
   {
    "fieldname": "details_of_complainant_section",
    "fieldtype": "Section Break",
-   "label": "Details of Complainant"
+   "label": "Details of Misconduct"
   },
   {
    "fieldname": "complainant",
@@ -306,6 +310,22 @@
    "label": "Linked VSP",
    "options": "Voluntary Seperation Agreement",
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_mysc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_xdgl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "outcome_start",
+   "fieldtype": "Read Only"
+  },
+  {
+   "fieldname": "outcome_end",
+   "fieldtype": "Read Only"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -344,7 +364,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-08-07 14:47:37.202710",
+ "modified": "2024-08-08 21:27:52.861871",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",

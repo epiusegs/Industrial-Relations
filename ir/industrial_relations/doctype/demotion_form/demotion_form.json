@@ -24,6 +24,7 @@
   "signed_demotion",
   "column_break_mzjp",
   "applied_rights",
+  "from_date",
   "end_date",
   "charges",
   "dem_charges",
@@ -183,12 +184,18 @@
    "fieldname": "signed_demotion",
    "fieldtype": "Attach",
    "label": "Attach Signed Demotion"
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-07 14:30:11.831157",
+ "modified": "2024-08-08 21:35:40.805265",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Demotion Form",

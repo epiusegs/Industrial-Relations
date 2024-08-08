@@ -1,4 +1,6 @@
-// Existing client script
+// Copyright (c) 2024, BuFf0k and contributors
+// For license information, please see license.txt
+
 frappe.ui.form.on('Disciplinary Action', {
     accused: function(frm) {
         if (frm.doc.accused) {
@@ -93,6 +95,22 @@ frappe.ui.form.on('Disciplinary Action', {
                 }
             });
         }
+    }
+});
+
+frappe.ui.form.on('List of Offences', {
+    code_item: function(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+
+        // Create a new row in the final_charges child table
+        let new_row = frm.add_child('final_charges');
+
+        // Copy the code_item value and set the charge field
+        new_row.code_item = row.code_item;
+        new_row.charge = 'please update';
+
+        // Refresh the final_charges table to reflect the changes
+        frm.refresh_field('final_charges');
     }
 });
 

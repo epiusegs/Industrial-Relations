@@ -21,7 +21,8 @@
    "in_list_view": 1,
    "label": "Code Item",
    "options": "Disciplinary Offence",
-   "reqd": 1
+   "reqd": 1,
+   "search_index": 1
   },
   {
    "fieldname": "charge",
@@ -34,7 +35,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-14 18:06:20.842106",
+ "modified": "2024-08-08 09:43:53.300197",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Charges",
