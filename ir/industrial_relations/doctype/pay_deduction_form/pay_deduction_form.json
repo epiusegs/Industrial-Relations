@@ -140,18 +140,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "from_date",
-   "fieldtype": "Date",
-   "label": "From Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "to_date",
-   "fieldtype": "Date",
-   "label": "To Date",
-   "reqd": 1
-  },
-  {
    "fieldname": "details_of_offence_section",
    "fieldtype": "Section Break",
    "label": "Details of Offence"
@@ -191,12 +179,24 @@
    "fieldname": "attached_signed_pay_deduction",
    "fieldtype": "Attach",
    "label": "Attached Signed Pay Deduction"
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-07 14:31:55.250768",
+ "modified": "2024-08-11 14:16:55.764408",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Pay Deduction Form",

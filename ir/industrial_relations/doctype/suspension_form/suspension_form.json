@@ -24,8 +24,8 @@
   "suspension_type",
   "applied_rights",
   "column_break_ccxr",
-  "start_date",
-  "end_date",
+  "from_date",
+  "to_date",
   "details_of_offence_section",
   "susp_charges",
   "previous_disciplinary_offences_section",
@@ -143,18 +143,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "start_date",
-   "fieldtype": "Date",
-   "label": "Start Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "end_date",
-   "fieldtype": "Date",
-   "label": "End Date",
-   "reqd": 1
-  },
-  {
    "fieldname": "details_of_offence_section",
    "fieldtype": "Section Break",
    "label": "Details of Offence"
@@ -191,12 +179,24 @@
    "fieldname": "signed_suspension",
    "fieldtype": "Attach",
    "label": "Attach Signed Suspension"
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-07 14:32:37.358322",
+ "modified": "2024-08-11 14:17:12.765903",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Suspension Form",

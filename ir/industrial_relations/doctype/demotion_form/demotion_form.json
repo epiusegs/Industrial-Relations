@@ -25,7 +25,7 @@
   "column_break_mzjp",
   "applied_rights",
   "from_date",
-  "end_date",
+  "to_date",
   "charges",
   "dem_charges",
   "previous_disciplinary_offences_section",
@@ -176,11 +176,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "end_date",
-   "fieldtype": "Date",
-   "label": "End Date of Demotion (If Temporary)"
-  },
-  {
    "fieldname": "signed_demotion",
    "fieldtype": "Attach",
    "label": "Attach Signed Demotion"
@@ -190,12 +185,17 @@
    "fieldtype": "Date",
    "label": "From Date",
    "reqd": 1
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "End Date of Demotion (If Temporary)"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-08 21:35:40.805265",
+ "modified": "2024-08-11 14:17:26.497815",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Demotion Form",

@@ -4,9 +4,62 @@
 import frappe
 import json
 from frappe.model.document import Document
+from frappe.utils import getdate
 
 class DisciplinaryAction(Document):
     pass
+
+@frappe.whitelist()
+def update_outcome_dates(doc_name):
+    frappe.flags.ignore_permissions = True
+    
+    # Define the linked documents and relevant fields
+    linked_docs = {
+        'linked_demotion': 'Demotion Form',
+        'linked_pay_deduction': 'Pay Deduction Form',
+        'linked_suspension': 'Suspension Form'
+    }
+
+    relevant_fields = {
+        'linked_demotion': ['from_date', 'to_date', 'Demoted from'],
+        'linked_pay_deduction': ['from_date', 'to_date', 'Pay deduction effective from'],
+        'linked_suspension': ['from_date', 'to_date', 'Suspended from']
+    }
+    
+    doc = frappe.get_doc('Disciplinary Action', doc_name)
+    latest_outcome_date = None
+    latest_doc = None
+    latest_outcome_type = None
+
+    for link_field, doc_type in linked_docs.items():
+        linked_doc_name = doc.get(link_field)
+        if linked_doc_name:
+            linked_doc = frappe.get_doc(doc_type, linked_doc_name)
+            outcome_date = linked_doc.get('outcome_date')
+            if outcome_date and (not latest_outcome_date or getdate(outcome_date) > getdate(latest_outcome_date)):
+                latest_outcome_date = outcome_date
+                latest_doc = linked_doc
+                latest_outcome_type = link_field
+
+    outcome_start = ""
+    outcome_end = ""
+
+    if latest_doc:
+        if latest_outcome_type == 'linked_demotion':
+            outcome_start = f"Demoted from {latest_doc.from_date}"
+            outcome_end = f"until {latest_doc.to_date}" if latest_doc.to_date else ""
+        elif latest_outcome_type == 'linked_pay_deduction':
+            outcome_start = f"Pay deduction effective from {latest_doc.from_date}"
+            outcome_end = f"until {latest_doc.to_date}" if latest_doc.to_date else ""
+        elif latest_outcome_type == 'linked_suspension':
+            outcome_start = f"Suspended from {latest_doc.from_date}"
+            outcome_end = f"until {latest_doc.to_date}" if latest_doc.to_date else ""
+    
+    return {
+        'outcome_start': outcome_start,
+        'outcome_end': outcome_end
+    }
+
 
 @frappe.whitelist()
 def fetch_employee_data(employee, fields):
@@ -131,6 +184,8 @@ def fetch_complainant_data(complainant):
 
 @frappe.whitelist()
 def check_if_ss(accused):
+    frappe.flags.ignore_permissions = True
+
     trade_unions = frappe.get_all('Trade Union', fields=['name'])
 
     for tu in trade_unions:
