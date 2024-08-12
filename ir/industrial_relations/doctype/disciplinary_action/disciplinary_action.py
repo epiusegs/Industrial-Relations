@@ -12,7 +12,6 @@ class DisciplinaryAction(Document):
 @frappe.whitelist()
 def update_outcome_dates(doc_name):
     frappe.flags.ignore_permissions = True
-    
     # Define the linked documents and relevant fields
     linked_docs = {
         'linked_demotion': 'Demotion Form',

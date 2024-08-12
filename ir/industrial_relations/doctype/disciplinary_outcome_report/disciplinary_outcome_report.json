@@ -214,8 +214,7 @@
    "fieldname": "chairperson",
    "fieldtype": "Link",
    "label": "Chairperson",
-   "options": "Employee",
-   "reqd": 1
+   "options": "Employee"
   },
   {
    "fieldname": "complainant",
@@ -250,7 +249,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-07 10:06:37.407889",
+ "modified": "2024-08-12 07:38:51.133827",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Outcome Report",

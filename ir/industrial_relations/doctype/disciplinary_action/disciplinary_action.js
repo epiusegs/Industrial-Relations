@@ -76,8 +76,11 @@ frappe.ui.form.on('Disciplinary Action', {
             }, 'Actions');
         }
 
-        fetch_linked_documents(frm);
-        fetch_additional_linked_documents(frm);
+        if (!frm.is_new()) {
+            fetch_linked_documents(frm);
+            fetch_additional_linked_documents(frm);
+            fetch_outcome_dates(frm);
+        }      
     },
 
     complainant: function(frm) {
@@ -189,23 +192,25 @@ function fetch_linked_documents(frm) {
                     frm.set_value('outcome_date', res.message.latest_outcome_date);
                 }
             }
-        
-            // Call the new server function to update outcome_start and outcome_end
-                frappe.call({
-                    method: 'ir.industrial_relations.doctype.disciplinary_action.disciplinary_action.update_outcome_dates',
-                    args: {
-                        doc_name: frm.doc.name
-                    },
-                    callback: function(r) {
-                    if (r.message) {
-                        frm.set_value('outcome_start', r.message.outcome_start || '');
-                        frm.set_value('outcome_end', r.message.outcome_end || ''); // Ensure outcome_end is set to an empty string if not present
-                        frm.refresh_fields(); // Refresh fields to show updated outcome dates
-                    }
-                }
-                });
         }
     });
+}
+
+function fetch_outcome_dates(frm) {
+    // Call the new server function to update outcome_start and outcome_end
+    frappe.call({
+        method: 'ir.industrial_relations.doctype.disciplinary_action.disciplinary_action.update_outcome_dates',
+        args: {
+            doc_name: frm.doc.name
+        },
+        callback: function(r) {
+            if (r.message) {
+                frm.set_value('outcome_start', r.message.outcome_start || '');
+                frm.set_value('outcome_end', r.message.outcome_end || ''); // Ensure outcome_end is set to an empty string if not present
+                frm.refresh_fields(); // Refresh fields to show updated outcome dates
+                }
+        }
+     });
 }
 
 function fetch_additional_linked_documents(frm) {
