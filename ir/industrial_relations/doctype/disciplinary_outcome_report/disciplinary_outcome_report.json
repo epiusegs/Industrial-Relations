@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{linked_disciplinary_action}-OUT{#}",
+ "autoname": "format:{linked_disciplinary_action}-OUT",
  "creation": "2024-07-22 12:59:58.712057",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -249,7 +249,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-12 07:38:51.133827",
+ "modified": "2024-08-13 14:27:04.911339",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Outcome Report",
