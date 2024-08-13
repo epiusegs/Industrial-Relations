@@ -3,7 +3,6 @@
 
 frappe.ui.form.on("Disciplinary Outcome Report", {
     refresh: function(frm) {
-        // Check the flag before triggering the handler
         if (frm.doc.linked_disciplinary_action && !frm.doc.linked_disciplinary_action_processed) {
             frm.trigger('linked_disciplinary_action');
         }
@@ -43,13 +42,8 @@ frappe.ui.form.on("Disciplinary Outcome Report", {
                 make_vsp(frm);
             }, 'Actions');
         }
-
-        // Fetch linked fields on refresh if not a new document
-        if (!frm.doc.__islocal) {
-            frm.trigger('fetch_linked_fields');
-        }
     },
-    
+
     linked_disciplinary_action: function(frm) {
         if (frm.doc.linked_disciplinary_action) {
             frappe.call({
@@ -60,23 +54,18 @@ frappe.ui.form.on("Disciplinary Outcome Report", {
                 callback: function(r) {
                     if (r.message) {
                         const data = r.message;
-
-                        // Directly update the doc and refresh fields without triggering events
                         frm.doc.employee = data.accused || '';
                         frm.doc.names = data.accused_name || '';
                         frm.doc.coy = data.accused_coy || '';
                         frm.doc.position = data.accused_pos || '';
                         frm.doc.company = data.company || '';
                         frm.doc.linked_nta = data.linked_nta || '';
-
                         frm.refresh_field('employee');
                         frm.refresh_field('names');
                         frm.refresh_field('coy');
                         frm.refresh_field('position');
                         frm.refresh_field('company');
                         frm.refresh_field('linked_nta');
-
-                        // Update child tables
                         frm.clear_table('disciplinary_history');
                         $.each(data.previous_disciplinary_outcomes, function(_, row) {
                             let child = frm.add_child('disciplinary_history');
@@ -93,12 +82,36 @@ frappe.ui.form.on("Disciplinary Outcome Report", {
                             child.indiv_charge = row.indiv_charge;
                         });
                         frm.refresh_field('outcome_charges');
-
-                        // Set the flag to prevent refresh loop
+                        frm.trigger('fetch_linked_fields');
+                        frm.trigger('fetch_employee_names');
                         frm.set_value('linked_disciplinary_action_processed', true);
                         
-                        // Fetch linked fields after updating the linked disciplinary action
-                        frm.trigger('fetch_linked_fields');
+                    }
+                }
+            });
+        }
+    },
+
+    chairperson: function(frm) {
+        frm.trigger('fetch_employee_names');
+    },
+
+    complainant: function(frm) {
+        frm.trigger('fetch_employee_names');
+    },
+
+    fetch_employee_names: function(frm) {
+        if (frm.doc.chairperson || frm.doc.complainant) {
+            frappe.call({
+                method: 'ir.industrial_relations.doctype.disciplinary_outcome_report.disciplinary_outcome_report.fetch_employee_names',
+                args: {
+                    chairperson: frm.doc.chairperson,
+                    complainant: frm.doc.complainant
+                },
+                callback: function(r) {
+                    if (r.message) {
+                        frm.set_value('chairperson_name', r.message.chairperson_name);
+                        frm.set_value('complainant_name', r.message.complainant_name);
                     }
                 }
             });
@@ -132,7 +145,6 @@ frappe.ui.form.on("Disciplinary Outcome Report", {
             callback: function(r) {
                 if (r.message) {
                     frm.set_value('chairperson', r.message.chairperson);
-                    frm.set_value('chairperson_name', r.message.chairperson_name);
                     frm.set_value('complainant', r.message.complainant);
                 }
             }
