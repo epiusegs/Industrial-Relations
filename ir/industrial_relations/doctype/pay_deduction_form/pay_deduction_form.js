@@ -90,7 +90,7 @@ frappe.ui.form.on('Pay Deduction Form', {
     },
 
     before_submit: function(frm) {
-        if (!frm.doc.signed_deduction) {
+        if (!frm.doc.attached_signed_pay_deduction) {
             frappe.msgprint(__('You cannot submit this document until you have attached a signed copy of the Pay Deduction'));
             frappe.validated = false;
         }
