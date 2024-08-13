@@ -35,55 +35,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Disciplinary Code",
-   "link_count": 4,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Offence Category",
-   "link_count": 0,
-   "link_to": "Offence Category",
-   "link_type": "DocType",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Offence Outcome",
-   "link_count": 0,
-   "link_to": "Offence Outcome",
-   "link_type": "DocType",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Disciplinary Offence",
-   "link_count": 0,
-   "link_to": "Disciplinary Offence",
-   "link_type": "DocType",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Employee Rights",
-   "link_count": 0,
-   "link_to": "Employee Rights",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Trade Unions",
    "link_count": 1,
    "link_type": "DocType",
@@ -198,9 +149,68 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Disciplinary Code",
+   "link_count": 5,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Offence Category",
+   "link_count": 0,
+   "link_to": "Offence Category",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Offence Outcome",
+   "link_count": 0,
+   "link_to": "Offence Outcome",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Disciplinary Offence",
+   "link_count": 0,
+   "link_to": "Disciplinary Offence",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employee Rights",
+   "link_count": 0,
+   "link_to": "Employee Rights",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Schedule of Offences",
+   "link_count": 0,
+   "link_to": "Schedule of Offences",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-08-07 12:58:32.770350",
+ "modified": "2024-08-13 20:11:25.212358",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Industrial Relations",
