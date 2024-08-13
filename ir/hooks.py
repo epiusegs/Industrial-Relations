@@ -22,6 +22,7 @@ fixtures = [
     		       ]
                 ]
             ]},
+        {"dt": "Report", "filters": [["name", "in", ["Disciplinary Offence Report"]]]}
         ]
 # Includes in <head>
 # ------------------
