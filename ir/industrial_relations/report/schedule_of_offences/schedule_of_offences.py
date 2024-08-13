@@ -51,10 +51,10 @@ def execute(filters=None):
         data.append({
             "name": offence.name,
             "offence_description": "{}<br><i>{}</i>".format(offence.offence_description, offence.notes),
-            "sanction_on_first_offence": "{}<br><i>{}</i>".format(offence.sanction_on_first_offence, first_offence_outcome),
-            "sanction_on_second_offence": "{}<br><i>{}</i>".format(offence.sanction_on_second_offence, second_offence_outcome),
-            "sanction_on_third_offence": "{}<br><i>{}</i>".format(offence.sanction_on_third_offence, third_offence_outcome),
-            "sanction_on_fourth_offence": "{}<br><i>{}</i>".format(offence.sanction_on_fourth_offence, fourth_offence_outcome)
+            "sanction_on_first_offence": first_offence_outcome,
+            "sanction_on_second_offence": second_offence_outcome,
+            "sanction_on_third_offence": third_offence_outcome,
+            "sanction_on_fourth_offence": fourth_offence_outcome
         })
 
     return columns, data
