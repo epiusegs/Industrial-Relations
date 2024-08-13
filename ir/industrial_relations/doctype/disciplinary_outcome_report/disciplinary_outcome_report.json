@@ -33,7 +33,9 @@
   "chairperson_summary_section",
   "introduction",
   "complainant_case",
+  "compl_evidence",
   "accused_case",
+  "acc_evidence",
   "analysis_of_evidence",
   "finding",
   "mitigating_considerations",
@@ -73,8 +75,10 @@
   },
   {
    "fieldname": "linked_nta",
-   "fieldtype": "Read Only",
-   "label": "Linked NTA"
+   "fieldtype": "Link",
+   "label": "Linked NTA",
+   "options": "NTA Hearing",
+   "read_only": 1
   },
   {
    "fieldname": "linked_sanction",
@@ -214,7 +218,8 @@
    "fieldname": "chairperson",
    "fieldtype": "Link",
    "label": "Chairperson",
-   "options": "Employee"
+   "options": "Employee",
+   "reqd": 1
   },
   {
    "fieldname": "complainant",
@@ -244,12 +249,24 @@
    "fieldname": "approver_name",
    "fieldtype": "Read Only",
    "label": "Approver Name"
+  },
+  {
+   "fieldname": "compl_evidence",
+   "fieldtype": "Table",
+   "label": "Attach Complainant Evidence",
+   "options": "Disciplinary Action Files"
+  },
+  {
+   "fieldname": "acc_evidence",
+   "fieldtype": "Table",
+   "label": "Attach Accused Evidence",
+   "options": "Disciplinary Action Files"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-13 14:27:04.911339",
+ "modified": "2024-08-13 15:23:19.917914",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Outcome Report",

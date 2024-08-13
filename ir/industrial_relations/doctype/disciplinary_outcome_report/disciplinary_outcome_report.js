@@ -132,6 +132,7 @@ frappe.ui.form.on("Disciplinary Outcome Report", {
             callback: function(r) {
                 if (r.message) {
                     frm.set_value('chairperson', r.message.chairperson);
+                    frm.set_value('chairperson_name', r.message.chairperson_name);
                     frm.set_value('complainant', r.message.complainant);
                 }
             }

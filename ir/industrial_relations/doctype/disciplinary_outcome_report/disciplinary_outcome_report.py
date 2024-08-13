@@ -68,10 +68,12 @@ def fetch_company_letter_head(company):
 @frappe.whitelist()
 def fetch_linked_fields(linked_nta, linked_disciplinary_action):
     chairperson = None
+    chairperson_name = None
     complainant = None
 
     if linked_nta:
         chairperson = frappe.db.get_value('NTA Hearing', linked_nta, 'chairperson')
+        chairperson_name = frappe.db.get_value('NTA Hearing', linked_nta, 'chairperson_name')
 
     if linked_disciplinary_action:
         complainant = frappe.db.get_value('Disciplinary Action', linked_disciplinary_action, 'complainant')
@@ -79,4 +81,5 @@ def fetch_linked_fields(linked_nta, linked_disciplinary_action):
     return {
         'chairperson': chairperson,
         'complainant': complainant,
+        'chairperson_name': chairperson_name,
     }
