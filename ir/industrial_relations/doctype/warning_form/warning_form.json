@@ -120,8 +120,7 @@
    "fieldname": "warning_charges",
    "fieldtype": "Table",
    "label": "Charges",
-   "options": "Charges",
-   "read_only": 1
+   "options": "Charges"
   },
   {
    "fieldname": "linked_disciplinary_action",
@@ -227,7 +226,7 @@
    "link_fieldname": "accused"
   }
  ],
- "modified": "2024-08-08 22:34:46.016756",
+ "modified": "2024-08-14 10:55:16.897659",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Warning Form",
