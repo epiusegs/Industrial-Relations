@@ -15,6 +15,7 @@
   "istermination",
   "ispaydeduction",
   "isnotguilty",
+  "iscancellation",
   "expires_or_lapses",
   "expiry_days"
  ],
@@ -85,6 +86,12 @@
    "fieldname": "expiry_days",
    "fieldtype": "Data",
    "label": "Expiry Period (In Days)"
+  },
+  {
+   "default": "0",
+   "fieldname": "iscancellation",
+   "fieldtype": "Check",
+   "label": "Is a cancellation"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -106,7 +113,7 @@
    "link_fieldname": "sanction_on_fourth_offence"
   }
  ],
- "modified": "2024-07-25 12:43:56.556522",
+ "modified": "2024-08-16 14:47:37.729992",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Offence Outcome",

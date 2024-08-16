@@ -74,6 +74,10 @@ frappe.ui.form.on('Disciplinary Action', {
             frm.page.add_inner_button(__('Issue VSP'), function() {
                 make_vsp(frm);
             }, 'Actions');
+
+            frm.page.add_inner_button(__('Cancel Disciplinary Action'), function() {
+                cancel_disciplinary(frm);
+            }, 'Actions');
         }
 
         if (!frm.is_new()) {
@@ -328,5 +332,16 @@ function make_vsp(frm) {
             linked_disciplinary_action: frm.doc.name
         },
         freeze_message: __("Creating VSP ...")
+    });
+}
+
+function cancel_disciplinary(frm) {
+    frappe.model.open_mapped_doc({
+        method: "ir.industrial_relations.doctype.hearing_cancellation_form.hearing_cancellation_form.cancel_disciplinary",
+        frm: frm,
+        args: {
+            linked_disciplinary_action: frm.doc.name
+        },
+        freeze_message: __("Generating Cancellation Form ...")
     });
 }

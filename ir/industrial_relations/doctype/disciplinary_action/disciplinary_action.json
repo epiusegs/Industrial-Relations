@@ -51,7 +51,8 @@
   "linked_pay_deduction",
   "linked_not_guilty",
   "linked_suspension",
-  "linked_vsp"
+  "linked_vsp",
+  "linked_cancellation"
  ],
  "fields": [
   {
@@ -326,6 +327,13 @@
   {
    "fieldname": "outcome_end",
    "fieldtype": "Read Only"
+  },
+  {
+   "fieldname": "linked_cancellation",
+   "fieldtype": "Link",
+   "label": "Linked Cancellation",
+   "options": "Hearing Cancellation Form",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -364,7 +372,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-08-08 21:27:52.861871",
+ "modified": "2024-08-16 14:26:58.003493",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",
@@ -411,6 +419,7 @@
    "write": 1
   }
  ],
+ "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
  "track_changes": 1
