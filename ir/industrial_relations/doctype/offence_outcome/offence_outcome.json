@@ -23,7 +23,7 @@
   {
    "fieldname": "disc_offence_outcome_sec",
    "fieldtype": "Section Break",
-   "label": "Discipilnary Offence Outcome"
+   "label": "Disciplinary Offence Outcome"
   },
   {
    "fieldname": "disc_offence_out",
@@ -89,6 +89,7 @@
   },
   {
    "default": "0",
+   "description": "Is this outcome intended to provide reasons for why action was cancelled?",
    "fieldname": "iscancellation",
    "fieldtype": "Check",
    "label": "Is a cancellation"
@@ -113,7 +114,7 @@
    "link_fieldname": "sanction_on_fourth_offence"
   }
  ],
- "modified": "2024-08-16 14:47:37.729992",
+ "modified": "2024-08-19 08:32:44.542180",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Offence Outcome",
