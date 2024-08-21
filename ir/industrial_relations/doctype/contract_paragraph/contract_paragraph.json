@@ -20,7 +20,7 @@
    "search_index": 1
   },
   {
-   "description": "Text of paragraph, note that use of curly brackets for\n{employee_name}, {date_of_joining}, {company}, {employee_number}, {designation}, {current_address}, {start_date}, {end_date}, {id_number} and {branch}, will result in fields being populated from Form.",
+   "description": "Text of paragraph, note that use of curly brackets for\n{employee_name}, {date_of_joining}, {company}, {employee_number}, {designation}, {current_address}, {start_date}, {end_date}, {custom_id_number}, {project} and {branch}, will result in fields being populated from Form.",
    "fieldname": "par_text",
    "fieldtype": "Long Text",
    "in_list_view": 1,
@@ -32,7 +32,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-08-21 07:59:49.402945",
+ "modified": "2024-08-21 11:10:33.155568",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract Paragraph",

@@ -1,0 +1,436 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-08-21 15:34:32.897637",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_o3ae",
+  "amended_from",
+  "company",
+  "letter_head",
+  "employee_details_section",
+  "employee",
+  "date_of_birth",
+  "date_of_joining",
+  "current_address",
+  "column_break_vsls",
+  "employee_name",
+  "designation",
+  "custom_id_number",
+  "branch",
+  "contract_details_section",
+  "contract_type",
+  "start_date",
+  "end_date",
+  "column_break_jkyr",
+  "has_expiry",
+  "has_retirement",
+  "retirement_age",
+  "monday_section",
+  "monday",
+  "mon_start",
+  "tuesday",
+  "tue_start",
+  "wednesday",
+  "wed_start",
+  "thursday",
+  "thu_start",
+  "friday",
+  "fri_start",
+  "saturday",
+  "sat_start",
+  "sunday",
+  "sun_start",
+  "column_break_yrxz",
+  "123",
+  "mon_end",
+  "456",
+  "tue_end",
+  "789",
+  "wed_end",
+  "012",
+  "thu_end",
+  "345",
+  "fri_end",
+  "678",
+  "sat_end",
+  "901",
+  "sun_end",
+  "section_break_ztkd",
+  "contract_clauses",
+  "generated_contract"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_o3ae",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Contract of Employment",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "employee_details_section",
+   "fieldtype": "Section Break",
+   "label": "Employee Details"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_vsls",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth",
+   "read_only": 1
+  },
+  {
+   "fieldname": "date_of_joining",
+   "fieldtype": "Date",
+   "label": "Date of Joining",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Position",
+   "read_only": 1
+  },
+  {
+   "fieldname": "current_address",
+   "fieldtype": "Small Text",
+   "label": "Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "custom_id_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "RSA ID / Passport No.",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "letter_head",
+   "fieldtype": "Link",
+   "label": "Letterhead",
+   "options": "Letter Head",
+   "read_only": 1
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Site",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "contract_details_section",
+   "fieldtype": "Section Break",
+   "label": "Contract Details"
+  },
+  {
+   "fieldname": "contract_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Contract Type",
+   "options": "Contract Type",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_jkyr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_expiry",
+   "fieldtype": "Check",
+   "label": "Has Expiry",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "has_retirement",
+   "fieldtype": "Check",
+   "label": "Has Retirement",
+   "read_only": 1
+  },
+  {
+   "fieldname": "retirement_age",
+   "fieldtype": "Int",
+   "label": "Retirement Age",
+   "read_only": 1
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "section_break_ztkd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "contract_clauses",
+   "fieldtype": "Table",
+   "label": "Applicable Clauses",
+   "options": "Contract Clauses",
+   "read_only": 1
+  },
+  {
+   "fieldname": "generated_contract",
+   "fieldtype": "Text Editor",
+   "label": "Contract Wording",
+   "read_only": 1
+  },
+  {
+   "fieldname": "monday_section",
+   "fieldtype": "Section Break",
+   "label": "Fixed Hours of Work"
+  },
+  {
+   "fieldname": "mon_start",
+   "fieldtype": "Time",
+   "label": "Start"
+  },
+  {
+   "fieldname": "column_break_yrxz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mon_end",
+   "fieldtype": "Time",
+   "label": "End"
+  },
+  {
+   "fieldname": "tue_start",
+   "fieldtype": "Time",
+   "label": "Start"
+  },
+  {
+   "fieldname": "tue_end",
+   "fieldtype": "Time",
+   "label": "End"
+  },
+  {
+   "fieldname": "wed_start",
+   "fieldtype": "Time",
+   "label": "Start"
+  },
+  {
+   "fieldname": "wed_end",
+   "fieldtype": "Time",
+   "label": "End"
+  },
+  {
+   "fieldname": "thu_start",
+   "fieldtype": "Time",
+   "label": "Start"
+  },
+  {
+   "fieldname": "thu_end",
+   "fieldtype": "Time",
+   "label": "End"
+  },
+  {
+   "fieldname": "monday",
+   "fieldtype": "Heading",
+   "label": "Monday"
+  },
+  {
+   "fieldname": "tuesday",
+   "fieldtype": "Heading",
+   "label": "Tuesday"
+  },
+  {
+   "fieldname": "wednesday",
+   "fieldtype": "Heading",
+   "label": "Wednesday"
+  },
+  {
+   "fieldname": "thursday",
+   "fieldtype": "Heading",
+   "label": "Thursday"
+  },
+  {
+   "fieldname": "friday",
+   "fieldtype": "Heading",
+   "label": "Friday"
+  },
+  {
+   "fieldname": "fri_start",
+   "fieldtype": "Time",
+   "label": "Start"
+  },
+  {
+   "fieldname": "123",
+   "fieldtype": "Heading",
+   "label": "*"
+  },
+  {
+   "fieldname": "456",
+   "fieldtype": "Heading",
+   "label": " *"
+  },
+  {
+   "fieldname": "789",
+   "fieldtype": "Heading",
+   "label": " *"
+  },
+  {
+   "fieldname": "012",
+   "fieldtype": "Heading",
+   "label": " *"
+  },
+  {
+   "fieldname": "345",
+   "fieldtype": "Heading",
+   "label": " *"
+  },
+  {
+   "fieldname": "fri_end",
+   "fieldtype": "Time",
+   "label": "End"
+  },
+  {
+   "fieldname": "saturday",
+   "fieldtype": "Heading",
+   "label": "Saturday"
+  },
+  {
+   "fieldname": "sat_start",
+   "fieldtype": "Time",
+   "label": "Start"
+  },
+  {
+   "fieldname": "sunday",
+   "fieldtype": "Heading",
+   "label": "Sunday"
+  },
+  {
+   "fieldname": "sun_start",
+   "fieldtype": "Time",
+   "label": "Start"
+  },
+  {
+   "fieldname": "678",
+   "fieldtype": "Heading",
+   "label": "*"
+  },
+  {
+   "fieldname": "sat_end",
+   "fieldtype": "Time",
+   "label": "End"
+  },
+  {
+   "fieldname": "901",
+   "fieldtype": "Heading",
+   "label": "*"
+  },
+  {
+   "fieldname": "sun_end",
+   "fieldtype": "Time",
+   "label": "End"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-08-21 16:00:26.863302",
+ "modified_by": "Administrator",
+ "module": "Industrial Relations",
+ "name": "Contract of Employment",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "IR Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "IR User",
+   "select": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1
+}
