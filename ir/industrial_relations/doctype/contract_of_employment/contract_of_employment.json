@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:{contract_type} - {employee_name} - {employee} - {DD}-{MM}-{YYYY}",
  "creation": "2024-08-21 15:34:32.897637",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -102,19 +103,22 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Employee Name",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "date_of_birth",
    "fieldtype": "Date",
    "label": "Date of Birth",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "date_of_joining",
    "fieldtype": "Date",
    "label": "Date of Joining",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "company",
@@ -124,19 +128,22 @@
    "label": "Company",
    "options": "Company",
    "read_only": 1,
+   "reqd": 1,
    "search_index": 1
   },
   {
    "fieldname": "designation",
    "fieldtype": "Data",
    "label": "Position",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "current_address",
    "fieldtype": "Small Text",
    "label": "Address",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "custom_id_number",
@@ -145,6 +152,7 @@
    "in_standard_filter": 1,
    "label": "RSA ID / Passport No.",
    "read_only": 1,
+   "reqd": 1,
    "search_index": 1
   },
   {
@@ -152,7 +160,8 @@
    "fieldtype": "Link",
    "label": "Letterhead",
    "options": "Letter Head",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "branch",
@@ -162,6 +171,7 @@
    "in_standard_filter": 1,
    "label": "Site",
    "read_only": 1,
+   "reqd": 1,
    "search_index": 1
   },
   {
@@ -237,6 +247,7 @@
    "label": "Fixed Hours of Work"
   },
   {
+   "default": "06:00",
    "fieldname": "mon_start",
    "fieldtype": "Time",
    "label": "Start"
@@ -246,36 +257,43 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "16:00",
    "fieldname": "mon_end",
    "fieldtype": "Time",
    "label": "End"
   },
   {
+   "default": "06:00",
    "fieldname": "tue_start",
    "fieldtype": "Time",
    "label": "Start"
   },
   {
+   "default": "16:00",
    "fieldname": "tue_end",
    "fieldtype": "Time",
    "label": "End"
   },
   {
+   "default": "06:00",
    "fieldname": "wed_start",
    "fieldtype": "Time",
    "label": "Start"
   },
   {
+   "default": "16:00",
    "fieldname": "wed_end",
    "fieldtype": "Time",
    "label": "End"
   },
   {
+   "default": "06:00",
    "fieldname": "thu_start",
    "fieldtype": "Time",
    "label": "Start"
   },
   {
+   "default": "16:00",
    "fieldname": "thu_end",
    "fieldtype": "Time",
    "label": "End"
@@ -306,6 +324,7 @@
    "label": "Friday"
   },
   {
+   "default": "06:00",
    "fieldname": "fri_start",
    "fieldtype": "Time",
    "label": "Start"
@@ -336,6 +355,7 @@
    "label": " *"
   },
   {
+   "default": "16:00",
    "fieldname": "fri_end",
    "fieldtype": "Time",
    "label": "End"
@@ -346,6 +366,7 @@
    "label": "Saturday"
   },
   {
+   "default": "00:00",
    "fieldname": "sat_start",
    "fieldtype": "Time",
    "label": "Start"
@@ -356,6 +377,7 @@
    "label": "Sunday"
   },
   {
+   "default": "00:00",
    "fieldname": "sun_start",
    "fieldtype": "Time",
    "label": "Start"
@@ -366,6 +388,7 @@
    "label": "*"
   },
   {
+   "default": "00:00",
    "fieldname": "sat_end",
    "fieldtype": "Time",
    "label": "End"
@@ -376,6 +399,7 @@
    "label": "*"
   },
   {
+   "default": "00:00",
    "fieldname": "sun_end",
    "fieldtype": "Time",
    "label": "End"
@@ -384,10 +408,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-21 16:00:26.863302",
+ "modified": "2024-08-21 17:24:23.304849",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract of Employment",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
