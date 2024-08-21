@@ -1,0 +1,153 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{doc_number}Rev.{YY}",
+ "creation": "2024-08-21 08:54:29.471430",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_3xdn",
+  "amended_from",
+  "contract_type_section",
+  "doc_number",
+  "rev_date",
+  "column_break_znxa",
+  "contract_type",
+  "has_expiry",
+  "has_retirement",
+  "retirement_age",
+  "contract_contents_section",
+  "contract_terms"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_3xdn",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Contract Type",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "contract_type_section",
+   "fieldtype": "Section Break",
+   "label": "Contract Type"
+  },
+  {
+   "fieldname": "doc_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Document Number",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "rev_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Revision Date",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_znxa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contract_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Contract Name",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "default": "0",
+   "description": "Does this contract type expire, such as on a fixed date or on the occurance of a fixed event?",
+   "fieldname": "has_expiry",
+   "fieldtype": "Check",
+   "label": "Is Temporary?"
+  },
+  {
+   "default": "0",
+   "description": "Is there a forced retirement age applicable to this contract type?",
+   "fieldname": "has_retirement",
+   "fieldtype": "Check",
+   "label": "Is there a Retirement Age?"
+  },
+  {
+   "fieldname": "retirement_age",
+   "fieldtype": "Int",
+   "label": "Retirement Age (In Years)"
+  },
+  {
+   "fieldname": "contract_contents_section",
+   "fieldtype": "Section Break",
+   "label": "Contract Contents"
+  },
+  {
+   "fieldname": "contract_terms",
+   "fieldtype": "Table",
+   "label": "Applicable Clauses",
+   "options": "Contract Terms",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-08-21 09:11:54.378655",
+ "modified_by": "Administrator",
+ "module": "Industrial Relations",
+ "name": "Contract Type",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "IR Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "IR User",
+   "select": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

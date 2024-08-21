@@ -372,7 +372,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-08-16 14:26:58.003493",
+ "modified": "2024-08-19 13:11:14.679728",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",
@@ -422,5 +422,7 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "track_changes": 1
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }
