@@ -34,27 +34,6 @@ frappe.ui.form.on('Contract of Employment', {
                 frm.set_value('has_retirement', contract_type_doc.has_retirement || 0);
                 frm.set_value('retirement_age', contract_type_doc.retirement_age || '');
 
-                // Clear contract_clauses table
-                frm.clear_table('contract_clauses');
-
-                // Populate contract_clauses table based on contract_terms in Contract Type
-                contract_type_doc.contract_terms.forEach(term_row => {
-                    frappe.model.with_doc('Contract Section', term_row.section, function() {
-                        let section_doc = frappe.get_doc('Contract Section', term_row.section);
-
-                        let clause_content = `<b>${section_doc.sec_head}</b><br>`;
-                        section_doc.sec_par.forEach(paragraph => {
-                            clause_content += `${paragraph.par_num}. ${paragraph.par_text}<br>`;
-                        });
-
-                        let row = frm.add_child('contract_clauses');
-                        row.section_number = term_row.sec_no;
-                        row.clause_content = clause_content;
-
-                        frm.refresh_field('contract_clauses');
-                    });
-                });
-
                 // Handle has_retirement logic
                 if (contract_type_doc.has_retirement) {
                     let retirement_age = contract_type_doc.retirement_age;

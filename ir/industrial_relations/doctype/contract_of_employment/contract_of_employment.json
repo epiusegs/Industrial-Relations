@@ -28,6 +28,7 @@
   "has_expiry",
   "has_retirement",
   "retirement_age",
+  "project",
   "monday_section",
   "monday",
   "mon_start",
@@ -403,12 +404,17 @@
    "fieldname": "sun_end",
    "fieldtype": "Time",
    "label": "End"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Data",
+   "label": "Project / Task"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-21 17:24:23.304849",
+ "modified": "2024-08-22 08:40:10.784763",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract of Employment",
