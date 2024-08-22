@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{doc_number}Rev.{YY}",
+ "autoname": "format:{doc_number} Rev.{YY} - {contract_type}",
  "creation": "2024-08-21 08:54:29.471430",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -64,8 +64,7 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Contract Name",
-   "reqd": 1,
-   "search_index": 1
+   "reqd": 1
   },
   {
    "default": "0",
@@ -102,7 +101,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-21 09:11:54.378655",
+ "modified": "2024-08-22 10:05:07.618662",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract Type",
@@ -149,5 +148,7 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1
 }
