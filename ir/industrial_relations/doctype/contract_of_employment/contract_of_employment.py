@@ -17,12 +17,25 @@ class ContractofEmployment(Document):
             contract_type_doc = frappe.get_doc('Contract Type', self.contract_type)
             self.contract_clauses = []
 
+            # Fetch the names of the specific sections for comparison
+            remuneration_section_name = frappe.db.get_value('Contract Section', {'sec_head': 'Remuneration'}, 'name')
+            working_hours_section_name = frappe.db.get_value('Contract Section', {'sec_head': 'Working Hours'}, 'name')
+
             for term in contract_type_doc.contract_terms:
-                section = frappe.get_doc('Contract Section', term.section)
-                
+                # Check if the term's section is the one we want to replace
+                if term.section == remuneration_section_name and self.remuneration:
+                    # Use the user-specified remuneration clause
+                    section = frappe.get_doc('Contract Section', self.remuneration)
+                elif term.section == working_hours_section_name and self.working_hours:
+                    # Use the user-specified working hours clause
+                    section = frappe.get_doc('Contract Section', self.working_hours)
+                else:
+                    # Otherwise, use the standard section linked in the contract type
+                    section = frappe.get_doc('Contract Section', term.section)
+
                 # Numbered section header
                 clause_content = f"<b>{term.sec_no}. {section.sec_head}</b><br>"
-                
+
                 # Handle section numbering
                 numbered_content = self.handle_section_numbering(section, term.sec_no)
                 clause_content += numbered_content
@@ -35,11 +48,6 @@ class ContractofEmployment(Document):
                     'section_number': term.sec_no,
                     'clause_content': clause_content
                 })
-
-            # Update other fields
-            self.has_expiry = contract_type_doc.has_expiry
-            self.has_retirement = contract_type_doc.has_retirement
-            self.retirement_age = contract_type_doc.retirement_age
 
     def handle_section_numbering(self, section, section_number):
         """Handles the numbering and formatting of sections and paragraphs."""
@@ -75,6 +83,7 @@ class ContractofEmployment(Document):
             content = content.replace("{custom_id_number}", self.custom_id_number or "_____________________")
             content = content.replace("{branch}", self.branch or "_____________________")
             content = content.replace("{contract_type}", self.contract_type or "_____________________")
+            content = content.replace("{rate}", "{:.2f}".format(self.rate) if self.rate else "_____________________")
             
             # Replace time placeholders with 24-hour format
             content = content.replace("{mon_start}", format_time(self.mon_start or "00:00", "HH:mm"))

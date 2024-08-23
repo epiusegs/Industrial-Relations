@@ -20,15 +20,18 @@
   "designation",
   "custom_id_number",
   "branch",
+  "rate",
   "contract_details_section",
   "contract_type",
+  "remuneration",
+  "working_hours",
   "start_date",
-  "end_date",
   "column_break_jkyr",
   "has_expiry",
   "has_retirement",
   "retirement_age",
   "project",
+  "end_date",
   "monday_section",
   "monday",
   "mon_start",
@@ -198,14 +201,14 @@
    "default": "0",
    "fieldname": "has_expiry",
    "fieldtype": "Check",
-   "label": "Has Expiry",
+   "label": "Has an Expiry Date",
    "read_only": 1
   },
   {
    "default": "0",
    "fieldname": "has_retirement",
    "fieldtype": "Check",
-   "label": "Has Retirement",
+   "label": "Has a Retirement Age",
    "read_only": 1
   },
   {
@@ -409,12 +412,36 @@
    "fieldname": "project",
    "fieldtype": "Data",
    "label": "Project / Task"
+  },
+  {
+   "fieldname": "remuneration",
+   "fieldtype": "Link",
+   "label": "Remuneration Type",
+   "link_filters": "[[\"Contract Section\",\"is_remuneration\",\"=\",1]]",
+   "options": "Contract Section",
+   "reqd": 1
+  },
+  {
+   "fieldname": "working_hours",
+   "fieldtype": "Link",
+   "label": "Hours of Work Type",
+   "link_filters": "[[\"Contract Section\",\"is_hours\",\"=\",1]]",
+   "options": "Contract Section",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "label": "Rate of Pay (Salary or Hourly)",
+   "non_negative": 1,
+   "precision": "2",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-22 08:40:10.784763",
+ "modified": "2024-08-23 13:38:01.451870",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract of Employment",

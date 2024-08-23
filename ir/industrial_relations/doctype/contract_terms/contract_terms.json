@@ -26,7 +26,7 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Section Contents",
-   "link_filters": "[]",
+   "link_filters": "[[\"Contract Section\",\"is_remuneration\",\"=\",0],[\"Contract Section\",\"is_hours\",\"=\",0]]",
    "options": "Contract Section",
    "reqd": 1,
    "search_index": 1
@@ -35,7 +35,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-08-21 11:53:43.071351",
+ "modified": "2024-08-23 13:11:58.942402",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract Terms",

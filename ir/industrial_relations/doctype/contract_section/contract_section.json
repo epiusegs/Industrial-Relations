@@ -8,6 +8,10 @@
  "field_order": [
   "contract_section_section",
   "sec_head",
+  "column_break_fjvn",
+  "is_remuneration",
+  "is_hours",
+  "section_break_mhzj",
   "sec_par"
  ],
  "fields": [
@@ -29,11 +33,31 @@
    "label": "Paragraphs",
    "options": "Contract Paragraph",
    "reqd": 1
+  },
+  {
+   "fieldname": "column_break_fjvn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_remuneration",
+   "fieldtype": "Check",
+   "label": "Is this a Remuneration Section?"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_hours",
+   "fieldtype": "Check",
+   "label": "Is this a Working Hours Section?"
+  },
+  {
+   "fieldname": "section_break_mhzj",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-21 12:58:33.579499",
+ "modified": "2024-08-23 13:09:34.140583",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract Section",
