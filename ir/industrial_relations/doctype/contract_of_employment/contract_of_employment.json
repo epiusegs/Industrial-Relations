@@ -26,12 +26,14 @@
   "remuneration",
   "working_hours",
   "start_date",
+  "restraint_period",
   "column_break_jkyr",
   "has_expiry",
   "has_retirement",
   "retirement_age",
   "project",
   "end_date",
+  "restraint_territory",
   "monday_section",
   "monday",
   "mon_start",
@@ -436,12 +438,24 @@
    "non_negative": 1,
    "precision": "2",
    "reqd": 1
+  },
+  {
+   "default": "Mpumalanga, South Africa",
+   "fieldname": "restraint_territory",
+   "fieldtype": "Data",
+   "label": "Restraint Territory"
+  },
+  {
+   "default": "12 Months",
+   "fieldname": "restraint_period",
+   "fieldtype": "Data",
+   "label": "Restraint Period"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-23 13:38:01.451870",
+ "modified": "2024-08-24 11:19:32.573538",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract of Employment",

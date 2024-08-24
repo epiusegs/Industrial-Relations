@@ -83,7 +83,10 @@ class ContractofEmployment(Document):
             content = content.replace("{custom_id_number}", self.custom_id_number or "_____________________")
             content = content.replace("{branch}", self.branch or "_____________________")
             content = content.replace("{contract_type}", self.contract_type or "_____________________")
-            content = content.replace("{rate}", "{:.2f}".format(self.rate) if self.rate else "_____________________")
+            content = content.replace("{rate}", "{:.2f}".format(self.rate) if self.rate else "__________")
+            content = content.replace("{retirement_age}", str(self.retirement_age) or "__________")
+            content = content.replace("{restraint_period}", self.restraint_period or "_____________________")
+            content = content.replace("{restraint_territory}", self.restraint_territory or "_____________________")
             
             # Replace time placeholders with 24-hour format
             content = content.replace("{mon_start}", format_time(self.mon_start or "00:00", "HH:mm"))

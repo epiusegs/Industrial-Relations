@@ -1,8 +1,9 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "format:{sec_head}",
- "creation": "2024-08-21 08:03:06.037600",
+ "creation": "2024-08-24 10:36:39.801190",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
@@ -28,13 +29,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "sec_par",
-   "fieldtype": "Table",
-   "label": "Paragraphs",
-   "options": "Contract Paragraph",
-   "reqd": 1
-  },
-  {
    "fieldname": "column_break_fjvn",
    "fieldtype": "Column Break"
   },
@@ -53,11 +47,18 @@
   {
    "fieldname": "section_break_mhzj",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "sec_par",
+   "fieldtype": "Table",
+   "label": "Paragraphs",
+   "options": "Contract Paragraph",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-23 13:09:34.140583",
+ "modified": "2024-08-24 11:03:04.066729",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract Section",
