@@ -116,7 +116,9 @@ class ContractofEmployment(Document):
 
             # Replace section headings with section numbers
             for sec_head, section_number in self.sec_head_to_number.items():
-                pattern = rf'\{{par\."{sec_head}"\}}'
+                # Escape any special characters in sec_head
+                escaped_sec_head = re.escape(sec_head)
+                pattern = rf'\{{par\."{escaped_sec_head}"\}}'
                 content = re.sub(pattern, str(section_number), content)
 
             contract_content += content
