@@ -16,21 +16,21 @@ class ContractofEmployment(Document):
         if not self.contract_type:
             return
 
+        # Clear existing clauses
+        self.contract_clauses = []
+
+        # Fetch the Contract Type document
         contract_type_doc = frappe.get_doc('Contract Type', self.contract_type)
-        self.contract_clauses = []  # Clear existing clauses
 
         # Dictionary to map section heading to section number
         sec_head_to_number = {}
 
-        # Fetch the names of the specific sections for comparison
-        remuneration_section_name = frappe.db.get_value('Contract Section', {'sec_head': 'Remuneration'}, 'name')
-        working_hours_section_name = frappe.db.get_value('Contract Section', {'sec_head': 'Working Hours'}, 'name')
-
+        # Loop through contract terms in the contract type document
         for term in contract_type_doc.contract_terms:
             # Determine which section to use
-            if term.section == remuneration_section_name and self.remuneration:
+            if term.section == "Remuneration Placeholder":
                 section = frappe.get_doc('Contract Section', self.remuneration)
-            elif term.section == working_hours_section_name and self.working_hours:
+            elif term.section == "Working Hours Placeholder":
                 section = frappe.get_doc('Contract Section', self.working_hours)
             else:
                 section = frappe.get_doc('Contract Section', term.section)
@@ -54,8 +54,8 @@ class ContractofEmployment(Document):
                 'clause_content': clause_content
             })
 
-            # Store the mapping in self for later use
-            self.sec_head_to_number = sec_head_to_number
+        # Store the mapping in self for later use
+        self.sec_head_to_number = sec_head_to_number
 
     def handle_section_numbering(self, section, section_number):
         """Handles the numbering and formatting of sections and paragraphs."""
