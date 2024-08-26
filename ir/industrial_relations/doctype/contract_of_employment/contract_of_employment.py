@@ -13,59 +13,69 @@ class ContractofEmployment(Document):
 
     def update_contract_clauses(self):
         """Fetches and updates the contract clauses from the linked Contract Type."""
-        if self.contract_type:
-            contract_type_doc = frappe.get_doc('Contract Type', self.contract_type)
-            self.contract_clauses = []
+        if not self.contract_type:
+            return
 
-            # Fetch the names of the specific sections for comparison
-            remuneration_section_name = frappe.db.get_value('Contract Section', {'sec_head': 'Remuneration'}, 'name')
-            working_hours_section_name = frappe.db.get_value('Contract Section', {'sec_head': 'Working Hours'}, 'name')
+        contract_type_doc = frappe.get_doc('Contract Type', self.contract_type)
+        self.contract_clauses = []  # Clear existing clauses
 
-            for term in contract_type_doc.contract_terms:
-                # Check if the term's section is the one we want to replace
-                if term.section == remuneration_section_name and self.remuneration:
-                    # Use the user-specified remuneration clause
-                    section = frappe.get_doc('Contract Section', self.remuneration)
-                elif term.section == working_hours_section_name and self.working_hours:
-                    # Use the user-specified working hours clause
-                    section = frappe.get_doc('Contract Section', self.working_hours)
-                else:
-                    # Otherwise, use the standard section linked in the contract type
-                    section = frappe.get_doc('Contract Section', term.section)
+        # Dictionary to map section heading to section number
+        sec_head_to_number = {}
 
-                # Numbered section header
-                clause_content = f"<b>{term.sec_no}. {section.sec_head}</b><br>"
+        # Fetch the names of the specific sections for comparison
+        remuneration_section_name = frappe.db.get_value('Contract Section', {'sec_head': 'Remuneration'}, 'name')
+        working_hours_section_name = frappe.db.get_value('Contract Section', {'sec_head': 'Working Hours'}, 'name')
 
-                # Handle section numbering
-                numbered_content = self.handle_section_numbering(section, term.sec_no)
-                clause_content += numbered_content
+        for term in contract_type_doc.contract_terms:
+            # Determine which section to use
+            if term.section == remuneration_section_name and self.remuneration:
+                section = frappe.get_doc('Contract Section', self.remuneration)
+            elif term.section == working_hours_section_name and self.working_hours:
+                section = frappe.get_doc('Contract Section', self.working_hours)
+            else:
+                section = frappe.get_doc('Contract Section', term.section)
 
-                # Add a blank line between sections
-                clause_content += "<br><br>"
+            # Map section heading to section number
+            sec_head_to_number[section.sec_head] = term.sec_no
 
-                # Append the content to the contract_clauses table
-                self.append('contract_clauses', {
-                    'section_number': term.sec_no,
-                    'clause_content': clause_content
-                })
+            # Numbered section header
+            section_number = term.sec_no
+            section_header = f"<b>{section_number}. {section.sec_head}</b><br>"
+
+            # Handle paragraph numbering and content
+            numbered_content = self.handle_section_numbering(section, section_number)
+
+            # Combine the header and content
+            clause_content = section_header + numbered_content + "<br><br>"
+
+            # Append to the contract_clauses table
+            self.append('contract_clauses', {
+                'section_number': section_number,
+                'clause_content': clause_content
+            })
+
+            # Store the mapping in self for later use
+            self.sec_head_to_number = sec_head_to_number
 
     def handle_section_numbering(self, section, section_number):
         """Handles the numbering and formatting of sections and paragraphs."""
         content = ""
         for par in section.sec_par:
-            # Construct the expected placeholder format
-            placeholder_pattern = r'\{{par\."{}"\.(\d+)\}}'.format(re.escape(section.sec_head))
-
-            # Replace placeholders with the actual section number + paragraph number
+            # Construct the paragraph number using the section number and paragraph number
             par_num = f"{section_number}.{par.par_num}"
-            formatted_text = re.sub(placeholder_pattern, f'{section_number}.\\1', par.par_text)
 
-            content += f"{par_num}. {formatted_text}<br>"
+            # Append the formatted text to content
+            content += f"{par_num}. {par.par_text}<br>"
+
         return content
 
     def generate_contract(self):
         """Generates the final contract document by replacing placeholders with actual data."""
         contract_content = ""
+
+        # Ensure sec_head_to_number is populated
+        if not hasattr(self, 'sec_head_to_number'):
+            self.update_contract_clauses()
 
         for clause in self.contract_clauses:
             content = clause.clause_content
@@ -103,6 +113,11 @@ class ContractofEmployment(Document):
             content = content.replace("{sat_end}", format_time(self.sat_end or "00:00", "HH:mm"))
             content = content.replace("{sun_start}", format_time(self.sun_start or "00:00", "HH:mm"))
             content = content.replace("{sun_end}", format_time(self.sun_end or "00:00", "HH:mm"))
+
+            # Replace section headings with section numbers
+            for sec_head, section_number in self.sec_head_to_number.items():
+                pattern = rf'\{{par\."{sec_head}"\}}'
+                content = re.sub(pattern, str(section_number), content)
 
             contract_content += content
 
