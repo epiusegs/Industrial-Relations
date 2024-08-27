@@ -51,6 +51,50 @@ frappe.ui.form.on('Contract of Employment', {
                 }
             });
         }
+    },
+
+    working_hours: function(frm) {
+        if (frm.doc.working_hours) {
+            frappe.db.get_doc('Contract Section', frm.doc.working_hours).then(doc => {
+                frm.set_value('has_hours', doc.has_hours || 0);
+            });
+        }
+    },
+
+    remuneration: function(frm) {
+        if (frm.doc.remuneration) {
+            frappe.db.get_doc('Contract Section', frm.doc.remuneration).then(doc => {
+                frm.set_value('has_allowances', doc.has_allowances || 0);
+            });
+        }
+    },
+
+    has_hours: function(frm) {
+        frm.events.toggle_working_hours_section(frm);
+    },
+
+    has_retirement: function(frm) {
+        frm.events.toggle_retirement_fields(frm);
+    },
+
+    has_expiry: function(frm) {
+        frm.events.toggle_expiry_fields(frm);
+    },
+
+    toggle_working_hours_section: function(frm) {
+        let should_display = frm.doc.has_hours ? 1 : 0;
+        frm.toggle_display('monday_section', should_display);
+    },
+
+    toggle_retirement_fields: function(frm) {
+        let should_display = frm.doc.has_retirement ? 1 : 0;
+        frm.toggle_display('retirement_age', should_display);
+    },
+
+    toggle_expiry_fields: function(frm) {
+        let should_display = frm.doc.has_expiry ? 1 : 0;
+        frm.toggle_display('end_date', should_display);
+        frm.toggle_display('project', should_display);
     }
 });
 

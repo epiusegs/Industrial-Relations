@@ -10,6 +10,10 @@
   "amended_from",
   "company",
   "letter_head",
+  "has_expiry",
+  "has_retirement",
+  "has_hours",
+  "has_allowances",
   "employee_details_section",
   "employee",
   "date_of_birth",
@@ -28,8 +32,6 @@
   "start_date",
   "restraint_period",
   "column_break_jkyr",
-  "has_expiry",
-  "has_retirement",
   "retirement_age",
   "project",
   "end_date",
@@ -216,8 +218,8 @@
   {
    "fieldname": "retirement_age",
    "fieldtype": "Int",
-   "label": "Retirement Age",
-   "read_only": 1
+   "hidden": 1,
+   "label": "Retirement Age"
   },
   {
    "fieldname": "start_date",
@@ -228,6 +230,7 @@
   {
    "fieldname": "end_date",
    "fieldtype": "Date",
+   "hidden": 1,
    "label": "End Date"
   },
   {
@@ -250,6 +253,7 @@
   {
    "fieldname": "monday_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Fixed Hours of Work"
   },
   {
@@ -413,6 +417,7 @@
   {
    "fieldname": "project",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Project / Task"
   },
   {
@@ -450,12 +455,28 @@
    "fieldname": "restraint_period",
    "fieldtype": "Data",
    "label": "Restraint Period"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_hours",
+   "fieldtype": "Check",
+   "label": "Working Hours Defined",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "has_allowances",
+   "fieldtype": "Check",
+   "label": "Allowances Defined",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-24 11:19:32.573538",
+ "modified": "2024-08-27 19:50:26.416518",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract of Employment",

@@ -12,6 +12,8 @@
   "column_break_fjvn",
   "is_remuneration",
   "is_hours",
+  "has_hours",
+  "has_allowances",
   "section_break_mhzj",
   "sec_par"
  ],
@@ -54,11 +56,23 @@
    "label": "Paragraphs",
    "options": "Contract Paragraph",
    "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "has_hours",
+   "fieldtype": "Check",
+   "label": "Has defined Working Hours?"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_allowances",
+   "fieldtype": "Check",
+   "label": "Includes Allowances?"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-24 11:03:04.066729",
+ "modified": "2024-08-27 08:51:04.683507",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract Section",
