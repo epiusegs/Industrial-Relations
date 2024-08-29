@@ -51,6 +51,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "columns": 2,
    "fieldname": "sec_par",
    "fieldtype": "Table",
    "label": "Paragraphs",
@@ -72,7 +73,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-27 08:51:04.683507",
+ "modified": "2024-08-29 20:24:30.086554",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract Section",

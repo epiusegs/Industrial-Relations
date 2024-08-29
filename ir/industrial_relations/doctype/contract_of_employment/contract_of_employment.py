@@ -130,7 +130,7 @@ class ContractofEmployment(Document):
             par_num = build_par_num(par)
 
             # Append the formatted text to content
-            content += f"{par_num}. {par.clause_text}<br>"
+            content += f"<b>{par_num}.</b>&emsp;{par.clause_text}<br>"
 
         return content
 
