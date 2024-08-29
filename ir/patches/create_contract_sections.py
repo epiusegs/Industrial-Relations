@@ -6,12 +6,12 @@ def execute():
         {
             "name": "Working Hours Placeholder",
             "sec_head": "Working Hours Placeholder",
-            "sec_par": [{"par_num": "1", "par_text": "This is a Placeholder Only and Should be Replaced by the Server Script at Runtime."}]
+            "sec_par": [{"ss_num": "1", "clause_text": "This is a Placeholder Only and Should be Replaced by the Server Script at Runtime."}]
         },
         {
             "name": "Remuneration Placeholder",
             "sec_head": "Remuneration Placeholder",
-            "sec_par": [{"par_num": "1", "par_text": "This is a Placeholder Only and Should be Replaced by the Server Script at Runtime."}]
+            "sec_par": [{"ss_num": "1", "clause_text": "This is a Placeholder Only and Should be Replaced by the Server Script at Runtime."}]
         }
     ]
 

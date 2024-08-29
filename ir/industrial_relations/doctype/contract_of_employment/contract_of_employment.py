@@ -105,12 +105,32 @@ class ContractofEmployment(Document):
     def handle_section_numbering(self, section, section_number):
         """Handles the numbering and formatting of sections and paragraphs."""
         content = ""
+
+        def build_par_num(par):
+            """Constructs the paragraph number based on the hierarchy."""
+            parts = []
+            if section_number:
+                parts.append(section_number)
+            if par.ss_num > 0:
+                parts.append(par.ss_num)
+            if par.par_num > 0:
+                parts.append(par.par_num)
+            if par.spar_num > 0:
+                parts.append(par.spar_num)
+            if par.item_num > 0:
+               parts.append(par.item_num)
+            if par.sitem_num > 0:
+                parts.append(par.sitem_num)
+        
+            # Join all parts with dots
+            return '.'.join(map(str, parts))
+
         for par in section.sec_par:
             # Construct the paragraph number using the section number and paragraph number
-            par_num = f"{section_number}.{par.par_num}"
+            par_num = build_par_num(par)
 
             # Append the formatted text to content
-            content += f"{par_num}. {par.par_text}<br>"
+            content += f"{par_num}. {par.clause_text}<br>"
 
         return content
 
