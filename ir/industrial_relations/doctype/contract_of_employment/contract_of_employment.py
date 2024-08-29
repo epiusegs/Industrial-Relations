@@ -155,8 +155,6 @@ class ContractofEmployment(Document):
             content = content.replace("{custom_id_number}", f"<b>{self.custom_id_number or '_____________________'}</b>")
             content = content.replace("{branch}", f"<b>{self.branch or '_____________________'}</b>")
             content = content.replace("{contract_type}", f"<b>{self.contract_type or '_____________________'}</b>")
-            ##content = content.replace("{rate}", f"<b>{'{:.2f}'.format(self.rate) if self.rate else '__________'}</b>")
-            ##content = content.replace("{retirement_age}", f"<b>{str(self.retirement_age) or '__________'}</b>")
             content = content.replace("{restraint_period}", f"<b>{self.restraint_period or '_____________________'}</b>")
             content = content.replace("{restraint_territory}", f"<b>{self.restraint_territory or '_____________________'}</b>")
             content = content.replace("{mon_start}", f"<b>{format_time(self.mon_start or '00:00', 'HH:mm')}</b>")
