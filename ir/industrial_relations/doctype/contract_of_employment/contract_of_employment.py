@@ -192,9 +192,29 @@ class ContractofEmployment(Document):
             content = content.replace("{sun_start}", f"<b>{format_time(self.sun_start or '00:00', 'HH:mm')}</b>")
             content = content.replace("{sun_end}", f"<b>{format_time(self.sun_end or '00:00', 'HH:mm')}</b>")
 
-            # Format rate with space as the thousands separator
+            # Format rate with space as the thousands separator and replace
             rate_formatted = format_with_space_separator(self.rate) if self.rate else '__________'
             content = content.replace("{rate}", f"<b>{rate_formatted}</b>")
+
+            # Format allowance_1 with space as the thousands separator and replace
+            allowance_1_rate_formatted = format_with_space_separator(self.allowance_1_rate) if self.allowance_1_rate else '__________'
+            content = content.replace("{allowance_1}", f"<b>{allowance_1_rate_formatted}</b>")
+
+            # Format allowance_2 with space as the thousands separator and replace
+            allowance_2_rate_formatted = format_with_space_separator(self.allowance_2_rate) if self.allowance_2_rate else '__________'
+            content = content.replace("{allowance_2}", f"<b>{allowance_2_rate_formatted}</b>")
+
+            # Format allowance_3 with space as the thousands separator and replace
+            allowance_3_rate_formatted = format_with_space_separator(self.allowance_3_rate) if self.allowance_3_rate else '__________'
+            content = content.replace("{allowance_3}", f"<b>{allowance_3_rate_formatted}</b>")
+
+            # Format allowance_4 with space as the thousands separator and replace
+            allowance_4_rate_formatted = format_with_space_separator(self.allowance_4_rate) if self.allowance_4_rate else '__________'
+            content = content.replace("{allowance_4}", f"<b>{allowance_4_rate_formatted}</b>")
+
+            # Format allowance_2 with space as the thousands separator and replace
+            allowance_5_rate_formatted = format_with_space_separator(self.allowance_5_rate) if self.allowance_5_rate else '__________'
+            content = content.replace("{allowance_5}", f"<b>{allowance_5_rate_formatted}</b>")
 
             # Convert retirement_age to words
             if self.retirement_age is not None:

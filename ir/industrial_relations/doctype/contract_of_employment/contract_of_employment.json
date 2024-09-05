@@ -24,10 +24,32 @@
   "designation",
   "custom_id_number",
   "branch",
+  "remuneration_details",
+  "remuneration",
+  "column_break_uiey",
   "rate",
+  "allowance1",
+  "allowance_1_desc",
+  "column_break_llka",
+  "allowance_1_rate",
+  "allowance2",
+  "allowance_2_desc",
+  "column_break_rjtl",
+  "allowance_2_rate",
+  "allowance3",
+  "allowance_3_desc",
+  "column_break_txwg",
+  "allowance_3_rate",
+  "allowance4",
+  "allowance_4_desc",
+  "column_break_fuhi",
+  "allowance_4_rate",
+  "allowance5",
+  "allowance_5_desc",
+  "column_break_jfqp",
+  "allowance_5_rate",
   "contract_details_section",
   "contract_type",
-  "remuneration",
   "working_hours",
   "start_date",
   "restraint_period",
@@ -472,12 +494,126 @@
    "label": "Allowances Defined",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "allowance_1_desc",
+   "fieldtype": "Small Text",
+   "label": "Allowance 1 Details",
+   "read_only": 1
+  },
+  {
+   "fieldname": "allowance_1_rate",
+   "fieldtype": "Currency",
+   "label": "Allowance 1 Rate",
+   "non_negative": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "allowance_2_desc",
+   "fieldtype": "Small Text",
+   "label": "Allowance 2 Details",
+   "read_only": 1
+  },
+  {
+   "fieldname": "allowance_2_rate",
+   "fieldtype": "Currency",
+   "label": "Allowance 2 Rate",
+   "non_negative": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "remuneration_details",
+   "fieldtype": "Section Break",
+   "label": "Remuneration"
+  },
+  {
+   "fieldname": "column_break_uiey",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "allowance1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_llka",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "allowance2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_rjtl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "allowance3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "allowance_3_desc",
+   "fieldtype": "Small Text",
+   "label": "Allowance 3 Details",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_txwg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "allowance_3_rate",
+   "fieldtype": "Currency",
+   "label": "Allowance 3 Rate",
+   "non_negative": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "allowance4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "allowance_4_desc",
+   "fieldtype": "Small Text",
+   "label": "Allowance 4 Details",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_fuhi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "allowance_4_rate",
+   "fieldtype": "Currency",
+   "label": "Allowance 4 Rate",
+   "non_negative": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "allowance5",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "allowance_5_desc",
+   "fieldtype": "Small Text",
+   "label": "Allowance 5 Details",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_jfqp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "allowance_5_rate",
+   "fieldtype": "Currency",
+   "label": "Allowance 5 Rate",
+   "non_negative": 1,
+   "precision": "2"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-29 20:15:57.889159",
+ "modified": "2024-09-05 11:59:25.983225",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract of Employment",

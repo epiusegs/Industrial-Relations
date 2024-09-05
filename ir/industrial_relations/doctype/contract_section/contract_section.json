@@ -2,20 +2,22 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "format:{sec_head}",
+ "autoname": "format:{sec_head} ({notes}) - {DD}-{MM}-{YYYY}",
  "creation": "2024-08-24 10:36:39.801190",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "contract_section_section",
   "sec_head",
+  "notes",
   "column_break_fjvn",
   "is_remuneration",
   "is_hours",
   "has_hours",
   "has_allowances",
   "section_break_mhzj",
-  "sec_par"
+  "sec_par",
+  "amended_from"
  ],
  "fields": [
   {
@@ -69,11 +71,28 @@
    "fieldname": "has_allowances",
    "fieldtype": "Check",
    "label": "Includes Allowances?"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Contract Section",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Data",
+   "label": "Notes",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2024-08-29 20:24:30.086554",
+ "modified": "2024-08-30 20:54:24.724610",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract Section",
@@ -119,7 +138,5 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "track_changes": 1,
- "track_seen": 1,
- "track_views": 1
+ "track_changes": 1
 }

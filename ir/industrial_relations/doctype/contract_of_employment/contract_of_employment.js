@@ -65,6 +65,42 @@ frappe.ui.form.on('Contract of Employment', {
         if (frm.doc.remuneration) {
             frappe.db.get_doc('Contract Section', frm.doc.remuneration).then(doc => {
                 frm.set_value('has_allowances', doc.has_allowances || 0);
+                
+                // Initialize fields to empty strings
+                const allowances = {
+                    allowance_1_desc: "",
+                    allowance_2_desc: "",
+                    allowance_3_desc: "",
+                    allowance_4_desc: "",
+                    allowance_5_desc: ""
+                };
+                
+                // Iterate over the child table rows
+                doc.sec_par.forEach(row => {
+                    if (row.clause_text) {
+                        if (row.clause_text.includes("{allowance_1}")) {
+                            allowances.allowance_1_desc = row.clause_text;
+                        } else if (row.clause_text.includes("{allowance_2}")) {
+                            allowances.allowance_2_desc = row.clause_text;
+                        } else if (row.clause_text.includes("{allowance_3}")) {
+                            allowances.allowance_3_desc = row.clause_text;
+                        } else if (row.clause_text.includes("{allowance_4}")) {
+                            allowances.allowance_4_desc = row.clause_text;
+                        } else if (row.clause_text.includes("{allowance_5}")) {
+                            allowances.allowance_5_desc = row.clause_text;
+                        }
+                    }
+                });
+                
+                // Set the allowance description fields
+                frm.set_value('allowance_1_desc', allowances.allowance_1_desc);
+                frm.set_value('allowance_2_desc', allowances.allowance_2_desc);
+                frm.set_value('allowance_3_desc', allowances.allowance_3_desc);
+                frm.set_value('allowance_4_desc', allowances.allowance_4_desc);
+                frm.set_value('allowance_5_desc', allowances.allowance_5_desc);
+
+                // Call the function to toggle allowance sections
+                frm.events.toggle_allowance_sections(frm);
             });
         }
     },
@@ -95,6 +131,14 @@ frappe.ui.form.on('Contract of Employment', {
         let should_display = frm.doc.has_expiry ? 1 : 0;
         frm.toggle_display('end_date', should_display);
         frm.toggle_display('project', should_display);
+    },
+
+    // New function to toggle allowance sections based on description fields
+    toggle_allowance_sections: function(frm) {
+        frm.toggle_display('allowance1', frm.doc.allowance_1_desc ? 1 : 0);
+        frm.toggle_display('allowance2', frm.doc.allowance_2_desc ? 1 : 0);
+        frm.toggle_display('allowance3', frm.doc.allowance_3_desc ? 1 : 0);
+        frm.toggle_display('allowance4', frm.doc.allowance_4_desc ? 1 : 0);
+        frm.toggle_display('allowance5', frm.doc.allowance_5_desc ? 1 : 0);
     }
 });
-
