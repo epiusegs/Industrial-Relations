@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "tab_setup",
   "section_break_o3ae",
   "amended_from",
   "company",
@@ -88,9 +89,10 @@
   "sat_end",
   "901",
   "sun_end",
-  "section_break_ztkd",
-  "contract_clauses",
-  "generated_contract"
+  "tab_text",
+  "generated_contract",
+  "tab_table",
+  "contract_clauses"
  ],
  "fields": [
   {
@@ -227,6 +229,7 @@
    "default": "0",
    "fieldname": "has_expiry",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Has an Expiry Date",
    "read_only": 1
   },
@@ -234,6 +237,7 @@
    "default": "0",
    "fieldname": "has_retirement",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Has a Retirement Age",
    "read_only": 1
   },
@@ -254,10 +258,6 @@
    "fieldtype": "Date",
    "hidden": 1,
    "label": "End Date"
-  },
-  {
-   "fieldname": "section_break_ztkd",
-   "fieldtype": "Section Break"
   },
   {
    "columns": 2,
@@ -365,7 +365,7 @@
   {
    "fieldname": "123",
    "fieldtype": "Heading",
-   "label": "*"
+   "label": "<br>"
   },
   {
    "fieldname": "456",
@@ -483,6 +483,7 @@
    "default": "0",
    "fieldname": "has_hours",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Working Hours Defined",
    "print_hide": 1,
    "read_only": 1
@@ -491,6 +492,7 @@
    "default": "0",
    "fieldname": "has_allowances",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Allowances Defined",
    "print_hide": 1,
    "read_only": 1
@@ -608,12 +610,27 @@
    "label": "Allowance 5 Rate",
    "non_negative": 1,
    "precision": "2"
+  },
+  {
+   "fieldname": "tab_setup",
+   "fieldtype": "Tab Break",
+   "label": "Contract Setup"
+  },
+  {
+   "fieldname": "tab_text",
+   "fieldtype": "Tab Break",
+   "label": "Contract Text"
+  },
+  {
+   "fieldname": "tab_table",
+   "fieldtype": "Tab Break",
+   "label": "Contract Table"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-05 11:59:25.983225",
+ "modified": "2024-09-05 20:03:33.330866",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract of Employment",
