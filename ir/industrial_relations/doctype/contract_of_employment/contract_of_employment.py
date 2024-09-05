@@ -88,16 +88,25 @@ class ContractofEmployment(Document):
             section_header = f"<b>{section_number}. {section.sec_head}</b><br>"
 
             # Handle paragraph numbering and content
-            numbered_content = self.handle_section_numbering(section, section_number)
+            numbered_content, clause_numbers = self.handle_section_numbering(section, section_number)
+
+            # Add the section header as an entry in the contract_clauses table
+            self.append('contract_clauses', {
+                'section_number': section_number,
+                'clause_number': section_number,
+                'clause_content': section_header
+            })
 
             # Combine the header and content
             clause_content = section_header + numbered_content + "<br><br>"
 
             # Append to the contract_clauses table
-            self.append('contract_clauses', {
-                'section_number': section_number,
-                'clause_content': clause_content
-            })
+            for par_num, clause_text in clause_numbers:
+                self.append('contract_clauses', {
+                    'section_number': section_number,
+                    'clause_number': par_num,
+                    'clause_content': clause_text,
+                })
 
         # Store the mapping in self for later use
         self.sec_head_to_number = sec_head_to_number
@@ -105,6 +114,7 @@ class ContractofEmployment(Document):
     def handle_section_numbering(self, section, section_number):
         """Handles the numbering and formatting of sections and paragraphs."""
         content = ""
+        clause_numbers = []  # To store (par_num, clause_text) tuples
 
         def build_par_num(par):
             """Constructs the paragraph number based on the hierarchy."""
@@ -128,11 +138,15 @@ class ContractofEmployment(Document):
         for par in section.sec_par:
             # Construct the paragraph number using the section number and paragraph number
             par_num = build_par_num(par)
+            clause_text = f"<b>{par_num}.</b>&emsp;{par.clause_text}<br>"
 
             # Append the formatted text to content
-            content += f"<b>{par_num}.</b>&emsp;{par.clause_text}<br>"
+            content += clause_text
 
-        return content
+            # Append the paragraph number and text to the list
+            clause_numbers.append((par_num, clause_text))
+
+        return content, clause_numbers
 
     def format_date(self, date):
         """Formats the date as 'day of the week, the day of month year'."""
