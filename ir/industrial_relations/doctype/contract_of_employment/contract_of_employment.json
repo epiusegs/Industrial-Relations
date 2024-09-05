@@ -370,22 +370,22 @@
   {
    "fieldname": "456",
    "fieldtype": "Heading",
-   "label": " *"
+   "label": "<br>"
   },
   {
    "fieldname": "789",
    "fieldtype": "Heading",
-   "label": " *"
+   "label": "<br>"
   },
   {
    "fieldname": "012",
    "fieldtype": "Heading",
-   "label": " *"
+   "label": "<br>"
   },
   {
    "fieldname": "345",
    "fieldtype": "Heading",
-   "label": " *"
+   "label": "<br>"
   },
   {
    "default": "16:00",
@@ -418,7 +418,7 @@
   {
    "fieldname": "678",
    "fieldtype": "Heading",
-   "label": "*"
+   "label": "<br>"
   },
   {
    "default": "00:00",
@@ -429,7 +429,7 @@
   {
    "fieldname": "901",
    "fieldtype": "Heading",
-   "label": "*"
+   "label": "<br>"
   },
   {
    "default": "00:00",
@@ -630,7 +630,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-05 20:03:33.330866",
+ "modified": "2024-09-05 20:09:51.439579",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract of Employment",
