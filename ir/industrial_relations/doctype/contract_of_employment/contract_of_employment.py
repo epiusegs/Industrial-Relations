@@ -85,7 +85,7 @@ class ContractofEmployment(Document):
 
             # Numbered section header
             section_number = term.sec_no
-            section_header = f"<b>{section_number}. {section.sec_head}</b><br>"
+            section_header = f"<b>{section.sec_head}</b><br>"
 
             # Handle paragraph numbering and content
             numbered_content, clause_numbers = self.handle_section_numbering(section, section_number)
@@ -138,7 +138,7 @@ class ContractofEmployment(Document):
         for par in section.sec_par:
             # Construct the paragraph number using the section number and paragraph number
             par_num = build_par_num(par)
-            clause_text = f"<b>{par_num}.</b>&emsp;{par.clause_text}<br>"
+            clause_text = f"{par.clause_text}<br>"
 
             # Append the formatted text to content
             content += clause_text
@@ -167,87 +167,72 @@ class ContractofEmployment(Document):
 
     def generate_contract(self):
         """Generates the final contract document by replacing placeholders with actual data."""
-        contract_content = ""
+        contract_content = "<table border='0' cellpadding='5' cellspacing='0'>"
 
         # Ensure sec_head_to_number is populated
         if not hasattr(self, 'sec_head_to_number'):
             self.update_contract_clauses()
 
         for clause in self.contract_clauses:
-            content = clause.clause_content
+            clause_number = clause.clause_number
+            clause_content = clause.clause_content
 
-            # Replace placeholders with field data in bold and formatted
-            content = content.replace("{employee_name}", f"<b>{self.employee_name or '_____________________'}</b>")
-            content = content.replace("{date_of_joining}", f"<b>{self.format_date(self.date_of_joining)}</b>")
-            content = content.replace("{company}", f"<b>{self.company or '_____________________'}</b>")
-            content = content.replace("{employee_number}", f"<b>{self.employee or '_____________________'}</b>")
-            content = content.replace("{designation}", f"<b>{self.designation or '_____________________'}</b>")
-            content = content.replace("{current_address}", f"<b>{self.current_address or '_____________________'}</b>")
-            content = content.replace("{start_date}", f"<b>{self.format_date(self.start_date)}</b>")
-            content = content.replace("{end_date}", f"<b>{self.format_date(self.end_date)}</b>")
-            content = content.replace("{project}", f"<b>{self.project or '_____________________'}</b>")
-            content = content.replace("{custom_id_number}", f"<b>{self.custom_id_number or '_____________________'}</b>")
-            content = content.replace("{branch}", f"<b>{self.branch or '_____________________'}</b>")
-            content = content.replace("{contract_type}", f"<b>{self.contract_type or '_____________________'}</b>")
-            content = content.replace("{restraint_period}", f"<b>{self.restraint_period or '_____________________'}</b>")
-            content = content.replace("{restraint_territory}", f"<b>{self.restraint_territory or '_____________________'}</b>")
-            content = content.replace("{mon_start}", f"<b>{format_time(self.mon_start or '00:00', 'HH:mm')}</b>")
-            content = content.replace("{mon_end}", f"<b>{format_time(self.mon_end or '00:00', 'HH:mm')}</b>")
-            content = content.replace("{tue_start}", f"<b>{format_time(self.tue_start or '00:00', 'HH:mm')}</b>")
-            content = content.replace("{tue_end}", f"<b>{format_time(self.tue_end or '00:00', 'HH:mm')}</b>")
-            content = content.replace("{wed_start}", f"<b>{format_time(self.wed_start or '00:00', 'HH:mm')}</b>")
-            content = content.replace("{wed_end}", f"<b>{format_time(self.wed_end or '00:00', 'HH:mm')}</b>")
-            content = content.replace("{thu_start}", f"<b>{format_time(self.thu_start or '00:00', 'HH:mm')}</b>")
-            content = content.replace("{thu_end}", f"<b>{format_time(self.thu_end or '00:00', 'HH:mm')}</b>")
-            content = content.replace("{fri_start}", f"<b>{format_time(self.fri_start or '00:00', 'HH:mm')}</b>")
-            content = content.replace("{fri_end}", f"<b>{format_time(self.fri_end or '00:00', 'HH:mm')}</b>")
-            content = content.replace("{sat_start}", f"<b>{format_time(self.sat_start or '00:00', 'HH:mm')}</b>")
-            content = content.replace("{sat_end}", f"<b>{format_time(self.sat_end or '00:00', 'HH:mm')}</b>")
-            content = content.replace("{sun_start}", f"<b>{format_time(self.sun_start or '00:00', 'HH:mm')}</b>")
-            content = content.replace("{sun_end}", f"<b>{format_time(self.sun_end or '00:00', 'HH:mm')}</b>")
+            # Format clause_number in bold
+            bold_clause_number = f"<b>{clause_number}</b>"
 
-            # Format rate with space as the thousands separator and replace
-            rate_formatted = format_with_space_separator(self.rate) if self.rate else '__________'
-            content = content.replace("{rate}", f"<b>{rate_formatted}</b>")
+            # Add table row with bold clause_number and clause_content
+            contract_content += f"<tr><td>{bold_clause_number}</td><td>{clause_content}</td></tr>"
 
-            # Format allowance_1 with space as the thousands separator and replace
-            allowance_1_rate_formatted = format_with_space_separator(self.allowance_1_rate) if self.allowance_1_rate else '__________'
-            content = content.replace("{allowance_1}", f"<b>{allowance_1_rate_formatted}</b>")
+        contract_content += "</table>"
 
-            # Format allowance_2 with space as the thousands separator and replace
-            allowance_2_rate_formatted = format_with_space_separator(self.allowance_2_rate) if self.allowance_2_rate else '__________'
-            content = content.replace("{allowance_2}", f"<b>{allowance_2_rate_formatted}</b>")
+        # Apply replacements to the entire contract content
+        replacements = {
+            "{employee_name}": f"<b>{self.employee_name or '_____________________'}</b>",
+            "{date_of_joining}": f"<b>{self.format_date(self.date_of_joining)}</b>",
+            "{company}": f"<b>{self.company or '_____________________'}</b>",
+            "{employee_number}": f"<b>{self.employee or '_____________________'}</b>",
+            "{designation}": f"<b>{self.designation or '_____________________'}</b>",
+            "{current_address}": f"<b>{self.current_address or '_____________________'}</b>",
+            "{start_date}": f"<b>{self.format_date(self.start_date)}</b>",
+            "{end_date}": f"<b>{self.format_date(self.end_date)}</b>",
+            "{project}": f"<b>{self.project or '_____________________'}</b>",
+            "{custom_id_number}": f"<b>{self.custom_id_number or '_____________________'}</b>",
+            "{branch}": f"<b>{self.branch or '_____________________'}</b>",
+            "{contract_type}": f"<b>{self.contract_type or '_____________________'}</b>",
+            "{restraint_period}": f"<b>{self.restraint_period or '_____________________'}</b>",
+            "{restraint_territory}": f"<b>{self.restraint_territory or '_____________________'}</b>",
+            "{mon_start}": f"<b>{format_time(self.mon_start or '00:00', 'HH:mm')}</b>",
+            "{mon_end}": f"<b>{format_time(self.mon_end or '00:00', 'HH:mm')}</b>",
+            "{tue_start}": f"<b>{format_time(self.tue_start or '00:00', 'HH:mm')}</b>",
+            "{tue_end}": f"<b>{format_time(self.tue_end or '00:00', 'HH:mm')}</b>",
+            "{wed_start}": f"<b>{format_time(self.wed_start or '00:00', 'HH:mm')}</b>",
+            "{wed_end}": f"<b>{format_time(self.wed_end or '00:00', 'HH:mm')}</b>",
+            "{thu_start}": f"<b>{format_time(self.thu_start or '00:00', 'HH:mm')}</b>",
+            "{thu_end}": f"<b>{format_time(self.thu_end or '00:00', 'HH:mm')}</b>",
+            "{fri_start}": f"<b>{format_time(self.fri_start or '00:00', 'HH:mm')}</b>",
+            "{fri_end}": f"<b>{format_time(self.fri_end or '00:00', 'HH:mm')}</b>",
+            "{sat_start}": f"<b>{format_time(self.sat_start or '00:00', 'HH:mm')}</b>",
+            "{sat_end}": f"<b>{format_time(self.sat_end or '00:00', 'HH:mm')}</b>",
+            "{sun_start}": f"<b>{format_time(self.sun_start or '00:00', 'HH:mm')}</b>",
+            "{sun_end}": f"<b>{format_time(self.sun_end or '00:00', 'HH:mm')}</b>",
+            "{rate}": f"<b>{format_with_space_separator(self.rate) if self.rate else '__________'}</b>",
+            "{allowance_1}": f"<b>{format_with_space_separator(self.allowance_1_rate) if self.allowance_1_rate else '__________'}</b>",
+            "{allowance_2}": f"<b>{format_with_space_separator(self.allowance_2_rate) if self.allowance_2_rate else '__________'}</b>",
+            "{allowance_3}": f"<b>{format_with_space_separator(self.allowance_3_rate) if self.allowance_3_rate else '__________'}</b>",
+            "{allowance_4}": f"<b>{format_with_space_separator(self.allowance_4_rate) if self.allowance_4_rate else '__________'}</b>",
+            "{allowance_5}": f"<b>{format_with_space_separator(self.allowance_5_rate) if self.allowance_5_rate else '__________'}</b>",
+            "{retirement_age}": f"<b>{number_to_words(self.retirement_age) + ' (' + str(self.retirement_age) + ')' if self.retirement_age is not None else '__________'}</b>"
+        }
 
-            # Format allowance_3 with space as the thousands separator and replace
-            allowance_3_rate_formatted = format_with_space_separator(self.allowance_3_rate) if self.allowance_3_rate else '__________'
-            content = content.replace("{allowance_3}", f"<b>{allowance_3_rate_formatted}</b>")
+        # Apply replacements to the contract content
+        for placeholder, replacement in replacements.items():
+            contract_content = contract_content.replace(placeholder, replacement)
 
-            # Format allowance_4 with space as the thousands separator and replace
-            allowance_4_rate_formatted = format_with_space_separator(self.allowance_4_rate) if self.allowance_4_rate else '__________'
-            content = content.replace("{allowance_4}", f"<b>{allowance_4_rate_formatted}</b>")
-
-            # Format allowance_2 with space as the thousands separator and replace
-            allowance_5_rate_formatted = format_with_space_separator(self.allowance_5_rate) if self.allowance_5_rate else '__________'
-            content = content.replace("{allowance_5}", f"<b>{allowance_5_rate_formatted}</b>")
-
-            # Convert retirement_age to words
-            if self.retirement_age is not None:
-                retirement_age_words = number_to_words(self.retirement_age)
-                retirement_age_display = f"{retirement_age_words} ({self.retirement_age})"
-            else:
-                retirement_age_words = '__________'
-
-            # Replace placeholders in content
-            content = content.replace("{retirement_age}", f"<b>{retirement_age_display}</b>")
-
-            # Replace section headings with section numbers
-            for sec_head, section_number in self.sec_head_to_number.items():
-                # Escape any special characters in sec_head
-                escaped_sec_head = re.escape(sec_head)
-                pattern = rf'\{{par\."{escaped_sec_head}"\}}'
-                content = re.sub(pattern, str(section_number), content)
-
-            contract_content += content
+        # Replace section headings with section numbers
+        for sec_head, section_number in self.sec_head_to_number.items():
+            escaped_sec_head = re.escape(sec_head)
+            pattern = rf'\{{par\."{escaped_sec_head}"\}}'
+            contract_content = re.sub(pattern, str(section_number), contract_content)
 
         self.generated_contract = contract_content
 
