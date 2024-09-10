@@ -29,5 +29,6 @@ def execute():
                 "sec_par": doc["sec_par"]
             })
             new_doc.insert()
+            frappe.db.set_value("Contract Section", new_doc.name, "name", doc["name"])
             new_doc.submit()
             frappe.db.commit()
