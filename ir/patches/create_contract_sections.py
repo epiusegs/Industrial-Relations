@@ -6,11 +6,13 @@ def execute():
         {
             "name": "Working Hours Placeholder",
             "sec_head": "Working Hours Placeholder",
+            "notes": "Placeholder",
             "sec_par": [{"ss_num": "1", "clause_text": "This is a Placeholder Only and Should be Replaced by the Server Script at Runtime."}]
         },
         {
             "name": "Remuneration Placeholder",
             "sec_head": "Remuneration Placeholder",
+            "notes": "Placeholder",
             "sec_par": [{"ss_num": "1", "clause_text": "This is a Placeholder Only and Should be Replaced by the Server Script at Runtime."}]
         }
     ]
@@ -26,4 +28,5 @@ def execute():
                 "sec_par": doc["sec_par"]
             })
             new_doc.insert()
+            new_doc.submit()
             frappe.db.commit()
