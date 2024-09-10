@@ -234,6 +234,11 @@ class ContractofEmployment(Document):
             pattern = rf'\{{par\."{escaped_sec_head}"\}}'
             contract_content = re.sub(pattern, str(section_number), contract_content)
 
+        # Apply text formatting
+        contract_content = re.sub(r'//(.*?)//', r'<i>\1</i>', contract_content)  # Italic
+        contract_content = re.sub(r'__(.*?)__', r'<u>\1</u>', contract_content)  # Underline
+        contract_content = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', contract_content)  # Bold
+
         self.generated_contract = contract_content
 
     def notify_retirement(self):
