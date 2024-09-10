@@ -2,6 +2,10 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Contract of Employment', {
+    refresh: function(frm) {
+        frm.events.toggle_allowance_sections(frm);
+    },
+
     employee: function(frm) {
         if (frm.doc.employee) {
             frappe.db.get_doc('Employee', frm.doc.employee).then(doc => {
@@ -10,9 +14,13 @@ frappe.ui.form.on('Contract of Employment', {
                 frm.set_value('date_of_joining', doc.date_of_joining || '');
                 frm.set_value('company', doc.company || '');
                 frm.set_value('designation', doc.designation || '');
-                frm.set_value('current_address', doc.current_address || '');
                 frm.set_value('custom_id_number', doc.custom_id_number || '');
                 frm.set_value('branch', doc.branch || '');
+            
+                // Combine the current address lines into a single line
+                const addressLines = (doc.current_address || '').split('\n').map(line => line.trim());
+                const combinedAddress = addressLines.join(', '); // Use a comma and space as a separator
+                frm.set_value('current_address', combinedAddress);
 
                 // Fetch default letter head
                 if (doc.company) {
@@ -136,9 +144,19 @@ frappe.ui.form.on('Contract of Employment', {
     // New function to toggle allowance sections based on description fields
     toggle_allowance_sections: function(frm) {
         frm.toggle_display('allowance1', frm.doc.allowance_1_desc ? 1 : 0);
+        frm.toggle_display('allowance_1_desc', frm.doc.allowance_1_desc ? 1 : 0);
+        frm.toggle_display('allowance_1_rate', frm.doc.allowance_1_desc ? 1 : 0);
         frm.toggle_display('allowance2', frm.doc.allowance_2_desc ? 1 : 0);
+        frm.toggle_display('allowance_2_desc', frm.doc.allowance_2_desc ? 1 : 0);
+        frm.toggle_display('allowance_2_rate', frm.doc.allowance_2_desc ? 1 : 0);
         frm.toggle_display('allowance3', frm.doc.allowance_3_desc ? 1 : 0);
+        frm.toggle_display('allowance_3_desc', frm.doc.allowance_3_desc ? 1 : 0);
+        frm.toggle_display('allowance_3_rate', frm.doc.allowance_3_desc ? 1 : 0);
         frm.toggle_display('allowance4', frm.doc.allowance_4_desc ? 1 : 0);
+        frm.toggle_display('allowance_4_desc', frm.doc.allowance_4_desc ? 1 : 0);
+        frm.toggle_display('allowance_4_rate', frm.doc.allowance_4_desc ? 1 : 0);
         frm.toggle_display('allowance5', frm.doc.allowance_5_desc ? 1 : 0);
+        frm.toggle_display('allowance_5_desc', frm.doc.allowance_5_desc ? 1 : 0);
+        frm.toggle_display('allowance_5_rate', frm.doc.allowance_5_desc ? 1 : 0);
     }
 });
