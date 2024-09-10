@@ -24,6 +24,7 @@ def execute():
             new_doc = frappe.get_doc({
                 "doctype": "Contract Section",
                 "name": doc["name"],
+                "notes": doc["notes"],
                 "sec_head": doc["sec_head"],
                 "sec_par": doc["sec_par"]
             })
