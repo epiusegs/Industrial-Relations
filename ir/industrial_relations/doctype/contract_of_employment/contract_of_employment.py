@@ -215,13 +215,13 @@ class ContractofEmployment(Document):
             "{sat_end}": f"<b>{format_time(self.sat_end or '00:00', 'HH:mm')}</b>",
             "{sun_start}": f"<b>{format_time(self.sun_start or '00:00', 'HH:mm')}</b>",
             "{sun_end}": f"<b>{format_time(self.sun_end or '00:00', 'HH:mm')}</b>",
-            "{rate}": f"<b>{format_with_space_separator(self.rate) if self.rate else '__________'}</b>",
-            "{allowance_1}": f"<b>{format_with_space_separator(self.allowance_1_rate) if self.allowance_1_rate else '__________'}</b>",
-            "{allowance_2}": f"<b>{format_with_space_separator(self.allowance_2_rate) if self.allowance_2_rate else '__________'}</b>",
-            "{allowance_3}": f"<b>{format_with_space_separator(self.allowance_3_rate) if self.allowance_3_rate else '__________'}</b>",
-            "{allowance_4}": f"<b>{format_with_space_separator(self.allowance_4_rate) if self.allowance_4_rate else '__________'}</b>",
-            "{allowance_5}": f"<b>{format_with_space_separator(self.allowance_5_rate) if self.allowance_5_rate else '__________'}</b>",
-            "{retirement_age}": f"<b>{number_to_words(self.retirement_age) + ' (' + str(self.retirement_age) + ')' if self.retirement_age is not None else '__________'}</b>"
+            "{rate}": f"<b>{format_with_space_separator(self.rate) + ' (' + number_to_words(self.rate) + ')' if self.rate else '__________'}</b>",
+            "{allowance_1}": f"<b>{format_with_space_separator(self.allowance_1_rate) + ' (' + number_to_words(self.allowance_1_rate) + ')'  if self.allowance_1_rate else '__________'}</b>",
+            "{allowance_2}": f"<b>{format_with_space_separator(self.allowance_2_rate) + ' (' + number_to_words(self.allowance_2_rate) + ')'  if self.allowance_2_rate else '__________'}</b>",
+            "{allowance_3}": f"<b>{format_with_space_separator(self.allowance_3_rate) + ' (' + number_to_words(self.allowance_3_rate) + ')'  if self.allowance_3_rate else '__________'}</b>",
+            "{allowance_4}": f"<b>{format_with_space_separator(self.allowance_4_rate) + ' (' + number_to_words(self.allowance_4_rate) + ')'  if self.allowance_4_rate else '__________'}</b>",
+            "{allowance_5}": f"<b>{format_with_space_separator(self.allowance_5_rate) + ' (' + number_to_words(self.allowance_5_rate) + ')'  if self.allowance_5_rate else '__________'}</b>",
+            "{retirement_age}": f"<b>{str(self.retirement_age) + ' (' + number_to_words(self.retirement_age) + ')' if self.retirement_age is not None else '__________'}</b>"
         }
 
         # Apply replacements to the contract content
