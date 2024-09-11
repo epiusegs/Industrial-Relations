@@ -217,6 +217,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Contract Type",
+   "link_filters": "[[\"Contract Type\",\"docstatus\",\"=\",\"1\"]]",
    "options": "Contract Type",
    "reqd": 1,
    "search_index": 1
@@ -630,7 +631,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-05 20:09:51.439579",
+ "modified": "2024-09-11 08:52:30.565447",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract of Employment",

@@ -20,7 +20,7 @@ def format_with_space_separator(number):
         return '__________'
 
 def number_to_words(number):
-    """Convert a number into words (for numbers up to 9999)."""
+    """Convert a number into words (up to 10,000,000, including decimals)."""
     units = [
         'Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'
     ]
@@ -31,6 +31,7 @@ def number_to_words(number):
         'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'
     ]
     thousands = 'Thousand'
+    millions = 'Million'
 
     def get_words_below_1000(n):
         """Convert numbers less than 1000 to words."""
@@ -43,10 +44,27 @@ def number_to_words(number):
         else:
             return units[n // 100] + ' Hundred' + ('' if n % 100 == 0 else ' and ' + get_words_below_1000(n % 100))
 
+    def get_decimal_words(decimal_part):
+        """Convert the decimal part to words."""
+        decimal_words = []
+        for digit in decimal_part:
+            decimal_words.append(units[int(digit)])
+        return ' '.join(decimal_words)
+
+    if '.' in str(number):
+        integer_part, decimal_part = str(number).split('.')
+        integer_part = int(integer_part)
+        decimal_part = decimal_part[:2]  # Handle up to 2 decimal places
+        words = number_to_words(integer_part) + ' Point ' + get_decimal_words(decimal_part)
+        return words
+
+    number = int(number)  # Handle numbers without decimals
     if number < 1000:
         return get_words_below_1000(number)
-    elif number < 10000:
+    elif number < 1000000:
         return get_words_below_1000(number // 1000) + ' ' + thousands + ('' if number % 1000 == 0 else ' ' + get_words_below_1000(number % 1000))
+    elif number < 10000000:
+        return get_words_below_1000(number // 1000000) + ' ' + millions + ('' if number % 1000000 == 0 else ' ' + number_to_words(number % 1000000))
     else:
         return 'Number out of range'
 
