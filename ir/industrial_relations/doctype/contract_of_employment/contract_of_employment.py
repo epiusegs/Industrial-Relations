@@ -5,6 +5,7 @@ import frappe, re
 from frappe.model.document import Document
 from frappe.utils import add_months, add_years, format_time
 from datetime import datetime
+from frappe import _
 
 def format_with_space_separator(number):
     """Formats the number with space as the thousands separator."""
@@ -282,3 +283,7 @@ class ContractofEmployment(Document):
                 subject=f"{notification_type} for {self.employee_name}",
                 message=f"This is a reminder for {notification_type} on {notification_date}."
             )
+
+    def before_submit(self):
+        if not self.signed_contract:
+            frappe.throw(_("You cannot submit the document without attaching the signed contract."))

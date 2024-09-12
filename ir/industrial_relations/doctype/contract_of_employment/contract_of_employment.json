@@ -25,6 +25,7 @@
   "designation",
   "custom_id_number",
   "branch",
+  "signed_contract",
   "remuneration_details",
   "remuneration",
   "column_break_uiey",
@@ -626,12 +627,17 @@
    "fieldname": "tab_table",
    "fieldtype": "Tab Break",
    "label": "Contract Table"
+  },
+  {
+   "fieldname": "signed_contract",
+   "fieldtype": "Attach",
+   "label": "Signed Contract of Employment"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-11 08:52:30.565447",
+ "modified": "2024-09-12 14:05:53.827742",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract of Employment",
