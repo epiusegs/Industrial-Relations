@@ -37,10 +37,16 @@ Disciplinary Action Workflow and DocTypes (Production Testing)
 Trade Union Members (Functionally Complete)
 
 Disciplinary Schedule of Offences (Functionally Complete)
+
+Contract of Employment Workflow and DocTypes (Production Testing)
    
 ### Currently Working On
 
 Production Testing and Optimization of Disciplinary Action workflows
+
+Production Testing and Optimization of Contract of Employment workflows
+
+Scheduling of Notifications for Contract of Employment workflows (Send reminder email to IR Manager users a week before contract expiry)
 
 Grievance Procedure
 
@@ -52,7 +58,7 @@ Dispute Forum (CCMA, Labour Court, etc.) Procedure
 
 Dashboard Chart (To display all disciplinary outcomes rendered in the last 3 month period by colour)
 
-Disciplinary Code Report (A formatted report to use as a Schedule of Offences)
+Disciplinary Code Report (A formatted report to use as a Schedule of Offences) - Functional but not pretty
 
 
 #### License
