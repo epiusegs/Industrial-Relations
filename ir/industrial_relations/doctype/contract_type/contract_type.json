@@ -87,7 +87,7 @@
    "label": "Retirement Age (In Years)"
   },
   {
-   "description": "Does not include Remuneration and Hours of Work Sections, these are selected when creating the Final Contract.",
+   "description": "Remuneration Placeholder and Working Hours Placeholder created by default as they are required for the Contract of Employment script to work. Do not remove them.",
    "fieldname": "contract_contents_section",
    "fieldtype": "Section Break",
    "label": "Contract Contents"
@@ -103,7 +103,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-24 11:02:43.471423",
+ "modified": "2024-09-17 18:04:30.335729",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract Type",
