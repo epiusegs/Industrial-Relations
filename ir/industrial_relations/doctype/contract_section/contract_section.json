@@ -92,7 +92,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-30 20:54:24.724610",
+ "modified": "2024-09-19 13:52:43.913708",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract Section",
@@ -109,6 +109,7 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "submit": 1,
    "write": 1
   },
   {
@@ -122,6 +123,7 @@
    "role": "IR Manager",
    "select": 1,
    "share": 1,
+   "submit": 1,
    "write": 1
   },
   {
