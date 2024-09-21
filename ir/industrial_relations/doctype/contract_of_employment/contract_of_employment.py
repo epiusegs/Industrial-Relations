@@ -74,6 +74,39 @@ class ContractofEmployment(Document):
         self.update_contract_clauses()
         self.generate_contract()
         self.notify_retirement()
+        
+        # Ensure fields are populated based on the employee if they are missing
+        if not self.employee_name:
+            self.employee_name = frappe.db.get_value('Employee', self.employee, 'employee_name')
+        
+        if not self.company:
+            self.company = frappe.db.get_value('Employee', self.employee, 'company')
+        
+        if not self.designation:
+            self.designation = frappe.db.get_value('Employee', self.employee, 'designation')
+        
+        if not self.current_address:
+            self.current_address = frappe.db.get_value('Employee', self.employee, 'current_address')
+        
+        # Add more fields as necessary...
+        
+        # Ensure all required fields have been populated
+        self.ensure_required_fields()
+
+    def ensure_required_fields(self):
+        """ Ensure that all fields marked as required have valid values. """
+        required_fields = {
+            'employee_name': 'Employee Name',
+            'company': 'Company',
+            'designation': 'Designation',
+            'current_address': 'Current Address',
+            # Add other required fields
+        }
+        
+        missing_fields = [label for field, label in required_fields.items() if not getattr(self, field)]
+        
+        if missing_fields:
+            frappe.throw(_("The following fields are required and missing: {0}").format(", ".join(missing_fields)))
 
     def update_contract_clauses(self):
         """Fetches and updates the contract clauses from the linked Contract Type."""
