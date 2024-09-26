@@ -88,7 +88,17 @@ class ContractofEmployment(Document):
         if not self.current_address:
             self.current_address = frappe.db.get_value('Employee', self.employee, 'current_address')
         
-        # Add more fields as necessary...
+        if not self.date_of_birth:
+            self.date_of_birth = frappe.db.get_value('Employee', self.employee, 'date_of_birth')
+
+        if not self.date_of_joining:
+            self.date_of_joining = frappe.db.get_value('Employee', self.employee, 'date_of_joining')
+
+        if not self.custom_id_number:
+            self.custom_id_number = frappe.db.get_value('Employee', self.employee, 'custom_id_number')
+
+        if not self.branch:
+            self.branch = frappe.db.get_value('Employee', self.employee, 'branch')
         
         # Ensure all required fields have been populated
         self.ensure_required_fields()
@@ -100,7 +110,10 @@ class ContractofEmployment(Document):
             'company': 'Company',
             'designation': 'Designation',
             'current_address': 'Current Address',
-            # Add other required fields
+            'date_of_birth': 'Date of Birth',
+            'date_of_joining': 'Date of Joining',
+            'custom_id_number': 'RSA ID / Passport No.',
+            'branch': 'Site',
         }
         
         missing_fields = [label for field, label in required_fields.items() if not getattr(self, field)]
