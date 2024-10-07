@@ -75,33 +75,71 @@ class ContractofEmployment(Document):
         self.generate_contract()
         self.notify_retirement()
         
-        # Ensure fields are populated based on the employee if they are missing
+        # Ensure requied fields are populated based on selections, used for Data Import Function
         if not self.employee_name:
             self.employee_name = frappe.db.get_value('Employee', self.employee, 'employee_name')
-        
         if not self.company:
             self.company = frappe.db.get_value('Employee', self.employee, 'company')
-        
         if not self.designation:
             self.designation = frappe.db.get_value('Employee', self.employee, 'designation')
-        
         if not self.current_address:
             self.current_address = frappe.db.get_value('Employee', self.employee, 'current_address')
-        
         if not self.date_of_birth:
             self.date_of_birth = frappe.db.get_value('Employee', self.employee, 'date_of_birth')
-
         if not self.date_of_joining:
             self.date_of_joining = frappe.db.get_value('Employee', self.employee, 'date_of_joining')
-
         if not self.custom_id_number:
             self.custom_id_number = frappe.db.get_value('Employee', self.employee, 'custom_id_number')
-
         if not self.branch:
             self.branch = frappe.db.get_value('Employee', self.employee, 'branch')
+        if not self.retirement_age:
+            self.retirmenet_age = frappe.db.get_value('Contract Type', self.contract_type, 'retirement_age')
         
         # Ensure all required fields have been populated
         self.ensure_required_fields()
+
+        # Check for allowance rate fields and set allowance descriptions
+        self.set_allowance_descriptions()
+
+    def set_allowance_descriptions(self):
+        """Fetches allowance descriptions from the Contract Section linked in the remuneration field."""
+        if self.remuneration:
+            allowance_fields = ['allowance_1_rate', 'allowance_2_rate', 'allowance_3_rate', 'allowance_4_rate', 'allowance_5_rate']
+            allowance_desc_fields = ['allowance_1_desc', 'allowance_2_desc', 'allowance_3_desc', 'allowance_4_desc', 'allowance_5_desc']
+
+            # Check if any allowance rate is populated
+            allowance_rates = {field: getattr(self, field) for field in allowance_fields if getattr(self, field)}
+
+            if allowance_rates:
+                # Fetch the Contract Section for the remuneration
+                section_doc = frappe.get_doc('Contract Section', self.remuneration)
+
+                # Initialize allowance descriptions
+                allowance_descriptions = {
+                    'allowance_1_desc': "",
+                    'allowance_2_desc': "",
+                    'allowance_3_desc': "",
+                    'allowance_4_desc': "",
+                    'allowance_5_desc': ""
+                }
+
+                # Iterate over the child table in the Contract Section to find matching clauses
+                for row in section_doc.sec_par:
+                    if row.clause_text:
+                        if "{allowance_1}" in row.clause_text:
+                            allowance_descriptions['allowance_1_desc'] = row.clause_text
+                        elif "{allowance_2}" in row.clause_text:
+                            allowance_descriptions['allowance_2_desc'] = row.clause_text
+                        elif "{allowance_3}" in row.clause_text:
+                            allowance_descriptions['allowance_3_desc'] = row.clause_text
+                        elif "{allowance_4}" in row.clause_text:
+                            allowance_descriptions['allowance_4_desc'] = row.clause_text
+                        elif "{allowance_5}" in row.clause_text:
+                            allowance_descriptions['allowance_5_desc'] = row.clause_text
+
+                # Set the description fields
+                for i, field in enumerate(allowance_desc_fields):
+                    self.set(field, allowance_descriptions[field])
 
     def ensure_required_fields(self):
         """ Ensure that all fields marked as required have valid values. """
