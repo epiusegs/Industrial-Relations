@@ -73,7 +73,6 @@ class ContractofEmployment(Document):
     def validate(self):
         self.update_contract_clauses()
         self.generate_contract()
-        self.notify_retirement()
         
         # Ensure requied fields are populated based on selections, used for Data Import Function
         if not self.employee_name:
