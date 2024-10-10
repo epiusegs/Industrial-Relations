@@ -344,22 +344,6 @@ class ContractofEmployment(Document):
 
         self.generated_contract = contract_content
 
-    def notify_retirement(self):
-        """Sets up a notification if the contract has a retirement clause."""
-        if self.has_retirement and self.retirement_age:
-            # Calculate retirement date
-            retirement_date = add_years(self.date_of_birth, self.retirement_age)
-            notification_date = add_months(retirement_date, -1)
-
-            # Send notification
-            self.send_notification("Retirement Notification", notification_date)
-
-    def send_notification(self, notification_type, notification_date):
-        """Sends a notification to IR Managers based on the type and date."""
-        ir_managers = frappe.get_all('User', filters={
-            'role_profile_name': 'IR Manager'
-        })
-
         for manager in ir_managers:
             # Create notification logic (e.g., email or system notification)
             frappe.sendmail(
