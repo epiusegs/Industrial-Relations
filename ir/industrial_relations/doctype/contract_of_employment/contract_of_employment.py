@@ -344,14 +344,6 @@ class ContractofEmployment(Document):
 
         self.generated_contract = contract_content
 
-        for manager in ir_managers:
-            # Create notification logic (e.g., email or system notification)
-            frappe.sendmail(
-                recipients=manager.name,
-                subject=f"{notification_type} for {self.employee_name}",
-                message=f"This is a reminder for {notification_type} on {notification_date}."
-            )
-
     def before_submit(self):
         if not self.signed_contract:
             frappe.throw(_("You cannot submit the document without attaching the signed contract."))
