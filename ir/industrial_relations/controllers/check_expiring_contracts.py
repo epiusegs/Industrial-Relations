@@ -3,10 +3,11 @@
 
 import frappe
 from frappe.utils import today, add_days, getdate
+from datetime import datetime, timedelta
 
 def check_expiring_contracts():
-    # Define the four-week threshold
-    threshold_date = add_days(today(), 28)
+    # Calculate the threshold date (4 weeks from today)
+    threshold_date = (datetime.today() + timedelta(weeks=4)).strftime('%Y-%m-%d')
     
     # Fetch contracts expiring by end_date
     expiring_contracts_by_end_date = frappe.get_all("Contract of Employment", 
@@ -15,14 +16,16 @@ def check_expiring_contracts():
         }, 
         fields=["name", "employee", "end_date"])
 
-    # Fetch contracts expiring by retirement age
+    # Get employees approaching retirement age
     employees_approaching_retirement = frappe.db.sql("""
-        SELECT co.name, co.employee, e.retirement_age, e.date_of_birth
+        SELECT co.name, co.employee, co.retirement_age, e.date_of_birth
         FROM `tabContract of Employment` co
         JOIN `tabEmployee` e ON co.employee = e.name
-        WHERE 
-            (YEAR(%(threshold_date)s) - YEAR(e.date_of_birth)) >= e.retirement_age
-    """, {"threshold_date": threshold_date}, as_dict=True)
+        WHERE
+            TIMESTAMPDIFF(YEAR, e.date_of_birth, %(threshold_date)s) >= co.retirement_age
+    """, {
+        'threshold_date': threshold_date
+    }, as_dict=True)
 
     # Combine both lists and send notifications
     contracts_to_notify = expiring_contracts_by_end_date + employees_approaching_retirement
