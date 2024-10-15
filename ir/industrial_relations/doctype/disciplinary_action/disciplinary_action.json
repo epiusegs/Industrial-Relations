@@ -23,6 +23,11 @@
   "accused_coy",
   "accused_pos",
   "ss_union",
+  "responsible_ir_section",
+  "responsible_ir",
+  "responsible_ir_no",
+  "column_break_ofak",
+  "responsible_ir_name",
   "details_of_complainant_section",
   "complainant",
   "request_date",
@@ -334,6 +339,34 @@
    "label": "Linked Cancellation",
    "options": "Hearing Cancellation Form",
    "read_only": 1
+  },
+  {
+   "fieldname": "responsible_ir_section",
+   "fieldtype": "Section Break",
+   "label": "Responsible IR"
+  },
+  {
+   "fieldname": "responsible_ir",
+   "fieldtype": "Link",
+   "label": "Responsible IR",
+   "link_filters": "[[\"User\",\"role_profile_name\",\"in\",[\"IR Manager\",\"IR User\"]]]",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_ofak",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "responsible_ir.phone",
+   "fieldname": "responsible_ir_no",
+   "fieldtype": "Read Only",
+   "label": "Responsible IR Number"
+  },
+  {
+   "fetch_from": "responsible_ir.full_name",
+   "fieldname": "responsible_ir_name",
+   "fieldtype": "Read Only",
+   "label": "Responsible IR Name"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -372,7 +405,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-08-19 13:11:14.679728",
+ "modified": "2024-10-15 10:24:26.720294",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",
