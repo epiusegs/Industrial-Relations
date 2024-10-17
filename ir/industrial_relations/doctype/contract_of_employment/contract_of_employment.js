@@ -4,6 +4,18 @@
 frappe.ui.form.on('Contract of Employment', {
     refresh: function(frm) {
         frm.events.toggle_allowance_sections(frm);
+        frm.events.toggle_working_hours_section(frm);
+        frm.events.toggle_retirement_fields(frm);
+        frm.events.toggle_expiry_fields(frm);
+
+        // Always display values if they exist
+        frm.toggle_display('end_date', frm.doc.has_expiry);
+        frm.toggle_display('project', frm.doc.has_expiry);
+        frm.toggle_display('retirement_age', frm.doc.has_retirement);
+        frm.toggle_display('monday_section', frm.doc.has_hours);
+        
+        // Check if allowance descriptions exist and toggle accordingly
+        frm.events.toggle_allowance_sections(frm);
     },
 
     employee: function(frm) {
