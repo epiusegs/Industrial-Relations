@@ -33,16 +33,16 @@ def execute(filters=None):
     """, (current_date, future_date), as_dict=True)
 
     columns = [
-        {"label": "Document Name", "fieldname": "document_name", "fieldtype": "Link", "options": "Contract of Employment", "width": 200},
-        {"label": "Company", "fieldname": "company", "fieldtype": "Link", "options": "Company", "width": 150},
-        {"label": "Employee", "fieldname": "employee", "fieldtype": "Link", "options": "Employee", "width": 150},
-        {"label": "Employee Name", "fieldname": "employee_name", "fieldtype": "Data", "width": 150},
-        {"label": "Designation", "fieldname": "designation", "fieldtype": "Data", "width": 150},
-        {"label": "Date of Joining", "fieldname": "date_of_joining", "fieldtype": "Date", "width": 100},
-        {"label": "Branch", "fieldname": "branch", "fieldtype": "Link", "options": "Branch", "width": 150},
+        {"label": "Contract", "fieldname": "document_name", "fieldtype": "Link", "options": "Contract of Employment", "width": 50},
+        {"label": "Company", "fieldname": "company", "fieldtype": "Link", "options": "Company", "width": 50},
+        {"label": "Employee", "fieldname": "employee", "fieldtype": "Link", "options": "Employee", "width": 50},
+        {"label": "Employee Name", "fieldname": "employee_name", "fieldtype": "Data", "width": 200},
+        {"label": "Designation", "fieldname": "designation", "fieldtype": "Link", "options": "Designation", "width": 150},
+        {"label": "Employee Start Date", "fieldname": "date_of_joining", "fieldtype": "Date", "width": 150},
+        {"label": "Branch", "fieldname": "branch", "fieldtype": "Link", "options": "Branch", "width": 100},
         {"label": "Project", "fieldname": "project", "fieldtype": "Data", "width": 150},
-        {"label": "Start Date", "fieldname": "start_date", "fieldtype": "Date", "width": 100},
-        {"label": "End Date", "fieldname": "end_date", "fieldtype": "Date", "width": 100},
+        {"label": "Contract Start Date", "fieldname": "start_date", "fieldtype": "Date", "width": 150},
+        {"label": "Contract End Date", "fieldname": "end_date", "fieldtype": "Date", "width": 150},
     ]
 
     return columns, data
