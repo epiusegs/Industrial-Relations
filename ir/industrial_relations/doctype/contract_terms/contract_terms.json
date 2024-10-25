@@ -3,6 +3,7 @@
  "allow_rename": 1,
  "creation": "2024-08-21 09:03:54.989102",
  "doctype": "DocType",
+ "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "sec_no",
@@ -35,7 +36,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-11 08:50:36.179878",
+ "modified": "2024-10-25 14:03:59.057809",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Contract Terms",
