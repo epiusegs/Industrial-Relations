@@ -5,8 +5,8 @@ frappe.query_reports["Employee Retirement"] = {
 	"filters": [
         {
             "fieldname": "months",
-            "fieldtype": "Int",
             "label": __("Enter the number of months in the future to check for retiring employees"),
+            "fieldtype": "Int",
             "reqd": 1,
             "default": 3
         }
