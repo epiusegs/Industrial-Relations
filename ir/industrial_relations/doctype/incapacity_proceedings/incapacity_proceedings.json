@@ -21,25 +21,26 @@
   "column_break_ugya",
   "employee_name",
   "employee_coy",
-  "employee_pos",
+  "designation",
   "ss_union",
   "responsible_ir_section",
   "responsible_ir",
   "responsible_ir_no",
   "column_break_ofak",
   "responsible_ir_name",
-  "details_of_complainant_section",
+  "details_of_incapacity_sec",
   "complainant",
   "request_date",
   "column_break_wckm",
   "compl_name",
   "compl_pos",
-  "details_of_offence",
-  "offences",
+  "specific_details",
+  "type_of_incapacity",
+  "details_of_incapacity",
   "attach",
   "disciplinary_history_section",
-  "previous_disciplinary_outcomes",
-  "disciplinary_record",
+  "previous_incapacity_outcomes",
+  "incapacity_record",
   "action_taken_section",
   "outcome",
   "outcome_date",
@@ -47,10 +48,8 @@
   "outcome_start",
   "outcome_end",
   "section_break_xdgl",
-  "final_charges",
   "linked_nta",
   "linked_outcome",
-  "linked_warning",
   "linked_dismissal",
   "linked_demotion",
   "linked_pay_deduction",
@@ -81,6 +80,7 @@
    "search_index": 1
   },
   {
+   "fetch_from": "employee.company",
    "fieldname": "company",
    "fieldtype": "Link",
    "hidden": 1,
@@ -89,6 +89,7 @@
    "read_only": 1
   },
   {
+   "fetch_from": "company.default_letter_head",
    "fieldname": "letter_head",
    "fieldtype": "Read Only",
    "hidden": 1,
@@ -110,6 +111,7 @@
    "search_index": 1
   },
   {
+   "fetch_from": "employee.date_of_joining",
    "fieldname": "engagement_date",
    "fieldtype": "Data",
    "label": "Date Engaged",
@@ -160,15 +162,10 @@
    "label": "Responsible IR Name"
   },
   {
-   "fieldname": "details_of_complainant_section",
-   "fieldtype": "Section Break",
-   "label": "Details of Incapacity"
-  },
-  {
    "fieldname": "complainant",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Person Initiating Disciplinary Action:",
+   "label": "Person Initiating Incapacity Proceedings:",
    "options": "Employee",
    "reqd": 1,
    "search_index": 1
@@ -186,27 +183,16 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "complainant.employee_name",
    "fieldname": "compl_name",
    "fieldtype": "Read Only",
    "label": "Complainant Name:"
   },
   {
+   "fetch_from": "complainant.designation",
    "fieldname": "compl_pos",
    "fieldtype": "Read Only",
    "label": "Complainant Position:"
-  },
-  {
-   "fieldname": "details_of_offence",
-   "fieldtype": "Section Break",
-   "label": "Details of Offence(s)"
-  },
-  {
-   "columns": 4,
-   "fieldname": "offences",
-   "fieldtype": "Table",
-   "label": "Offences:",
-   "options": "List of Offences",
-   "reqd": 1
   },
   {
    "description": "Attach any supporting or corroborating documents, photographs, video and/or audio recordings.",
@@ -218,22 +204,7 @@
   {
    "fieldname": "disciplinary_history_section",
    "fieldtype": "Section Break",
-   "label": "Disciplinary History"
-  },
-  {
-   "columns": 4,
-   "fieldname": "previous_disciplinary_outcomes",
-   "fieldtype": "Table",
-   "ignore_user_permissions": 1,
-   "label": "Previous Disciplinary Outcomes",
-   "options": "Disciplinary History",
-   "read_only": 1
-  },
-  {
-   "description": "Attach any warnings or counselling that do not appear in the Disciplinary History Tab",
-   "fieldname": "disciplinary_record",
-   "fieldtype": "Attach",
-   "label": "Further Disciplinary Record"
+   "label": "Incapacity History"
   },
   {
    "fieldname": "action_taken_section",
@@ -269,12 +240,6 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "final_charges",
-   "fieldtype": "Table",
-   "label": "Charges",
-   "options": "Disciplinary Charges"
-  },
-  {
    "fieldname": "linked_nta",
    "fieldtype": "Link",
    "label": "Linked NTA",
@@ -286,13 +251,6 @@
    "fieldtype": "Link",
    "label": "Linked Outcome Report",
    "options": "Disciplinary Outcome Report",
-   "read_only": 1
-  },
-  {
-   "fieldname": "linked_warning",
-   "fieldtype": "Link",
-   "label": "Linked Warning",
-   "options": "Warning Form",
    "read_only": 1
   },
   {
@@ -364,17 +322,55 @@
    "search_index": 1
   },
   {
+   "fetch_from": "employee.employee_name",
    "fieldname": "employee_name",
    "fieldtype": "Read Only",
    "label": "Employee Name:"
   },
   {
+   "fetch_from": "employee.employee",
    "fieldname": "employee_coy",
    "fieldtype": "Read Only",
-   "label": "Accused Coy No.:"
+   "label": "Employee Coy No.:"
   },
   {
-   "fieldname": "employee_pos",
+   "fieldname": "details_of_incapacity",
+   "fieldtype": "Small Text",
+   "label": "Details of Incapacity"
+  },
+  {
+   "fieldname": "specific_details",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "details_of_incapacity_sec",
+   "fieldtype": "Section Break",
+   "label": "Details of Incapacity"
+  },
+  {
+   "fieldname": "type_of_incapacity",
+   "fieldtype": "Select",
+   "label": "Type of Incapacity",
+   "options": "Medical Incapacity\nGeneral Incapacity\nIncompatibility"
+  },
+  {
+   "columns": 4,
+   "fieldname": "previous_incapacity_outcomes",
+   "fieldtype": "Table",
+   "ignore_user_permissions": 1,
+   "label": "Previous Disciplinary Outcomes",
+   "options": "Disciplinary History",
+   "read_only": 1
+  },
+  {
+   "description": "Attach any warnings or counselling that do not appear in the Disciplinary History Tab",
+   "fieldname": "incapacity_record",
+   "fieldtype": "Attach",
+   "label": "Further Incapacity Record"
+  },
+  {
+   "fetch_from": "employee.designation",
+   "fieldname": "designation",
    "fieldtype": "Read Only",
    "label": "Accused Position:"
   }
@@ -415,7 +411,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-11-07 14:10:57.329315",
+ "modified": "2024-11-14 09:33:38.283878",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Incapacity Proceedings",
