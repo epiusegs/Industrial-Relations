@@ -21,6 +21,7 @@
   "pay_deduction_details_section",
   "outcome_date",
   "applied_rights",
+  "deduction_amount",
   "attached_signed_pay_deduction",
   "column_break_tdkv",
   "pay_deduction_type",
@@ -191,12 +192,18 @@
    "fieldtype": "Date",
    "label": "To Date",
    "reqd": 1
+  },
+  {
+   "fieldname": "deduction_amount",
+   "fieldtype": "Currency",
+   "label": "Monetary Value of Deduction",
+   "precision": "2"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-11 14:16:55.764408",
+ "modified": "2024-11-21 14:44:02.193891",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Pay Deduction Form",
