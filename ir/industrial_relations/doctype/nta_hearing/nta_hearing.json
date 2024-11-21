@@ -33,21 +33,7 @@
   "previous_disciplinary_offences_section",
   "disciplinary_history",
   "rights_section",
-  "employee_rights",
-  "service_of_document_section",
-  "acknowledgement",
-  "section_break_ulll",
-  "employee_signature",
-  "column_break_jyen",
-  "date_ee",
-  "section_break_irmp",
-  "witness_signature",
-  "column_break_zabf",
-  "date_wit",
-  "section_break_vsfb",
-  "servers_signature",
-  "column_break_dlpb",
-  "served_date_and_time"
+  "employee_rights"
  ],
  "fields": [
   {
@@ -193,84 +179,9 @@
    "label": "Linked Disciplinary Action Processed"
   },
   {
-   "fieldname": "service_of_document_section",
-   "fieldtype": "Section Break",
-   "hidden": 1,
-   "label": "Service of Document"
-  },
-  {
-   "default": ".",
-   "fieldname": "acknowledgement",
-   "fieldtype": "Read Only",
-   "label": "I hereby acknowledge receipt of the notification to attend the disciplinary hearing and understand my rights as contained herein"
-  },
-  {
-   "fieldname": "section_break_ulll",
-   "fieldtype": "Section Break",
-   "hidden": 1
-  },
-  {
-   "default": "_______________________",
-   "fieldname": "employee_signature",
-   "fieldtype": "Data",
-   "label": "Employee Signature"
-  },
-  {
-   "fieldname": "column_break_jyen",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "_______________________",
-   "fieldname": "date_ee",
-   "fieldtype": "Data",
-   "label": "Received Date"
-  },
-  {
-   "fieldname": "section_break_irmp",
-   "fieldtype": "Section Break",
-   "hidden": 1
-  },
-  {
-   "default": "_______________________",
-   "fieldname": "witness_signature",
-   "fieldtype": "Data",
-   "label": "Witness Signature (If Employee Refuses To Sign)"
-  },
-  {
-   "fieldname": "column_break_zabf",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "_______________________",
-   "fieldname": "date_wit",
-   "fieldtype": "Data",
-   "label": "Witness Date"
-  },
-  {
-   "fieldname": "section_break_vsfb",
-   "fieldtype": "Section Break",
-   "hidden": 1
-  },
-  {
-   "default": "_______________________",
-   "fieldname": "servers_signature",
-   "fieldtype": "Data",
-   "label": "Server's Signature"
-  },
-  {
-   "fieldname": "column_break_dlpb",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "signed_nta",
    "fieldtype": "Attach",
    "label": "Upload Signed NTA"
-  },
-  {
-   "default": "_______________________",
-   "fieldname": "served_date_and_time",
-   "fieldtype": "Data",
-   "label": "Date and Time of Service"
   },
   {
    "fieldname": "chairperson_details_section",
@@ -342,7 +253,7 @@
    "link_fieldname": "individual_right"
   }
  ],
- "modified": "2024-08-07 14:31:48.243265",
+ "modified": "2024-11-21 15:10:49.684213",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "NTA Hearing",
