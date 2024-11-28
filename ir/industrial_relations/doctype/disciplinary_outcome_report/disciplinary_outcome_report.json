@@ -43,7 +43,9 @@
   "disciplinary_history",
   "outcome",
   "linked_sanction",
-  "evidence"
+  "evidence",
+  "compiled_outcome_tab",
+  "complete_outcome"
  ],
  "fields": [
   {
@@ -261,12 +263,23 @@
    "fieldtype": "Table",
    "label": "Attach Accused Evidence",
    "options": "Disciplinary Action Files"
+  },
+  {
+   "fieldname": "compiled_outcome_tab",
+   "fieldtype": "Tab Break",
+   "label": "Compiled Outcome"
+  },
+  {
+   "fieldname": "complete_outcome",
+   "fieldtype": "Text Editor",
+   "label": "Complete Outcome",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-14 10:09:14.437237",
+ "modified": "2024-11-28 14:15:21.889059",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Outcome Report",

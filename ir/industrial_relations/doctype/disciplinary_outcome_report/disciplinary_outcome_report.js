@@ -2,46 +2,61 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Disciplinary Outcome Report", {
-    refresh: function(frm) {
+    refresh: function (frm) {
         if (frm.doc.linked_disciplinary_action && !frm.doc.linked_disciplinary_action_processed) {
             frm.trigger('linked_disciplinary_action');
         }
-    
-        frm.toggle_display(['make_warning_form', 'make_not_guilty_form', 'make_suspension_form', 'make_demotion_form', 'make_pay_deduction_form', 'make_dismissal_form'], frm.doc.docstatus === 0 && !frm.doc.__islocal && frm.doc.workflow_state !== 'Submitted');
+
+        frm.toggle_display(
+            [
+                'make_warning_form',
+                'make_not_guilty_form',
+                'make_suspension_form',
+                'make_demotion_form',
+                'make_pay_deduction_form',
+                'make_dismissal_form'
+            ],
+            frm.doc.docstatus === 0 && !frm.doc.__islocal && frm.doc.workflow_state !== 'Submitted'
+        );
 
         if (frappe.user.has_role("IR Manager")) {
-            frm.add_custom_button(__('Actions'), function() {}, 'Actions')
+            frm.add_custom_button(__('Actions'), function () {}, 'Actions')
                 .addClass('btn-primary')
                 .attr('id', 'actions_dropdown');
 
-            frm.page.add_inner_button(__('Issue Warning'), function() {
+            frm.page.add_inner_button(__('Issue Warning'), function () {
                 make_warning_form(frm);
             }, 'Actions');
 
-            frm.page.add_inner_button(__('Issue Not Guilty'), function() {
+            frm.page.add_inner_button(__('Issue Not Guilty'), function () {
                 make_not_guilty_form(frm);
             }, 'Actions');
-                
-            frm.page.add_inner_button(__('Issue Suspension'), function() {
+
+            frm.page.add_inner_button(__('Issue Suspension'), function () {
                 make_suspension_form(frm);
             }, 'Actions');
 
-            frm.page.add_inner_button(__('Issue Demotion'), function() {
+            frm.page.add_inner_button(__('Issue Demotion'), function () {
                 make_demotion_form(frm);
             }, 'Actions');
 
-            frm.page.add_inner_button(__('Issue Pay Deduction'), function() {
+            frm.page.add_inner_button(__('Issue Pay Deduction'), function () {
                 make_pay_deduction_form(frm);
             }, 'Actions');
 
-            frm.page.add_inner_button(__('Issue Dismissal'), function() {
+            frm.page.add_inner_button(__('Issue Dismissal'), function () {
                 make_dismissal_form(frm);
             }, 'Actions');
-        
-            frm.page.add_inner_button(__('Issue VSP'), function() {
+
+            frm.page.add_inner_button(__('Issue VSP'), function () {
                 make_vsp(frm);
             }, 'Actions');
         }
+
+        // Add "Compile Outcome" button
+        frm.add_custom_button(__('Compile Outcome'), function () {
+            compile_outcome(frm);
+        }, __('Actions')).addClass('btn-primary');
     },
 
     linked_disciplinary_action: function(frm) {
@@ -212,5 +227,20 @@ function make_vsp(frm) {
         frm: frm,
         source_name: frm.doc.linked_disciplinary_action,
         freeze_message: __("Creating VSP ...")
+    });
+}
+
+function compile_outcome(frm) {
+    frappe.call({
+        method: 'ir.industrial_relations.doctype.disciplinary_outcome_report.disciplinary_outcome_report.compile_outcome',
+        args: {
+            docname: frm.doc.name
+        },
+        callback: function (r) {
+            if (r.message) {
+                frappe.msgprint(__('Outcome compiled successfully.'));
+                frm.reload_doc();
+            }
+        }
     });
 }
