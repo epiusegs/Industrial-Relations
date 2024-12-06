@@ -9,15 +9,17 @@ def check_expiring_contracts():
     # Calculate the threshold date (4 weeks from today)
     threshold_date = (datetime.today() + timedelta(weeks=4)).strftime('%Y-%m-%d')
     
-    # Fetch contracts expiring by end_date
-    expiring_contracts_by_end_date = frappe.get_all("Contract of Employment", 
+    # Fetch contracts expiring by end_date (only those with a valid end_date)
+    expiring_contracts_by_end_date = frappe.get_all(
+        "Contract of Employment", 
         filters={
-            "end_date": ["<=", threshold_date]
-        }, 
+            "end_date": ["<=", threshold_date],
+            "end_date": ["!=", None]  # Ensure end_date is not null
+        },
         fields=["name", "employee", "employee_name", "end_date"]
     )
 
-    # Get employees approaching retirement age
+    # Get employees approaching retirement age (end_date can be None here)
     employees_approaching_retirement = frappe.db.sql("""
         SELECT co.name, co.employee, co.employee_name, co.end_date, co.retirement_age, e.date_of_birth
         FROM `tabContract of Employment` co
@@ -37,25 +39,38 @@ def check_expiring_contracts():
 def notify_expiry(contract):
     # Fetch all users with the "IR Manager" role
     ir_managers = frappe.get_all('Has Role', filters={'role': 'IR Manager'}, fields=['parent'])
-    ir_manager_emails = [frappe.get_value('User', manager['parent'], 'email') for manager in ir_managers if frappe.get_value('User', manager['parent'], 'enabled') == 1]
+    ir_manager_emails = [
+        frappe.get_value('User', manager['parent'], 'email')
+        for manager in ir_managers
+        if frappe.get_value('User', manager['parent'], 'enabled') == 1
+    ]
 
     if ir_manager_emails:
         # Generate the URL for the Contract of Employment document
         contract_url = get_url(f"/app/contract-of-employment/{contract['name']}")
-        
+
         # Prepare subject and message for the email
-        subject = f"Contract Expiring Soon: {contract.get('employee_name') or contract.get('employee')}"
+        subject = f"Contract Notification: {contract.get('employee_name') or contract.get('employee')}"
         message = f"""
         <p>Dear Manager,</p>
-        <p>The following employee's contract is approaching its expiry date:</p>
+        <p>The following employee's contract requires your attention:</p>
         <ul>
             <li><b>Employee:</b> <a href="{contract_url}">{contract['employee']}</a></li>
-            <li><b>Employee Name:</b> <a href="{contract_url}">{contract.get('employee_name', 'N/A')}</a></li>
-            <li><b>Contract Expiry Date:</b> {contract['end_date'].strftime('%Y-%m-%d')}</li>
-        </ul>
-        <p>Please take the necessary action.</p>
+            <li><b>Employee Name:</b> {contract.get('employee_name', 'N/A')}</li>
         """
         
+        # Include expiry date if it exists, or note retirement notification
+        if contract.get('end_date'):
+            message += f"""
+            <li><b>Contract Expiry Date:</b> {contract['end_date'].strftime('%Y-%m-%d')}</li>
+            """
+        else:
+            message += f"""
+            <li><b>Notification Type:</b> Approaching Retirement</li>
+            """
+
+        message += "</ul><p>Please take the necessary action.</p>"
+
         # Send email to all IR Managers
         frappe.sendmail(
             recipients=ir_manager_emails,
