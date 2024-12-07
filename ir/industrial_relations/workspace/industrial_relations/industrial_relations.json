@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"n27sy9IsQt\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Industrial Relations</span>\",\"col\":12}},{\"id\":\"TVgTjTTyVH\",\"type\":\"onboarding\",\"data\":{\"onboarding_name\":\"Industrial Relations\",\"col\":12}},{\"id\":\"SsJD6OK3sv\",\"type\":\"card\",\"data\":{\"card_name\":\"Disciplinary Code\",\"col\":4}},{\"id\":\"H7u66sZD9u\",\"type\":\"card\",\"data\":{\"card_name\":\"IR Interventions\",\"col\":4}},{\"id\":\"aAb7NzX508\",\"type\":\"card\",\"data\":{\"card_name\":\"Disciplinary Documents\",\"col\":4}},{\"id\":\"co_A3yB8PK\",\"type\":\"card\",\"data\":{\"card_name\":\"Trade Unions\",\"col\":4}},{\"id\":\"8JEQn-9yXl\",\"type\":\"card\",\"data\":{\"card_name\":\"Contracts of Employment\",\"col\":4}}]",
+ "content": "[{\"id\":\"n27sy9IsQt\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Industrial Relations</span>\",\"col\":12}},{\"id\":\"TVgTjTTyVH\",\"type\":\"onboarding\",\"data\":{\"onboarding_name\":\"Industrial Relations\",\"col\":12}},{\"id\":\"SsJD6OK3sv\",\"type\":\"card\",\"data\":{\"card_name\":\"Disciplinary Code\",\"col\":4}},{\"id\":\"jIoS5HJAM6\",\"type\":\"card\",\"data\":{\"card_name\":\"IR Interventions\",\"col\":4}},{\"id\":\"aAb7NzX508\",\"type\":\"card\",\"data\":{\"card_name\":\"Disciplinary Documents\",\"col\":4}},{\"id\":\"co_A3yB8PK\",\"type\":\"card\",\"data\":{\"card_name\":\"Trade Unions\",\"col\":4}},{\"id\":\"8JEQn-9yXl\",\"type\":\"card\",\"data\":{\"card_name\":\"Contracts of Employment\",\"col\":4}}]",
  "creation": "2024-07-10 08:50:21.843775",
  "custom_blocks": [],
  "docstatus": 0,
@@ -203,6 +203,16 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Incapacity Proceedings",
+   "link_count": 0,
+   "link_to": "Incapacity Proceedings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Contracts of Employment",
    "link_count": 5,
    "link_type": "DocType",
@@ -242,9 +252,9 @@
   {
    "hidden": 0,
    "is_query_report": 1,
-   "label": "Fixed Term Contract Expiry",
+   "label": "Contracts Expiring Soon",
    "link_count": 0,
-   "link_to": "Fixed Term Contract Expiry",
+   "link_to": "Contracts Expiring Soon",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
@@ -252,9 +262,9 @@
   {
    "hidden": 0,
    "is_query_report": 1,
-   "label": "Employee Retirement",
+   "label": "Employees Approaching Retirement",
    "link_count": 0,
-   "link_to": "Employee Retirement",
+   "link_to": "Employees Approaching Retirement",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
@@ -289,7 +299,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-11-07 14:08:40.738809",
+ "modified": "2024-12-07 13:54:30.495903",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Industrial Relations",
