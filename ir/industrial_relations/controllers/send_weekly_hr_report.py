@@ -3,67 +3,79 @@
 
 import frappe
 from frappe.utils import get_url
-from datetime import timedelta, date
 
 def send_weekly_hr_report():
-    # Define reports to send
-    reports = [
-        {
-            "report_name": "Contracts Expiring Soon",
-            "role": "IR Manager"
-        },
-        {
-            "report_name": "Employees Approaching Retirement",
-            "role": "IR Manager"
-        }
+    # Fetch expiring contracts
+    expiring_contracts = frappe.get_all(
+        "Contract of Employment",
+        filters={"end_date": ["between", [frappe.utils.today(), frappe.utils.add_days(frappe.utils.today(), 28)]]},
+        fields=["name", "employee", "employee_name", "end_date"]
+    )
+
+    if not expiring_contracts:
+        frappe.logger().info("No expiring contracts found.")
+        return
+
+    # Fetch recipients (IR Managers)
+    recipients = frappe.get_all(
+        'Has Role',
+        filters={'role': 'IR Manager'},
+        fields=['parent']
+    )
+
+    valid_recipients = [
+        recipient['parent']
+        for recipient in recipients
+        if frappe.db.exists('User', recipient['parent']) and frappe.get_value('User', recipient['parent'], 'enabled')
     ]
 
-    for report in reports:
-        # Get the recipients for the role
-        recipients = frappe.get_all(
-            "Has Role",
-            filters={"role": report["role"]},
-            fields=["parent"]
-        )
-        valid_recipients = [
-            r["parent"] for r in recipients if frappe.db.exists("User", r["parent"])
-        ]
+    if not valid_recipients:
+        frappe.logger().info("No valid IR Managers found.")
+        return
 
-        # Skip if no recipients
-        if not valid_recipients:
-            frappe.log_error(f"No recipients found for role {report['role']}", "Weekly HR Report")
-            continue
-
-        # Get the report data
-        report_doc = frappe.get_doc("Report", report["report_name"])
-        if not report_doc:
-            frappe.log_error(f"Report {report['report_name']} not found", "Weekly HR Report")
-            continue
-
-        # Generate the report data
-        try:
-            result = report_doc.get_data(filters={}, as_dict=True)
-            if not result:
-                frappe.log_error(f"No data in report {report['report_name']}", "Weekly HR Report")
-                continue
-        except Exception as e:
-            frappe.log_error(f"Error generating data for {report['report_name']}: {e}", "Weekly HR Report")
-            continue
-
-        # Construct email message
-        message = f"""
-            <p>Dear {report['role']}s,</p>
-            <p>Please find attached the weekly HR report: <b>{report['report_name']}</b>.</p>
+    # Prepare the email content
+    email_subject = "Weekly HR Report: Contracts Expiring Soon"
+    email_body = """
+        <p>Dear {name},</p>
+        <p>Please find below the list of contracts expiring soon:</p>
+        <table border="1" cellspacing="0" cellpadding="5" style="border-collapse: collapse; width: 100%;">
+            <thead>
+                <tr>
+                    <th>Contract Name</th>
+                    <th>Employee Name</th>
+                    <th>Employee Code</th>
+                    <th>Contract End Date</th>
+                </tr>
+            </thead>
+            <tbody>
+    """
+    
+    for contract in expiring_contracts:
+        contract_url = get_url(f"/app/contract-of-employment/{contract['name']}")
+        email_body += f"""
+            <tr>
+                <td><a href="{contract_url}">{contract['name']}</a></td>
+                <td>{contract['employee_name']}</td>
+                <td>{contract['employee']}</td>
+                <td>{contract['end_date']}</td>
+            </tr>
         """
 
-        # Send the email
+    email_body += """
+            </tbody>
+        </table>
+        <p>Kind regards,<br>Your HR Team</p>
+    """
+
+    # Send email to each recipient
+    for recipient in valid_recipients:
+        user_name = frappe.get_value('User', recipient, 'first_name') or "Valued IR Manager"
+        personalized_email_body = email_body.format(name=user_name)
+
         frappe.sendmail(
-            recipients=valid_recipients,
-            subject=f"Weekly HR Report: {report['report_name']}",
-            message=message,
-            attachments=[{
-                "fname": f"{report['report_name']}.csv",
-                "fcontent": frappe.utils.csvutils.to_csv(result)
-            }]
+            recipients=[recipient],
+            subject=email_subject,
+            message=personalized_email_body
         )
-        frappe.log(f"Weekly HR report '{report['report_name']}' sent successfully.")
+
+    frappe.logger().info(f"Weekly HR report sent to {len(valid_recipients)} recipients.")
