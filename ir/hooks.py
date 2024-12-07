@@ -25,11 +25,7 @@ fixtures = [
             ]},
         {"dt": "Report", "filters": [["name", "in", ["Disciplinary Offence Report"]]]}
         ]
-scheduler_events = {
-    "weekly": [
-        "ir.industrial_relations.controllers.check_expiring_contracts.check_expiring_contracts"
-    ]
-}
+
 # Includes in <head>
 # ------------------
 
