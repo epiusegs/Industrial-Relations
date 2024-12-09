@@ -11,6 +11,7 @@
   "employee",
   "company",
   "letter_head",
+  "disc_offence_out",
   "linked_disciplinary_action_processed",
   "employee_details_section",
   "linked_disciplinary_action",
@@ -172,6 +173,13 @@
    "fieldname": "signed_warning",
    "fieldtype": "Attach",
    "label": "Upload Signed Warning"
+  },
+  {
+   "fieldname": "disc_offence_out",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Offence Outcome",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -226,7 +234,7 @@
    "link_fieldname": "accused"
   }
  ],
- "modified": "2024-08-14 10:55:16.897659",
+ "modified": "2024-12-09 09:44:38.624151",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Warning Form",

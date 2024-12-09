@@ -96,5 +96,18 @@ frappe.ui.form.on('Warning Form', {
             frappe.msgprint(__('You cannot submit this document untill you have attached a signed copy of the Warning'));
             frappe.validated = false;
         }
+    },
+
+    warning_type: function(frm) {
+        if (frm.doc.warning_type) {
+            frappe.db.get_doc('Offence Outcome', frm.doc.warning_type)
+                .then(warning_type_doc => {
+                    if (warning_type_doc) {
+                        frm.set_value('disc_offence_out', warning_type_doc.disc_offence_out);
+                    }
+            })
+        }else {
+            frm.set_value('disc_offence_out', '');
+        }
     }
 });

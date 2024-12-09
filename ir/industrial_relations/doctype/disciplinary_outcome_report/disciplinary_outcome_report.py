@@ -2,14 +2,13 @@
 # For license information, please see license.txt
 
 import frappe
-import re
-from frappe.model.mapper import get_mapped_doc
 from frappe.model.document import Document
 from frappe.utils import formatdate
 from bs4 import BeautifulSoup
+import re
 
 class DisciplinaryOutcomeReport(Document):
-	pass
+    pass
 
 @frappe.whitelist()
 def write_disciplinary_outcome_report(source_name, target_doc=None):
@@ -36,7 +35,7 @@ def fetch_disciplinary_action_data(disciplinary_action):
 
     if not data:
         return {}
-    
+
     # Fetch child table data
     disciplinary_action_doc = frappe.get_doc('Disciplinary Action', disciplinary_action)
     
@@ -100,6 +99,28 @@ def fetch_employee_names(chairperson=None, complainant=None):
     }
 
 @frappe.whitelist()
+def generate_numbered_html(content, paragraph_counter):
+    """Generates numbered HTML content based on Quill's Delta format."""
+    numbered_content = ""
+    
+    for item in content:
+        if item.get("insert"):
+            text = item["insert"].strip()
+            if not text:  # Skip empty lines
+                continue
+            
+            # Handle headings
+            if "attributes" in item and "header" in item["attributes"]:
+                header_level = item["attributes"]["header"]
+                numbered_content += f"<h{header_level}>{text}</h{header_level}>"
+            else:
+                # Number paragraphs
+                paragraph_counter += 1
+                numbered_content += f"<p>{paragraph_counter}. {text}</p>"
+    
+    return numbered_content, paragraph_counter
+
+@frappe.whitelist()
 def compile_outcome(docname):
     doc = frappe.get_doc("Disciplinary Outcome Report", docname)
 
@@ -124,7 +145,7 @@ def compile_outcome(docname):
         <p>Accused Employee: {doc.names or 'Unknown'} ({doc.coy or 'Unknown'})</p>
     """
 
-    # Process sections
+    # Process sections with continuous numbering
     sections = [
         ("Introduction", doc.introduction),
         ("Complainant's Statement of Case", doc.complainant_case),
@@ -132,57 +153,21 @@ def compile_outcome(docname):
         ("Analysis of Evidence", doc.analysis_of_evidence),
         ("Finding", doc.finding),
         ("Mitigating Considerations", doc.mitigating_considerations),
-        ("Aggravating Considerations", doc.aggravating_conisderations),  # Corrected field name
+        ("Aggravating Considerations", doc.aggravating_conisderations),  # Intentional typo
         ("Outcome", doc.outcome),
     ]
 
+    paragraph_counter = 1  # Start numbering from 1
     for title, content in sections:
         if content:
-            outcome_content += f"<h3>{title}</h3><ol>"
-            paragraphs = extract_and_clean_paragraphs(content)
-            for paragraph in paragraphs:
-                outcome_content += f"<li>{paragraph}</li>"
-            outcome_content += "</ol>"
+            # Add section heading
+            outcome_content += f"<h3>{title}</h3>"
+            # Generate numbered content for the section
+            numbered_html, paragraph_counter = generate_numbered_html(content, paragraph_counter)
+            outcome_content += numbered_html
 
     # Save to the complete_outcome field
     doc.complete_outcome = outcome_content
     doc.save()
 
     return {"success": True}
-
-def extract_and_clean_paragraphs(html_content):
-    """
-    Parse the Quill.js content, extract paragraphs, strip unwanted tags,
-    remove the first-level numbering, and retain proper indentation and headings.
-    """
-    soup = BeautifulSoup(html_content, "html.parser")
-    paragraphs = []
-    paragraph_counter = 1  # Numbering starts at 1 for each section
-
-    for element in soup.find_all(["h1", "h2", "h3", "p", "li", "div", "ol"]):
-        if element.name in ["h1", "h2", "h3"]:
-            # Treat headings as is, without numbering
-            heading_text = element.get_text(strip=True)
-            if heading_text:
-                paragraphs.append({"type": "heading", "text": heading_text})
-                paragraph_counter = 1  # Reset numbering after a heading
-        elif element.name in ["p", "li", "div"]:
-            # Handle paragraph and list items
-            text_lines = element.get_text(strip=True).split("\n")  # Split into lines for finer granularity
-            for line in text_lines:
-                if line.strip():  # Only process non-empty lines
-                    # Remove existing numbering at the beginning of the text (e.g., "1.", "1)", etc.)
-                    clean_text = re.sub(r"^\d+(\.|\))\s*", "", line)
-                    paragraphs.append({"type": "paragraph", "text": f"{paragraph_counter}. {clean_text}"})
-                    paragraph_counter += 1
-        elif element.name == "ol":
-            # Handle ordered lists
-            list_items = element.find_all("li")
-            for item in list_items:
-                text = item.get_text(strip=True)
-                if text:
-                    clean_text = re.sub(r"^\d+(\.|\))\s*", "", text)
-                    paragraphs.append({"type": "paragraph", "text": f"{paragraph_counter}. {clean_text}"})
-                    paragraph_counter += 1
-
-    return paragraphs
