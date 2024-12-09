@@ -12,6 +12,7 @@
   "company",
   "letter_head",
   "disc_offence_out",
+  "expiry_days",
   "linked_disciplinary_action_processed",
   "employee_details_section",
   "linked_disciplinary_action",
@@ -180,6 +181,13 @@
    "hidden": 1,
    "label": "Offence Outcome",
    "read_only": 1
+  },
+  {
+   "fieldname": "expiry_days",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Expiry Period (In Days)",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -234,7 +242,7 @@
    "link_fieldname": "accused"
   }
  ],
- "modified": "2024-12-09 09:44:38.624151",
+ "modified": "2024-12-09 10:04:48.736219",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Warning Form",

@@ -104,10 +104,12 @@ frappe.ui.form.on('Warning Form', {
                 .then(warning_type_doc => {
                     if (warning_type_doc) {
                         frm.set_value('disc_offence_out', warning_type_doc.disc_offence_out);
+                        frm.set_value('expiry_days', warning_type_doc.expiry_days);
                     }
             })
         }else {
             frm.set_value('disc_offence_out', '');
+            frm.set_value('expiry_days', '');
         }
     }
 });
