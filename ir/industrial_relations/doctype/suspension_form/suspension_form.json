@@ -11,6 +11,7 @@
   "employee",
   "company",
   "letter_head",
+  "ispaydeduction",
   "linked_disciplinary_action_processed",
   "employee_section",
   "linked_disciplinary_action",
@@ -191,12 +192,20 @@
    "fieldtype": "Date",
    "label": "End Date",
    "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "ispaydeduction",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Is Unpaid Suspension",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-11 14:17:12.765903",
+ "modified": "2024-12-09 12:39:43.681447",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Suspension Form",

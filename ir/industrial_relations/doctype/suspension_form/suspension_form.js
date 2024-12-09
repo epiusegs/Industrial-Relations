@@ -75,6 +75,19 @@ frappe.ui.form.on('Suspension Form', {
         }
     },
 
+    suspension_type: function (frm) {
+        if (frm.doc.suspension_type) {
+            frappe.db.get_doc('Offence Outcome', frm.doc.suspension_type)
+                .then(suspension_type_doc => {
+                    if (suspension_type_doc) {
+                        frm.set_value('ispaydeduction', suspension_type_doc.ispaydeduction);
+                    }
+                })
+        } else {
+            frm.set_value('ispaydeduction', 0);
+        }
+    },
+
     applied_rights: function(frm) {
         if (frm.doc.applied_rights) {
             frappe.model.with_doc('Employee Rights', frm.doc.applied_rights, function() {
