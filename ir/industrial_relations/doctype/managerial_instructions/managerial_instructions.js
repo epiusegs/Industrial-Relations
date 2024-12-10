@@ -34,6 +34,13 @@ frappe.ui.form.on("Managerial Instructions", {
                 }
             });
         }
+    },
+
+    before_submit: function(frm) {
+        if (!frm.doc.signed_instruction) {
+            frappe.msgprint(__('You cannot submit this document untill you have attached a signed copy of the Instruction'));
+            frappe.validated = false;
+        }
     }
 
 });

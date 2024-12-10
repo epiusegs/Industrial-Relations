@@ -18,7 +18,8 @@
   "date",
   "employee_name",
   "contents_of_instruction_section",
-  "text_editor_ktap"
+  "text_editor_ktap",
+  "signed_instruction"
  ],
  "fields": [
   {
@@ -103,12 +104,17 @@
    "options": "Company",
    "reqd": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "signed_instruction",
+   "fieldtype": "Attach",
+   "label": "Attach Signed Instruction"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-10 09:48:35.457284",
+ "modified": "2024-12-10 10:04:31.027565",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Managerial Instructions",
