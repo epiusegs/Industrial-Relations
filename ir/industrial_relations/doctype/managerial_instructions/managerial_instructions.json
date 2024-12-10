@@ -1,0 +1,223 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:IN-{date}-{####}",
+ "creation": "2024-12-10 09:02:12.442721",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_jqhx",
+  "amended_from",
+  "letter_head",
+  "managerial_instruction_section",
+  "company",
+  "employee",
+  "applies_to",
+  "regarding",
+  "column_break_dggk",
+  "date",
+  "employee_name",
+  "contents_of_instruction_section",
+  "text_editor_ktap"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_jqhx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Managerial Instructions",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "letter_head",
+   "fieldtype": "Link",
+   "label": "Letterhead",
+   "options": "Letter Head"
+  },
+  {
+   "fieldname": "managerial_instruction_section",
+   "fieldtype": "Section Break",
+   "label": "Managerial Instruction"
+  },
+  {
+   "fieldname": "column_break_dggk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date of Instruction",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "contents_of_instruction_section",
+   "fieldtype": "Section Break",
+   "label": "Contents of Instruction"
+  },
+  {
+   "fieldname": "text_editor_ktap",
+   "fieldtype": "Text Editor",
+   "reqd": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Manager Issuing Instuction",
+   "options": "Employee",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Read Only",
+   "label": "Manager Name"
+  },
+  {
+   "description": "To whom the Instruction Applies, i.e. All Employees, All Site Employees, etc.",
+   "fieldname": "applies_to",
+   "fieldtype": "Data",
+   "label": "TO",
+   "reqd": 1
+  },
+  {
+   "description": "With regards to what does the Instruction Apply, i.e. Working Hours, etc.",
+   "fieldname": "regarding",
+   "fieldtype": "Data",
+   "label": "RE",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Applicable Company",
+   "options": "Company",
+   "reqd": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-12-10 09:48:35.457284",
+ "modified_by": "Administrator",
+ "module": "Industrial Relations",
+ "name": "Managerial Instructions",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Employee",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Desk User",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Engineering Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Production Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "IR Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "select": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
