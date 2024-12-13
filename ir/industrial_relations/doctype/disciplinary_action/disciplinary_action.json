@@ -93,6 +93,7 @@
    "fieldname": "branch",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Site for Hearing:",
    "options": "Branch",
    "reqd": 1,
@@ -140,6 +141,8 @@
   {
    "fieldname": "accused_name",
    "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Employee Name:"
   },
   {
@@ -195,6 +198,8 @@
   {
    "fieldname": "outcome",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Outcome",
    "options": "Offence Outcome",
    "read_only": 1
@@ -202,6 +207,8 @@
   {
    "fieldname": "outcome_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Outcome Date"
   },
   {
@@ -349,7 +356,7 @@
    "fieldname": "responsible_ir",
    "fieldtype": "Link",
    "label": "Responsible IR",
-   "link_filters": "[[\"User\",\"role_profile_name\",\"in\",[\"IR Manager\",\"IR User\"]]]",
+   "link_filters": "[[\"User\",\"role\",\"in\",[\"IR Manager\",\"IR User\"]]]",
    "options": "User"
   },
   {
@@ -405,7 +412,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-10-15 10:24:26.720294",
+ "modified": "2024-12-13 14:13:33.085317",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "Disciplinary Action",
