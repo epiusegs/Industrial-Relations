@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{linked_disciplinary_action}-NTA",
+ "autoname": "format:{linked_disciplinary_action}-NTA-{#}",
  "creation": "2024-07-17 18:44:33.121479",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -253,7 +253,7 @@
    "link_fieldname": "individual_right"
   }
  ],
- "modified": "2024-11-21 15:10:49.684213",
+ "modified": "2024-12-16 13:13:12.845097",
  "modified_by": "Administrator",
  "module": "Industrial Relations",
  "name": "NTA Hearing",
