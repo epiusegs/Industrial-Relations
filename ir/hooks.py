@@ -5,7 +5,7 @@ app_description = "Industrial Relations management Application for ERPNext and w
 app_email = "buff0k@buff0k.co.za"
 app_license = "mit"
 app_version = "1.0.2"
-required_apps = ["frappe/erpnext", "frappe/hrms"]
+#required_apps = ["frappe/erpnext", "frappe/hrms"]
 fixtures = [
         {"dt": "Role", "filters": [
             [
